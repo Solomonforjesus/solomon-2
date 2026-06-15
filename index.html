@@ -173,10 +173,10 @@
         thinkingMessage.innerHTML = `
           <span class="solomon">Solomon:</span> ${data.reply}
         `;
-      } else {
+           } else {
         thinkingMessage.innerHTML = `
           <span class="solomon">Solomon:</span>
-          I could not answer that yet. Please try again.
+          ${data.error || "I could not answer that yet. Please try again."}
         `;
       }
     } catch (error) {
