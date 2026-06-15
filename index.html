@@ -131,30 +131,64 @@
     </section>
   </div>
 
-  <script>
-    function sendMessage() {
-      const input = document.getElementById("userInput");
-      const messages = document.getElementById("messages");
-      const text = input.value.trim();
+ <script>
+  async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const messages = document.getElementById("messages");
+    const text = input.value.trim();
 
-      if (!text) return;
+    if (!text) return;
 
-      messages.innerHTML += `
-        <div class="message">
-          <span class="user">You:</span> ${text}
-        </div>
-      `;
+    messages.innerHTML += `
+      <div class="message">
+        <span class="user">You:</span> ${text}
+      </div>
+    `;
 
-      messages.innerHTML += `
-        <div class="message">
+    input.value = "";
+
+    messages.innerHTML += `
+      <div class="message" id="thinkingMessage">
+        <span class="solomon">Solomon:</span>
+        Thinking...
+      </div>
+    `;
+
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await response.json();
+
+      const thinkingMessage = document.getElementById("thinkingMessage");
+
+      if (data.reply) {
+        thinkingMessage.innerHTML = `
+          <span class="solomon">Solomon:</span> ${data.reply}
+        `;
+      } else {
+        thinkingMessage.innerHTML = `
           <span class="solomon">Solomon:</span>
-          Thank you. The full Solomon 2.0 response engine is coming next. For now, this confirms the chat interface is working.
-        </div>
+          I could not answer that yet. Please try again.
+        `;
+      }
+    } catch (error) {
+      const thinkingMessage = document.getElementById("thinkingMessage");
+      thinkingMessage.innerHTML = `
+        <span class="solomon">Solomon:</span>
+        Something went wrong. Please try again.
       `;
-
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
     }
-  </script>
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+</script>
 </body>
 </html>
