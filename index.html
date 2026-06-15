@@ -1,10 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Solomon 2.0</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solomon 2.0</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7f4ec, #e7dfcf);
+      color: #1f2933;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      color: #2f2418;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #4b5563;
+    }
+
+    .chat-box {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      padding: 24px;
+    }
+
+    .messages {
+      min-height: 300px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 16px;
+      background: #fafafa;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .user {
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    .solomon {
+      font-weight: bold;
+      color: #7c2d12;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #bbb;
+      font-size: 16px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 12px;
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      background: #7c2d12;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5f210d;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #6b7280;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Solomon 2.0</h1>
-    <p>Website initialization successful.</p>
+  <div class="page">
+    <section class="hero">
+      <h1>Solomon 2.0</h1>
+      <p>
+        A Christian wisdom assistant designed to answer with clarity, humility,
+        truth, and faithfulness to the Gospel of Jesus Christ.
+      </p>
+    </section>
+
+    <section class="chat-box">
+      <div class="messages" id="messages">
+        <div class="message">
+          <span class="solomon">Solomon:</span>
+          Welcome. Ask your question, and I will do my best to answer with wisdom, honesty, and biblical faithfulness.
+        </div>
+      </div>
+
+      <textarea id="userInput" placeholder="Type your question here..."></textarea>
+      <button onclick="sendMessage()">Ask Solomon</button>
+
+      <div class="note">
+        Solomon 2.0 is in early development. Responses are not yet connected to the full AI engine.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const messages = document.getElementById("messages");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      messages.innerHTML += `
+        <div class="message">
+          <span class="user">You:</span> ${text}
+        </div>
+      `;
+
+      messages.innerHTML += `
+        <div class="message">
+          <span class="solomon">Solomon:</span>
+          Thank you. The full Solomon 2.0 response engine is coming next. For now, this confirms the chat interface is working.
+        </div>
+      `;
+
+      input.value = "";
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
 </body>
 </html>
