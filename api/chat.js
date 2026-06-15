@@ -16,18 +16,26 @@ export default async function handler(req, res) {
       });
     }
 
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        max_output_tokens: 300,
-        instructions:
-          "You are Solomon 2.0, a Christian wisdom assistant. Answer briefly, clearly, humbly, and faithfully to the Gospel of Jesus Christ. Do not be hateful, cruel, manipulative, or reckless. If the user expresses self-harm or danger to others, respond with care and urge immediate help from emergency services or a trusted person nearby.",
-        input: message
+        model: "gpt-4o-mini",
+        max_tokens: 300,
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are Solomon 2.0, a Christian wisdom assistant. Answer briefly, clearly, humbly, and faithfully to the Gospel of Jesus Christ. Do not be hateful, cruel, manipulative, or reckless. If the user expresses self-harm or danger to others, respond with care and urge immediate help from emergency services or a trusted person nearby."
+          },
+          {
+            role: "user",
+            content: message
+          }
+        ]
       })
     });
 
@@ -40,7 +48,7 @@ export default async function handler(req, res) {
     }
 
     const reply =
-      data.output_text ||
+      data.choices?.[0]?.message?.content ||
       "Solomon received the request, but no readable answer came back.";
 
     return res.status(200).json({ reply });
