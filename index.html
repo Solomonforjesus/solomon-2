@@ -131,7 +131,7 @@
     </section>
   </div>
 
- <script>
+<script>
   async function sendMessage() {
     const input = document.getElementById("userInput");
     const messages = document.getElementById("messages");
@@ -139,20 +139,17 @@
 
     if (!text) return;
 
-    messages.innerHTML += `
-      <div class="message">
-        <span class="user">You:</span> ${text}
-      </div>
-    `;
+    const userMessage = document.createElement("div");
+    userMessage.className = "message";
+    userMessage.innerHTML = `<span class="user">You:</span> ${text}`;
+    messages.appendChild(userMessage);
 
     input.value = "";
 
-    messages.innerHTML += `
-      <div class="message" id="thinkingMessage">
-        <span class="solomon">Solomon:</span>
-        Thinking...
-      </div>
-    `;
+    const solomonMessage = document.createElement("div");
+    solomonMessage.className = "message";
+    solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Thinking...`;
+    messages.appendChild(solomonMessage);
 
     messages.scrollTop = messages.scrollHeight;
 
@@ -167,24 +164,13 @@
 
       const data = await response.json();
 
-      const thinkingMessage = document.getElementById("thinkingMessage");
-
       if (data.reply) {
-        thinkingMessage.innerHTML = `
-          <span class="solomon">Solomon:</span> ${data.reply}
-        `;
-           } else {
-        thinkingMessage.innerHTML = `
-          <span class="solomon">Solomon:</span>
-          ${data.error || "I could not answer that yet. Please try again."}
-        `;
+        solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.reply}`;
+      } else {
+        solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.error || "I could not answer that yet. Please try again."}`;
       }
     } catch (error) {
-      const thinkingMessage = document.getElementById("thinkingMessage");
-      thinkingMessage.innerHTML = `
-        <span class="solomon">Solomon:</span>
-        Something went wrong. Please try again.
-      `;
+      solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Something went wrong. Please try again.`;
     }
 
     messages.scrollTop = messages.scrollHeight;
