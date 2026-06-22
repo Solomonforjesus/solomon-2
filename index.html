@@ -3,178 +3,321 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solomon 2.0</title>
+  <title>Solomon For Jesus</title>
+
   <style>
+    :root {
+      --bg-light: #f7f4ec;
+      --bg-warm: #e7dfcf;
+      --ink-dark: #1f2933;
+      --ink-soft: #4b5563;
+      --solomon-brown: #7c2d12;
+      --solomon-brown-dark: #5f210d;
+      --gold-soft: #c9a24d;
+      --card: #ffffff;
+      --border-soft: #ded6c8;
+      --chat-bg: #fbfaf7;
+      --shadow: 0 18px 45px rgba(47, 36, 24, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f7f4ec, #e7dfcf);
-      color: #1f2933;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(201, 162, 77, 0.22), transparent 32%),
+        linear-gradient(135deg, var(--bg-light), var(--bg-warm));
+      color: var(--ink-dark);
     }
 
     .page {
-      max-width: 900px;
+      width: min(1180px, 100%);
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: clamp(22px, 4vw, 48px) clamp(16px, 4vw, 32px);
     }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 30px;
+    .site-header {
+      margin-bottom: clamp(22px, 4vw, 34px);
     }
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .site-title {
+      margin: 0;
       color: #2f2418;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-align: left;
     }
 
-    .hero p {
-      font-size: 18px;
-      line-height: 1.5;
-      color: #4b5563;
+    .site-subtitle {
+      max-width: 760px;
+      margin: 12px 0 0 4px;
+      color: var(--ink-soft);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.55;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+      gap: clamp(20px, 4vw, 34px);
+      align-items: stretch;
+    }
+
+    .chat-box,
+    .image-panel {
+      min-width: 0;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(222, 214, 200, 0.95);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
     .chat-box {
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .chat-heading {
+      margin: 0 0 14px 0;
+      color: var(--solomon-brown);
+      font-size: clamp(23px, 2.5vw, 30px);
+      line-height: 1.15;
+      font-family: Georgia, "Times New Roman", serif;
     }
 
     .messages {
-      min-height: 300px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 18px;
+      flex: 1;
+      min-height: clamp(330px, 48vh, 560px);
+      max-height: 620px;
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: clamp(15px, 2.4vw, 20px);
       margin-bottom: 16px;
-      background: #fafafa;
+      background: var(--chat-bg);
       overflow-y: auto;
+      scroll-behavior: smooth;
+      font-size: clamp(17px, 1.8vw, 19px);
+      line-height: 1.6;
     }
 
     .message {
-      margin-bottom: 14px;
-      line-height: 1.5;
+      margin-bottom: 16px;
+      overflow-wrap: anywhere;
     }
 
     .user {
-      font-weight: bold;
+      font-weight: 700;
       color: #1d4ed8;
     }
 
     .solomon {
-      font-weight: bold;
-      color: #7c2d12;
+      font-weight: 700;
+      color: var(--solomon-brown);
     }
 
     textarea {
       width: 100%;
-      min-height: 100px;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid #bbb;
-      font-size: 16px;
-      box-sizing: border-box;
+      min-height: 112px;
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid #b9afa1;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(17px, 1.8vw, 19px);
+      line-height: 1.45;
+      background: #ffffff;
+      color: var(--ink-dark);
       resize: vertical;
+    }
+
+    textarea:focus {
+      outline: 3px solid rgba(201, 162, 77, 0.38);
+      border-color: var(--gold-soft);
     }
 
     button {
       margin-top: 12px;
       width: 100%;
-      padding: 14px;
-      font-size: 18px;
-      font-weight: bold;
+      padding: 15px 18px;
+      font-size: clamp(18px, 2vw, 21px);
+      font-weight: 700;
       border: none;
-      border-radius: 12px;
-      background: #7c2d12;
+      border-radius: 14px;
+      background: var(--solomon-brown);
       color: white;
       cursor: pointer;
+      transition: background 160ms ease, transform 160ms ease;
     }
 
     button:hover {
-      background: #5f210d;
+      background: var(--solomon-brown-dark);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
     }
 
     .note {
-      margin-top: 18px;
-      font-size: 14px;
+      margin-top: 16px;
+      font-size: clamp(14px, 1.6vw, 16px);
+      line-height: 1.45;
       color: #6b7280;
       text-align: center;
+    }
+
+    .image-panel {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      background: #111111;
+    }
+
+    .solomon-image {
+      width: 100%;
+      height: 100%;
+      min-height: clamp(420px, 60vh, 720px);
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 860px) {
+      .site-title,
+      .site-subtitle {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-box {
+        order: 1;
+      }
+
+      .image-panel {
+        order: 2;
+      }
+
+      .solomon-image {
+        min-height: auto;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding: 20px 12px;
+      }
+
+      .chat-box,
+      .image-panel {
+        border-radius: 18px;
+      }
+
+      .messages {
+        min-height: 300px;
+      }
+
+      textarea {
+        min-height: 105px;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="page">
-    <section class="hero">
-      <h1>Solomon 2.0</h1>
-      <p>
+    <header class="site-header">
+      <h1 class="site-title">Solomon For Jesus</h1>
+      <p class="site-subtitle">
         A Christian wisdom assistant designed to answer with clarity, humility,
         truth, and faithfulness to the Gospel of Jesus Christ.
       </p>
-    </section>
+    </header>
 
-    <section class="chat-box">
-      <div class="messages" id="messages">
-        <div class="message">
-          <span class="solomon">Solomon:</span>
-          Welcome. Ask your question, and I will do my best to answer with wisdom, honesty, and biblical faithfulness.
+    <main class="main-layout">
+      <section class="chat-box" aria-label="Solomon chat interface">
+        <h2 class="chat-heading">Ask Solomon</h2>
+
+        <div class="messages" id="messages">
+          <div class="message">
+            <span class="solomon">Solomon:</span>
+            Welcome. Ask your question, and I will do my best to answer with wisdom, honesty, and biblical faithfulness.
+          </div>
         </div>
-      </div>
 
-      <textarea id="userInput" placeholder="Type your question here..."></textarea>
-      <button onclick="sendMessage()">Ask Solomon</button>
+        <textarea id="userInput" placeholder="Type your question here..."></textarea>
+        <button onclick="sendMessage()">Ask Solomon</button>
 
-      <div class="note">
-        Solomon 2.0 is in early development. Responses are not yet connected to the full AI engine.
-      </div>
-    </section>
+        <div class="note">
+          Solomon For Jesus is in early development. Please use discernment, prayer, and Scripture as your final authority.
+        </div>
+      </section>
+
+      <aside class="image-panel" aria-label="Solomon For Jesus artwork">
+        <img
+          src="ChatGPT%20Image%20Jun%2022,%202026,%2008_06_09%20AM.png"
+          alt="Solomon For Jesus artwork with John 14:6"
+          class="solomon-image"
+        />
+      </aside>
+    </main>
   </div>
 
-<script>
-  async function sendMessage() {
-    const input = document.getElementById("userInput");
-    const messages = document.getElementById("messages");
-    const text = input.value.trim();
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const messages = document.getElementById("messages");
+      const text = input.value.trim();
 
-    if (!text) return;
+      if (!text) return;
 
-    const userMessage = document.createElement("div");
-    userMessage.className = "message";
-    userMessage.innerHTML = `<span class="user">You:</span> ${text}`;
-    messages.appendChild(userMessage);
+      const userMessage = document.createElement("div");
+      userMessage.className = "message";
+      userMessage.innerHTML = `<span class="user">You:</span> ${text}`;
+      messages.appendChild(userMessage);
 
-    input.value = "";
+      input.value = "";
 
-    const solomonMessage = document.createElement("div");
-    solomonMessage.className = "message";
-    solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Thinking...`;
-    messages.appendChild(solomonMessage);
+      const solomonMessage = document.createElement("div");
+      solomonMessage.className = "message";
+      solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Thinking...`;
+      messages.appendChild(solomonMessage);
 
-    messages.scrollTop = messages.scrollHeight;
+      messages.scrollTop = messages.scrollHeight;
 
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: text })
-      });
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message: text })
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (data.reply) {
-        solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.reply}`;
-      } else {
-        solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.error || "I could not answer that yet. Please try again."}`;
+        if (data.reply) {
+          solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.reply}`;
+        } else {
+          solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.error || "I could not answer that yet. Please try again."}`;
+        }
+      } catch (error) {
+        solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Something went wrong. Please try again.`;
       }
-    } catch (error) {
-      solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Something went wrong. Please try again.`;
-    }
 
-    messages.scrollTop = messages.scrollHeight;
-  }
-</script>
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
 </body>
 </html>
