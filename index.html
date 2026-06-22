@@ -166,13 +166,18 @@
       transform: translateY(0);
     }
 
-    .note {
-      margin-top: 16px;
-      font-size: clamp(14px, 1.6vw, 16px);
-      line-height: 1.45;
-      color: #6b7280;
-      text-align: center;
-    }
+   .secondary-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.secondary-buttons button {
+  margin-top: 0;
+  padding: 12px 14px;
+  font-size: clamp(15px, 1.7vw, 17px);
+}
 
    .image-panel {
   display: flex;
@@ -265,9 +270,10 @@
         <textarea id="userInput" placeholder="Type your question here..."></textarea>
         <button onclick="sendMessage()">Ask Solomon</button>
 
-        <div class="note">
-          Solomon For Jesus is in early development. Please use discernment, prayer, and Scripture as your final authority.
-        </div>
+        <div class="secondary-buttons">
+  <button type="button" onclick="startPrayerRequest()">Prayer Request</button>
+  <button type="button" onclick="emailPastor()">Email the Pastor</button>
+</div>
       </section>
 
       <aside class="image-panel" aria-label="Solomon For Jesus artwork">
@@ -280,11 +286,24 @@
     </main>
   </div>
 
-  <script>
+  
+    <script>
+    function startPrayerRequest() {
+      const input = document.getElementById("userInput");
+      input.value = "Prayer request: ";
+      input.focus();
+    }
+
+    function emailPastor() {
+      window.location.href = "mailto:contact@solomonforjesus.com?subject=Prayer%20Request%20or%20Pastoral%20Contact";
+    }
+
     async function sendMessage() {
       const input = document.getElementById("userInput");
       const messages = document.getElementById("messages");
       const text = input.value.trim();
+    
+   
 
       if (!text) return;
 
