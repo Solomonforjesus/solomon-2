@@ -198,15 +198,35 @@
       display: block;
       border-radius: 14px;
     }
+.content-section {
+  margin-top: clamp(28px, 5vw, 52px);
+}
 
-    @media (max-width: 860px) {
-      .site-title,
-      .site-subtitle {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-      }
+.content-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(222, 214, 200, 0.95);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 34px);
+}
 
+.content-card h2 {
+  margin: 0 0 12px 0;
+  color: #4b2e83;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.content-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.65;
+}
+
+
+
+@media (max-width: 860px) {
       .main-layout {
         grid-template-columns: 1fr;
       }
@@ -286,9 +306,18 @@
           class="solomon-image"
         />
       </aside>
-    </main>
-  </div>
+       </main>
 
+    <section class="content-section">
+      <div class="content-card">
+        <h2>What Solomon Believes</h2>
+        <p>
+          Draft content coming soon. This section will briefly explain the biblical foundation,
+          Christian faith commitments, and Gospel-centered purpose of Solomon For Jesus.
+        </p>
+      </div>
+    </section>
+  </div>
   
     <script>
     function startPrayerRequest() {
