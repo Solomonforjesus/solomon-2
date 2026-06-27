@@ -60,7 +60,13 @@
       font-size: clamp(17px, 2vw, 21px);
       line-height: 1.55;
     }
-
+    
+.site-header-image {
+  width: min(100%, 980px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
     .main-layout {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
@@ -249,12 +255,12 @@
 <body>
   <div class="page">
     <header class="site-header">
-      <h1 class="site-title">Solomon For Jesus</h1>
-      <p class="site-subtitle">
-        A Christian wisdom assistant designed to answer with clarity, humility,
-        truth, and faithfulness to the Gospel of Jesus Christ.
-      </p>
-    </header>
+  <img
+    src="solomon-header.png"
+    alt="Solomon For Jesus — Wisdom. Truth. Hope in Jesus Christ."
+    class="site-header-image"
+  />
+</header>
 
     <main class="main-layout">
       <section class="chat-box" aria-label="Solomon chat interface">
