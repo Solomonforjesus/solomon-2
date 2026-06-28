@@ -1,3 +1,4 @@
+import { findAutoAnswer } from "./answerBank.js";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST requests are allowed." });
@@ -9,7 +10,16 @@ export default async function handler(req, res) {
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "A message is required." });
     }
+    
+const autoAnswer = findAutoAnswer(message);
 
+if (autoAnswer) {
+  return res.status(200).json({
+    reply: autoAnswer.answer,
+    source: "approved_answer_bank",
+    answerId: autoAnswer.id
+  });
+}
     if (!process.env.OPENAI_API_KEY) {
       return res.status(500).json({
         error: "OPENAI_API_KEY is missing in Vercel."
