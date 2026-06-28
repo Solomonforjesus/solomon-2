@@ -662,6 +662,259 @@ A merely good teacher does not rightly claim what Jesus claims unless those clai
 A helpful passage is John 10:30.
 
 Would you like a deeper answer about Jesus’ identity?`
+
+  },
+  {
+    id: "SALV-005",
+    topic: "How do I become a Christian?",
+    triggers: [
+      "how do i become a christian",
+      "how can i become a christian",
+      "how do i get saved",
+      "how can i be saved",
+      "how do i give my life to jesus"
+    ],
+    answer: `To become a Christian, turn from sin and trust in Jesus Christ as Lord and Savior. You are not saved by being good enough, religious enough, or smart enough. You are saved by God’s grace through faith in Jesus.
+
+Jesus died for sinners, rose from the dead, and gives forgiveness and eternal life to all who come to Him. Call on Him honestly, confess your sin, trust Him, and follow Him.
+
+A helpful passage is Romans 10:9–13.
+
+Would you like a simple prayer of repentance and faith?`
+  },
+  {
+    id: "FORGIVE-001",
+    topic: "Can God forgive me?",
+    triggers: [
+      "can god forgive me",
+      "will god forgive me",
+      "can jesus forgive me",
+      "am i too sinful for god",
+      "can god forgive my sins"
+    ],
+    answer: `Yes. God can forgive you through Jesus Christ. No sin is too strong for the blood of Christ, and no sinner is beyond God’s mercy if they truly come to Him in repentance and faith.
+
+Forgiveness is not earned by pretending your sin was small. Forgiveness comes because Jesus is a great Savior. He died for sinners, rose again, and receives those who turn to Him.
+
+A helpful passage is 1 John 1:9.
+
+Would you like a deeper answer about forgiveness and repentance?`
+  },
+  {
+    id: "SIN-002",
+    topic: "What if I keep sinning?",
+    triggers: [
+      "what if i keep sinning",
+      "why do i keep sinning",
+      "i keep falling into sin",
+      "can god forgive me if i keep sinning",
+      "how do i stop sinning"
+    ],
+    answer: `If you keep sinning, do not hide from God. Come to Him honestly. Confess your sin, ask for mercy, and seek help to fight it. A Christian may still struggle, but should not make peace with sin.
+
+Jesus saves sinners not only from guilt, but also from sin’s power. Growth may be slow, but God calls His people to repent, obey, and depend on the Holy Spirit.
+
+A helpful passage is Romans 6:1–4.
+
+Would you like a deeper answer about fighting repeated sin?`
+  },
+  {
+    id: "PRAYER-001",
+    topic: "What is prayer?",
+    triggers: [
+      "what is prayer",
+      "what does prayer mean",
+      "explain prayer",
+      "why do christians pray",
+      "what is christian prayer"
+    ],
+    answer: `Prayer is talking with God. It includes worship, confession, thanksgiving, asking for help, praying for others, and surrendering our will to God.
+
+Prayer is not magic, performance, or a way to control God. It is humble communion with the living God through faith. Because of Jesus, believers may come to God as Father.
+
+A helpful passage is Matthew 6:9–13.
+
+Would you like a deeper answer about how to pray?`
+  },
+  {
+    id: "PRAYER-002",
+    topic: "Does God answer prayer?",
+    triggers: [
+      "does god answer prayer",
+      "does god hear my prayers",
+      "why does god not answer prayer",
+      "does prayer work",
+      "will god answer my prayer"
+    ],
+    answer: `Yes. God answers prayer according to His wisdom, will, timing, and goodness. Sometimes He says yes, sometimes no, sometimes wait, and sometimes He gives something better than what we asked.
+
+Prayer is not about forcing God to follow our plans. It is about trusting Him, seeking Him, and bringing our needs before Him with faith and humility.
+
+A helpful passage is 1 John 5:14–15.
+
+Would you like a deeper answer about unanswered prayer?`
+  },
+  {
+    id: "TRINITY-001",
+    topic: "What is the Trinity?",
+    triggers: [
+      "what is the trinity",
+      "explain the trinity",
+      "what does trinity mean",
+      "how can god be three in one",
+      "father son and holy spirit"
+    ],
+    answer: `The Trinity means there is one God eternally existing as three Persons: the Father, the Son, and the Holy Spirit. The Father is God, the Son is God, and the Holy Spirit is God. Yet there are not three gods, but one God.
+
+The Trinity is not a puzzle invented by man. It is how God has revealed Himself in Scripture. We may not fully comprehend God’s nature, but we can truly know what He has revealed.
+
+A helpful passage is Matthew 28:19.
+
+Would you like a deeper answer about the Trinity?`
+  },
+  {
+    id: "HEAVEN-001",
+    topic: "What is heaven?",
+    triggers: [
+      "what is heaven",
+      "what is heaven like",
+      "tell me about heaven",
+      "is heaven real",
+      "where do christians go after death"
+    ],
+    answer: `Heaven is the dwelling place of God and the future home of all who belong to Jesus Christ. It is not merely clouds, symbols, or imagination. It is life with God, free from sin, death, grief, and evil.
+
+The final Christian hope is not escape into nothingness, but resurrection life with God in His restored creation. Jesus is the center of heaven’s joy.
+
+A helpful passage is Revelation 21:1–4.
+
+Would you like a deeper answer about heaven and eternal life?`
+  },
+  {
+    id: "HELL-001",
+    topic: "What is hell?",
+    triggers: [
+      "what is hell",
+      "is hell real",
+      "tell me about hell",
+      "why does hell exist",
+      "what does the bible say about hell"
+    ],
+    answer: `Hell is the final judgment of God against sin, rebellion, and unbelief. It is real, serious, and terrible because separation from God’s mercy is terrible.
+
+God does not delight in wickedness or injustice. He is holy, and sin matters. But the Gospel also declares that Jesus came to save sinners from judgment and give eternal life to all who trust in Him.
+
+A helpful passage is Matthew 25:46.
+
+Would you like a deeper answer about judgment, hell, and salvation?`
+  },
+  {
+    id: "CHURCH-001",
+    topic: "What is the church?",
+    triggers: [
+      "what is the church",
+      "what does church mean",
+      "why does the church matter",
+      "what is a biblical church",
+      "what is the purpose of the church"
+    ],
+    answer: `The church is the people of God redeemed by Jesus Christ. It is not merely a building, event, or organization. The church is made up of believers who worship God, proclaim the Gospel, teach Scripture, pray, serve, and encourage one another.
+
+A faithful church points people to Jesus, honors Scripture, practices love and truth, and helps believers grow in obedience.
+
+A helpful passage is Acts 2:42.
+
+Would you like a deeper answer about the purpose of the church?`
+  },
+  {
+    id: "CHURCH-002",
+    topic: "Why should I go to church?",
+    triggers: [
+      "why should i go to church",
+      "do i need to go to church",
+      "is church necessary",
+      "why is church important",
+      "can i be a christian without church"
+    ],
+    answer: `A Christian should gather with a faithful church because God did not design believers to follow Jesus alone. Christians need worship, teaching, correction, encouragement, prayer, fellowship, and service.
+
+Church attendance does not save you. Jesus saves. But those who belong to Jesus should desire to grow with His people.
+
+A helpful passage is Hebrews 10:24–25.
+
+Would you like a deeper answer about finding a faithful church?`
+  },
+  {
+    id: "GUIDANCE-001",
+    topic: "How do I know God’s will?",
+    triggers: [
+      "how do i know god's will",
+      "how do i know gods will",
+      "what is god's will for my life",
+      "what is gods will for my life",
+      "how does god guide me"
+    ],
+    answer: `You know God’s will first through Scripture. God’s will is never contrary to God’s Word. Pray for wisdom, obey what Scripture clearly teaches, seek godly counsel, examine your motives, and trust God step by step.
+
+God may not reveal every detail ahead of time. Often He guides His people through faithful obedience in the next right step.
+
+A helpful passage is Proverbs 3:5–6.
+
+Would you like a deeper answer about decision-making and God’s guidance?`
+  },
+  {
+    id: "MORAL-001",
+    topic: "Can morality exist without God?",
+    triggers: [
+      "can morality exist without god",
+      "can there be morality without god",
+      "can atheists be moral",
+      "do we need god for morality",
+      "is morality possible without god"
+    ],
+    answer: `People can know moral truths even if they deny God, because human beings are made in God’s image and have conscience. But without God, morality loses its ultimate foundation.
+
+If morality is only personal opinion, culture, or survival instinct, then good and evil become unstable. The Bible teaches that moral reality is grounded in God’s holy character.
+
+A helpful passage is Romans 2:14–15.
+
+Would you like a deeper answer about morality and God?`
+  },
+  {
+    id: "MIRACLE-001",
+    topic: "Are miracles possible?",
+    triggers: [
+      "are miracles possible",
+      "do miracles happen",
+      "can miracles happen",
+      "are miracles real",
+      "does god still do miracles"
+    ],
+    answer: `Yes. Miracles are possible because God is the Creator and Lord over nature. The laws of nature describe the normal order God upholds; they do not prevent God from acting within His creation.
+
+The greatest miracle at the center of Christianity is the resurrection of Jesus Christ. If God raised Jesus from the dead, then miracles are not impossible.
+
+A helpful passage is Luke 1:37.
+
+Would you like a deeper answer about miracles and evidence?`
+  },
+  {
+    id: "DESIGN-001",
+    topic: "Does fine-tuning point to God?",
+    triggers: [
+      "does fine tuning point to god",
+      "does fine-tuning point to god",
+      "what is fine tuning",
+      "is the universe fine tuned",
+      "does the universe point to god"
+    ],
+    answer: `Yes. The fine-tuning of the universe points strongly toward God. The universe is ordered in a way that allows life, mathematics, chemistry, stars, planets, and human existence.
+
+Fine-tuning does not prove every detail of Christian doctrine by itself, but it fits powerfully with the biblical truth that the universe is not an accident. Creation reflects wisdom, order, and purpose from the Creator.
+
+A helpful passage is Psalm 19:1.
+
+Would you like a deeper answer about fine-tuning and design?`
   }
 ];
 
