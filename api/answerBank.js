@@ -279,4 +279,4 @@ function findAutoAnswer(userMessage) {
   return null;
 }
 
-module.exports = { findAutoAnswer, answerBank };
+export { findAutoAnswer, answerBank };
