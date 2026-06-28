@@ -445,14 +445,7 @@ A helpful passage is Genesis 1:1.
 
 Would you like a deeper answer about creation, evolution, and God?`
  
-  return String(text || "")
-    .toLowerCase()
-    .replace(/[“”]/g, '"')
-    .replace(/[‘’]/g, "'")
-    .replace(/[^a-z0-9\s']/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+  
   },
   {
     id: "BIBLE-003",
