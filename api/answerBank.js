@@ -444,9 +444,233 @@ Christians differ on some details of creation and biological history, but Solomo
 A helpful passage is Genesis 1:1.
 
 Would you like a deeper answer about creation, evolution, and God?`
+ 
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[“”]/g, '"')
+    .replace(/[‘’]/g, "'")
+    .replace(/[^a-z0-9\s']/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+  },
+  {
+    id: "BIBLE-003",
+    topic: "Who wrote the Bible?",
+    triggers: [
+      "who wrote the bible",
+      "who wrote scripture",
+      "who are the authors of the bible",
+      "did god write the bible",
+      "how was the bible written"
+    ],
+    answer: `The Bible was written by many human authors over many centuries, but the Holy Spirit guided them so that Scripture is truly the Word of God.
+
+The Bible includes writings from prophets, kings, shepherds, apostles, eyewitnesses, and servants of God. Though the human authors differ, the Bible has one ultimate Author: God.
+
+A helpful passage is 2 Peter 1:20–21.
+
+Would you like a deeper answer about how God inspired Scripture?`
+  },
+  {
+    id: "BIBLE-004",
+    topic: "Why are there different Bible translations?",
+    triggers: [
+      "why are there different bible translations",
+      "why so many bible translations",
+      "which bible translation should i use",
+      "are bible translations reliable",
+      "why are there different versions of the bible"
+    ],
+    answer: `There are different Bible translations because the Bible was originally written mainly in Hebrew, Aramaic, and Greek. Translation brings those original languages into the language people read today.
+
+Some translations aim for word-for-word accuracy. Others aim for thought-for-thought clarity. A good translation does not create a new Bible; it helps readers understand the same Scripture faithfully.
+
+Solomon’s approved English translations include NKJV, ESV, and NRSV.
+
+Would you like a deeper answer about choosing a Bible translation?`
+  },
+  {
+    id: "BIBLE-005",
+    topic: "Has the Bible been corrupted?",
+    triggers: [
+      "has the bible been corrupted",
+      "was the bible corrupted",
+      "has scripture been changed",
+      "how do we know the bible has not been corrupted",
+      "can we trust the bible manuscripts"
+    ],
+    answer: `No. The Bible has been carefully preserved through manuscripts, quotations, translations, and historical transmission. There are manuscript differences, but they do not overthrow the core message of Scripture or the Gospel of Jesus Christ.
+
+God has not failed to preserve His Word. The Bible we have faithfully gives us what God intended His people to receive.
+
+A helpful passage is Isaiah 40:8.
+
+Would you like a deeper answer about biblical manuscripts and preservation?`
+  },
+  {
+    id: "BIBLE-006",
+    topic: "Who decided which books belong in the Bible?",
+    triggers: [
+      "who decided which books belong in the bible",
+      "who chose the books of the bible",
+      "who decided the bible canon",
+      "how was the bible canon decided",
+      "why are some books not in the bible"
+    ],
+    answer: `The church did not invent Scripture’s authority. The church recognized the books God had given.
+
+For the New Testament, the recognized books carried apostolic authority, faithfulness to the Gospel, widespread use among the churches, and consistency with the truth already received. The canon was not a political invention; it was the recognition of God’s inspired writings.
+
+A helpful passage is Luke 24:44–45.
+
+Would you like a deeper answer about the biblical canon?`
+  },
+  {
+    id: "BIBLE-007",
+    topic: "Are there contradictions in the Bible?",
+    triggers: [
+      "are there contradictions in the bible",
+      "does the bible contradict itself",
+      "are bible contradictions real",
+      "why are there contradictions in scripture",
+      "the bible has contradictions"
+    ],
+    answer: `The Bible is true and trustworthy because it is God’s Word. Some passages can look difficult at first because they involve different authors, perspectives, summaries, translations, time periods, or ancient writing styles.
+
+An apparent contradiction is not automatically a real contradiction. Many difficulties can be answered by reading carefully, checking context, understanding genre, and letting Scripture interpret Scripture.
+
+A helpful passage is John 17:17.
+
+Would you like to ask about a specific Bible passage that seems contradictory?`
+  },
+  {
+    id: "BIBLE-008",
+    topic: "Is the Bible literal or symbolic?",
+    triggers: [
+      "is the bible literal",
+      "is the bible symbolic",
+      "is the bible literal or symbolic",
+      "should the bible be read literally",
+      "how literal is the bible"
+    ],
+    answer: `The Bible should be read as true, but not every sentence should be read in the same way. Scripture includes history, poetry, prophecy, wisdom, parables, visions, symbols, law, letters, and Gospel narrative.
+
+Faithful interpretation asks: What kind of writing is this? What did the author intend? What does the context show? Literal history should be read as history. Symbolic visions should be read as symbolic truth, not as falsehood.
+
+A helpful passage is Nehemiah 8:8.
+
+Would you like a deeper answer about reading the Bible rightly?`
+  },
+  {
+    id: "BIBLE-009",
+    topic: "How should we interpret the Bible?",
+    triggers: [
+      "how should we interpret the bible",
+      "how do i interpret scripture",
+      "how do i understand the bible",
+      "how should i study the bible",
+      "how do we read the bible correctly"
+    ],
+    answer: `We should interpret the Bible humbly, carefully, prayerfully, and in context. A good reader asks what the passage says, what kind of writing it is, who wrote it, who received it, and how it fits with the whole message of Scripture.
+
+We should not twist verses to fit our desires. Scripture should correct us; we should not correct Scripture.
+
+A helpful passage is 2 Timothy 2:15.
+
+Would you like a deeper answer about how to study the Bible?`
+  },
+  {
+    id: "JESUS-004",
+    topic: "Did Jesus really exist historically?",
+    triggers: [
+      "did jesus really exist",
+      "did jesus exist historically",
+      "was jesus a real person",
+      "is jesus historical",
+      "how do we know jesus existed"
+    ],
+    answer: `Yes. Jesus of Nazareth truly lived in history. Christianity is not built on a myth or vague spiritual idea. It is rooted in real events: Jesus’ life, teaching, crucifixion, burial, resurrection, and the witness of those who followed Him.
+
+The New Testament gives the primary witness to Jesus, and even outside Christian writings, Jesus is recognized as a real historical figure.
+
+A helpful passage is Luke 1:1–4.
+
+Would you like a deeper answer about historical evidence for Jesus?`
+  },
+  {
+    id: "JESUS-005",
+    topic: "Are the Gospels reliable?",
+    triggers: [
+      "are the gospels reliable",
+      "can we trust the gospels",
+      "how do we know the gospels are reliable",
+      "are the gospels true",
+      "were the gospels written by eyewitnesses"
+    ],
+    answer: `Yes. The Gospels are reliable witnesses to Jesus Christ. They are rooted in eyewitness testimony, early Christian proclamation, historical detail, and the life of the church that preserved and proclaimed the truth about Jesus.
+
+The Gospels are not detached biographies written merely to satisfy curiosity. They are faithful testimony so that people may know who Jesus is, what He has done, and why He is worthy of trust.
+
+A helpful passage is John 20:30–31.
+
+Would you like a deeper answer about the reliability of the Gospels?`
+  },
+  {
+    id: "JESUS-006",
+    topic: "Did Jesus really rise from the dead?",
+    triggers: [
+      "did jesus really rise from the dead",
+      "did jesus rise from the dead",
+      "is the resurrection real",
+      "did the resurrection happen",
+      "was jesus resurrected"
+    ],
+    answer: `Yes. Christianity stands on the real resurrection of Jesus Christ. Jesus did not merely inspire His followers after death. He bodily rose from the grave, appeared to many witnesses, and lives forever as Lord and Savior.
+
+If Jesus did not rise, Christianity would collapse. But because He is risen, sin, death, and the grave do not have the final word.
+
+A helpful passage is 1 Corinthians 15:14–20.
+
+Would you like a deeper answer about evidence for the resurrection?`
+  },
+  {
+    id: "JESUS-007",
+    topic: "Could the disciples have stolen Jesus’ body?",
+    triggers: [
+      "could the disciples have stolen jesus body",
+      "did the disciples steal jesus body",
+      "was jesus body stolen",
+      "did someone steal jesus body",
+      "empty tomb stolen body"
+    ],
+    answer: `No. That explanation does not fit the evidence well. The disciples were afraid after Jesus’ crucifixion, and they later suffered for proclaiming that He had risen. People may die for something false if they think it is true, but they do not willingly suffer for something they know they fabricated.
+
+The better Christian answer is that the tomb was empty because Jesus truly rose from the dead.
+
+A helpful passage is Matthew 28:11–15.
+
+Would you like a deeper answer about the empty tomb?`
+  },
+  {
+    id: "JESUS-008",
+    topic: "Was Jesus just a good moral teacher?",
+    triggers: [
+      "was jesus just a good moral teacher",
+      "was jesus only a teacher",
+      "was jesus just a prophet",
+      "was jesus merely a good man",
+      "was jesus just a moral example"
+    ],
+    answer: `No. Jesus is not merely a good moral teacher. He claims authority over sin, life, death, judgment, and salvation. He receives worship, forgives sin, identifies Himself uniquely with the Father, and calls all people to follow Him.
+
+A merely good teacher does not rightly claim what Jesus claims unless those claims are true. Jesus is Lord, God the Son, the crucified and risen Savior.
+
+A helpful passage is John 10:30.
+
+Would you like a deeper answer about Jesus’ identity?`
   }
 ];
-
 
 function normalizeText(text) {
   return String(text || "")
