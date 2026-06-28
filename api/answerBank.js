@@ -242,9 +242,211 @@ The Gospel is not advice about how to become a better person. It is the announce
 
 A helpful passage is 1 Corinthians 15:3–4.
 
+
+
 Would you like a deeper answer about the Gospel?`
+  },
+  {
+    id: "SIN-001",
+    topic: "What is sin?",
+    triggers: [
+      "what is sin",
+      "define sin",
+      "what does sin mean",
+      "why is sin serious",
+      "what is sinful"
+    ],
+    answer: `Sin is rebellion against God. It includes wrong actions, wrong desires, unbelief, pride, selfishness, and anything that falls short of God’s holy character. Sin separates us from God and shows why we need a Savior.
+
+The Bible teaches that all people have sinned, but it also teaches that Jesus Christ saves sinners who come to Him in faith.
+
+A helpful passage is Romans 3:23.
+
+Would you like a deeper answer about sin and forgiveness?`
+  },
+  {
+    id: "REPENT-001",
+    topic: "What is repentance?",
+    triggers: [
+      "what is repentance",
+      "what does repent mean",
+      "what does repentance mean",
+      "how do i repent",
+      "do i need to repent"
+    ],
+    answer: `Repentance means turning from sin and turning to God. It is not merely feeling bad or being afraid of consequences. True repentance includes sorrow over sin, agreement with God about sin, and a changed direction of heart and life.
+
+Repentance does not earn salvation. Salvation is by grace through faith in Jesus Christ. But real faith does not make peace with sin; it turns toward Christ.
+
+A helpful passage is Acts 3:19.
+
+Would you like a deeper answer about repentance and faith?`
+  },
+  {
+    id: "BAPTISM-001",
+    topic: "Do I need to be baptized to be saved?",
+    triggers: [
+      "do i need to be baptized to be saved",
+      "is baptism required for salvation",
+      "does baptism save me",
+      "do you have to be baptized to go to heaven",
+      "is baptism necessary to be saved"
+    ],
+    answer: `Baptism is important because Jesus commands it, but baptism does not save apart from faith in Christ. We are saved by grace through faith in Jesus, not by a religious act.
+
+Baptism is a public sign of belonging to Christ. It pictures death to sin, new life in Christ, and identification with His death and resurrection. A believer should not treat baptism as optional or unimportant, but the water itself is not the Savior. Jesus is.
+
+A helpful passage is Ephesians 2:8–9.
+
+Would you like a deeper answer about baptism?`
+  },
+  {
+    id: "SALV-004",
+    topic: "Can I lose my salvation?",
+    triggers: [
+      "can i lose my salvation",
+      "can you lose your salvation",
+      "can a christian lose salvation",
+      "can i stop being saved",
+      "can someone lose eternal life"
+    ],
+    answer: `A true believer is kept by the power and grace of God. Salvation does not depend on human strength, but on Jesus Christ, who saves and keeps His people.
+
+At the same time, the Bible warns against false faith, careless living, and turning away from Christ. A person who belongs to Jesus may struggle, stumble, and need correction, but God continues His work in those who are truly His.
+
+A helpful passage is John 10:27–29.
+
+Would you like a deeper answer about assurance and perseverance?`
+  },
+  {
+    id: "SPIRIT-001",
+    topic: "What is the role of the Holy Spirit?",
+    triggers: [
+      "what is the role of the holy spirit",
+      "who is the holy spirit",
+      "what does the holy spirit do",
+      "how does the holy spirit help us",
+      "what is the holy spirit"
+    ],
+    answer: `The Holy Spirit is God, the third Person of the Trinity. He convicts the world of sin, gives new birth, indwells believers, teaches truth, produces spiritual fruit, gives strength for obedience, and glorifies Jesus Christ.
+
+The Christian life is not lived by human willpower alone. Believers need the Holy Spirit’s presence, guidance, correction, comfort, and power.
+
+A helpful passage is John 16:13–14.
+
+Would you like a deeper answer about the Holy Spirit?`
+  },
+  {
+    id: "GROW-001",
+    topic: "How can I grow in my faith?",
+    triggers: [
+      "how can i grow in my faith",
+      "how do i grow as a christian",
+      "how can i get closer to god",
+      "how do i strengthen my faith",
+      "how can i live a christian life"
+    ],
+    answer: `You grow in faith by staying close to Jesus Christ. Read Scripture, pray honestly, obey what God shows you, confess sin quickly, gather with faithful believers, worship God, serve others, and keep your eyes on Christ.
+
+Growth is usually not instant. God often matures His people through daily faithfulness, trials, correction, encouragement, and dependence on Him.
+
+A helpful passage is 2 Peter 3:18.
+
+Would you like a deeper answer about growing as a Christian?`
+  },
+  {
+    id: "LOVE-001",
+    topic: "How should Christians treat others?",
+    triggers: [
+      "how should christians treat others",
+      "how should christians treat people",
+      "how should i treat others",
+      "what does christian love mean",
+      "how should christians love others"
+    ],
+    answer: `Christians should treat others with love, truth, humility, patience, mercy, and respect. Every person is made in the image of God, so no one should be treated as worthless.
+
+Christian love does not mean approving everything someone believes or does. It means seeking their good before God, speaking truth without cruelty, and remembering that we ourselves need grace.
+
+A helpful passage is Matthew 22:37–39.
+
+Would you like a deeper answer about Christian love and truth?`
+  },
+  {
+    id: "ISLAM-001",
+    topic: "How should Christians treat Muslims?",
+    triggers: [
+      "how should christians treat muslims",
+      "how should a christian treat a muslim",
+      "can a muslim be my friend",
+      "should christians hate muslims",
+      "how should christians talk to muslims"
+    ],
+    answer: `Christians should treat Muslims with love, dignity, kindness, honesty, and prayer. A Muslim is not an enemy to hate, mock, or mistreat. Every person is made in the image of God and should be treated with respect.
+
+At the same time, Christians must remain faithful to the Gospel. Christianity and Islam make different claims about Jesus, salvation, the cross, and the nature of God. Christians should be truthful about those differences while still showing real love.
+
+A helpful passage is 1 Peter 3:15.
+
+Would you like a deeper answer about loving people of other faiths?`
+  },
+  {
+    id: "ISLAM-002",
+    topic: "What is the difference between Christianity and Islam?",
+    triggers: [
+      "what is the difference between christianity and islam",
+      "how is christianity different from islam",
+      "christianity vs islam",
+      "difference between jesus and islam",
+      "do christians and muslims believe the same thing"
+    ],
+    answer: `Christianity and Islam differ most sharply over Jesus Christ. Christianity teaches that Jesus is God the Son, the crucified and risen Savior, and the only way to the Father. Islam denies that Jesus is God the Son and denies the Christian Gospel of salvation through His death and resurrection.
+
+These differences are not small. They concern the identity of Jesus, the cross, salvation, Scripture, and the nature of God. Christians should explain these differences clearly, but without hatred or mockery.
+
+A helpful passage is John 14:6.
+
+Would you like a deeper answer comparing Christianity and Islam?`
+  },
+  {
+    id: "SCI-001",
+    topic: "Does science disprove the Bible?",
+    triggers: [
+      "does science disprove the bible",
+      "does science disprove god",
+      "has science disproved christianity",
+      "science and the bible",
+      "does science contradict the bible"
+    ],
+    answer: `No. Science does not disprove the Bible. Science can study patterns, mechanisms, matter, energy, life, and the observable world. But science cannot replace God, explain why there is something rather than nothing, or tell us the ultimate meaning and purpose of reality.
+
+The Bible is not a modern science textbook, but it tells the truth about God, creation, humanity, sin, and salvation. When Scripture is read carefully and science is understood honestly, truth does not need to fear truth.
+
+A helpful passage is Psalm 19:1.
+
+Would you like a deeper answer about science and Scripture?`
+  },
+  {
+    id: "SCI-002",
+    topic: "Does evolution disprove God?",
+    triggers: [
+      "does evolution disprove god",
+      "does evolution disprove the bible",
+      "does evolution disprove christianity",
+      "doesn't evolution disprove god",
+      "doesnt evolution disprove god",
+      "evolution and god"
+    ],
+    answer: `No. Evolution does not disprove God. Even if someone believes biological change occurs through natural processes, that does not explain why life exists, why the universe is ordered, why laws of nature exist, why information exists, or why human beings have moral and spiritual meaning.
+
+Christians differ on some details of creation and biological history, but Solomon remains faithful to this foundation: God is the Creator, human beings are made in His image, sin is real, and salvation comes through Jesus Christ.
+
+A helpful passage is Genesis 1:1.
+
+Would you like a deeper answer about creation, evolution, and God?`
   }
 ];
+
 
 function normalizeText(text) {
   return String(text || "")
