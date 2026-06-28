@@ -224,6 +224,25 @@ Jesus is not one path among many. He is the way, the truth, and the life.
 A helpful passage is John 14:6.
 
 Would you like a deeper answer about Christianity and other religions?`
+  
+  },
+  {
+    id: "GOSPEL-001",
+    topic: "What is the Gospel?",
+    triggers: [
+      "what is the gospel",
+      "explain the gospel",
+      "what is the good news",
+      "what is the christian gospel",
+      "tell me the gospel"
+    ],
+    answer: `The Gospel is the good news that God saves sinners through Jesus Christ. We have sinned against God and cannot save ourselves, but Jesus Christ, the Son of God, died for our sins, rose from the dead, and gives forgiveness and eternal life to all who repent and trust in Him.
+
+The Gospel is not advice about how to become a better person. It is the announcement of what God has done through Jesus to rescue sinners and reconcile them to Himself.
+
+A helpful passage is 1 Corinthians 15:3–4.
+
+Would you like a deeper answer about the Gospel?`
   }
 ];
 
