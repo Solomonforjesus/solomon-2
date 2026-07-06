@@ -204,6 +204,73 @@
   font-size: clamp(17px, 1.8vw, 20px);
   line-height: 1.65;
 }
+   .content-button {
+  margin-top: 18px;
+}
+
+.faith-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(31, 41, 51, 0.72);
+  padding: 22px;
+  overflow-y: auto;
+}
+
+.faith-modal.is-open {
+  display: block;
+}
+
+.faith-modal-box {
+  width: min(900px, 100%);
+  margin: 40px auto;
+  background: #fffaf0;
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 38px);
+  position: relative;
+}
+
+.faith-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: auto;
+  margin: 0 0 14px 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 22px;
+  line-height: 1;
+  background: var(--solomon-brown);
+  color: #ffffff;
+}
+
+.faith-modal-box h2 {
+  margin-top: 0;
+  color: var(--solomon-brown);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.faith-modal-box p {
+  color: var(--ink-dark);
+  font-size: clamp(16px, 1.8vw, 19px);
+  line-height: 1.65;
+  margin: 0 0 16px 0;
+}
+
+.faith-modal-box .scripture-references {
+  color: var(--ink-soft);
+  font-size: clamp(15px, 1.6vw, 17px);
+  margin-bottom: 24px;
+}
+
+.faith-modal-box .faith-closing {
+  font-weight: 700;
+  color: var(--solomon-brown);
+} 
 @media (max-width: 860px) {
       .main-layout {
         grid-template-columns: 1fr;
@@ -294,13 +361,94 @@
   the Father, the Son, and the Holy Spirit, while remaining faithful to the Holy Scriptures.
   Solomon exists to point people to Jesus Christ, the Gospel, and the truth revealed in God's Word.
 </p>
-<button type="button" class="content-button">Statement of Faith</button>
+<button type="button" class="content-button" onclick="openFaithStatement()">Statement of Faith</button>
 
       </div>
     </section>
   </div>
-  
+    <div id="faithModal" class="faith-modal" aria-hidden="true">
+    <div class="faith-modal-box" role="dialog" aria-modal="true" aria-labelledby="faithTitle">
+      <button type="button" class="faith-close" onclick="closeFaithStatement()" aria-label="Close Statement of Faith">×</button>
+
+      <h2 id="faithTitle">Statement of Faith</h2>
+
+      <p>
+        Solomon For Jesus stands on the truth that there is one true and living God. He is the Maker of heaven and earth, the Sustainer of life, and the Lord over all creation. He is holy, eternal, all-knowing, all-powerful, righteous, merciful, and perfect in every way. The one God has eternally revealed Himself as Father, Son, and Holy Spirit. He reigns with wisdom and sovereign authority, and all things exist for His glory.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Genesis 1:1; Deuteronomy 6:4; Matthew 28:19; John 1:1–3; 2 Corinthians 13:14; Ephesians 1:11; Revelation 4:11
+      </p>
+
+      <p>
+        The foundation for Solomon’s answers is the Holy Bible. The Scriptures of the Old and New Testaments are God’s inspired Word, written through human authors under His authority. The Bible is true and trustworthy, without error, and sufficient to reveal the way of salvation. It is the final authority for what Solomon teaches concerning God, mankind, sin, salvation, truth, wisdom, morality, and eternal life.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Psalm 19:7–11; Psalm 119:105; John 17:17; 2 Timothy 3:16–17; 2 Peter 1:20–21; Hebrews 4:12
+      </p>
+
+      <p>
+        We confess that human beings are not accidents of nature. God created mankind in His own image, male and female, with dignity, moral responsibility, and eternal significance. Yet mankind has fallen into sin. Adam and Eve disobeyed God, and sin entered the human race. Every person has sinned, stands guilty before a Holy God, and cannot rescue himself by effort, goodness, religion, or human wisdom.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Genesis 1:26–27; Genesis 3:1–24; Romans 3:10–12; Romans 3:23; Romans 5:12; Romans 6:23; Ephesians 2:1–3
+      </p>
+
+      <p>
+        The hope of mankind is Jesus Christ. He is the eternal Son of God, fully God and fully man. He was conceived by the Holy Spirit and born of the virgin Mary. He lived a sinless life, revealed the Father perfectly, fulfilled the promises of Scripture, and is the only Savior given for sinners. He was crucified under Pontius Pilate, truly died, was buried, rose bodily from the dead, ascended into heaven, and now sits at the right hand of the Father.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Isaiah 7:14; Matthew 1:20–23; John 1:1, 14; John 14:6; Acts 2:22–24; Acts 4:12; 1 Corinthians 15:3–4; Colossians 1:15–20; Hebrews 1:1–4
+      </p>
+
+      <p>
+        At the cross, Jesus Christ gave Himself as the perfect sacrifice for sin. He stood in the place of sinners, bore the judgment sin deserves, and shed His blood so that forgiveness, reconciliation, and eternal life could be given by grace. His resurrection declares His victory over sin, death, and the grave. Salvation is found in Christ alone and is received by God’s grace through repentance and faith, not by human merit or works.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Isaiah 53:4–6; Mark 10:45; John 3:16–18; Romans 5:8–11; 2 Corinthians 5:21; Ephesians 2:8–9; Titus 3:5; 1 Peter 2:24
+      </p>
+
+      <p>
+        We believe the Holy Spirit is fully God and actively at work in the world. He glorifies Jesus Christ, convicts people of sin, brings sinners to new birth, and unites believers with Christ. He dwells within God’s people, teaches them, guides them, strengthens them, gives spiritual gifts, produces Christlike character, and empowers them to live faithfully before the Lord.
+      </p>
+      <p class="scripture-references">
+        Scripture references: John 3:5–8; John 14:16–17; John 15:26; John 16:7–14; Romans 8:9–16; 1 Corinthians 12:4–13; Galatians 5:22–23; Titus 3:5
+      </p>
+
+      <p>
+        We believe Jesus Christ will return personally, bodily, visibly, and gloriously. The day and hour are known only to God, but His return is certain. Until that day, believers are called to watchfulness, holiness, courage, endurance, prayer, love, witness, and faithful service.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Matthew 24:36–44; Acts 1:11; 1 Thessalonians 4:16–18; Titus 2:11–14; 2 Peter 3:10–13; Revelation 22:12
+      </p>
+
+      <p>
+        Because the Gospel is true, every person is called to respond. God commands all people everywhere to repent and believe in the Lord Jesus Christ. Those who reject Christ remain under condemnation. Those who receive Him by faith are forgiven, adopted into God’s family, and given eternal life. God will raise the dead and judge the world in righteousness. The unbeliever will face eternal conscious punishment, and the believer will enter everlasting joy with the Lord in the new heaven and the new earth.
+      </p>
+      <p class="scripture-references">
+        Scripture references: Matthew 25:46; John 3:36; John 5:28–29; John 11:25–26; Acts 17:30–31; Romans 10:9–13; 2 Corinthians 5:10; Revelation 20:11–15; Revelation 21:1–4
+      </p>
+
+      <p class="faith-closing">
+        Solomon For Jesus exists to answer from within this confession: Christ is Lord, Scripture is true, the Gospel is necessary, and the glory belongs to God.
+      </p>
+
+      <p class="faith-closing">
+        Amen.
+      </p>
+    </div>
+  </div>
     <script>
+          function openFaithStatement() {
+      const modal = document.getElementById("faithModal");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeFaithStatement() {
+      const modal = document.getElementById("faithModal");
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    }
     function startPrayerRequest() {
       const input = document.getElementById("userInput");
       input.value = "Prayer request: ";
