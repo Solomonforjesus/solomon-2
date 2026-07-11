@@ -7,10 +7,43 @@ export default async function handler(req, res) {
   try {
     const { message } = req.body;
 
-    if (!message || typeof message !== "string") {
-      return res.status(400).json({ error: "A message is required." });
-    }
-    
+if (!message || typeof message !== "string") {
+  return res.status(400).json({ error: "A message is required." });
+}
+
+const normalizedMessage = message.toLowerCase();
+
+const clearCrisisPatterns = [
+  "i want to kill myself",
+  "i'm going to kill myself",
+  "i am going to kill myself",
+  "thinking about killing myself",
+  "thinking about suicide",
+  "i want to commit suicide",
+  "i'm suicidal",
+  "i am suicidal",
+  "i want to end my life",
+  "i'm going to end my life",
+  "i am going to end my life",
+  "i don't want to live anymore",
+  "i do not want to live anymore",
+  "thinking about hurting myself tonight",
+  "planning to hurt myself",
+  "planning to kill myself"
+];
+
+const isClearCrisis = clearCrisisPatterns.some((pattern) =>
+  normalizedMessage.includes(pattern)
+);
+
+if (isClearCrisis) {
+  return res.status(200).json({
+    reply:
+      "I’m very sorry you are facing this. Your life matters, and you should not face this alone. If you may act on these thoughts, have already taken steps to hurt yourself, or are in immediate danger, call 911 or your local emergency number now, or go to the nearest emergency room. If you are in the United States, call or text 988 for the Suicide & Crisis Lifeline, available 24 hours a day. Please also contact a trusted person nearby and ask them to stay with you. Move away from any weapon, medication, or other means of harm if you can do so safely. Are you in immediate danger right now?",
+    source: "crisis_care"
+  });
+}
+
 const autoAnswer = findAutoAnswer(message);
 
 if (autoAnswer) {
