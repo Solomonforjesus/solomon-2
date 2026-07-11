@@ -145,7 +145,16 @@
       outline: 3px solid rgba(201, 162, 77, 0.38);
       border-color: var(--gold-soft);
     }
+.language-note {
+  margin: 10px 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.5;
+  text-align: center;
+}
 
+button {
+    
     button {
       margin-top: 12px;
       width: 100%;
@@ -336,7 +345,13 @@
         </div>
 
         <textarea id="userInput" placeholder="Type your question here..."></textarea>
-        <button onclick="sendMessage()">Ask Solomon</button>
+
+<p class="language-note">
+  Ask Solomon in your own language.<br>
+  English • Español • Français • Deutsch • Italiano • Português • 中文 • العربية • हिन्दी • Bahasa Indonesia
+</p>
+
+<button onclick="sendMessage()">Ask Solomon</button>
 
         <div class="secondary-buttons">
   <button type="button" onclick="startPrayerRequest()">Prayer Request</button>
