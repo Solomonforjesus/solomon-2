@@ -370,7 +370,7 @@ button {
     <p>
       A personal vision of deception, judgment, mercy, and the outstretched hand of Jesus Christ.
     </p>
-    <button type="button" class="content-button">
+    <button type="button" class="content-button" onclick="openStillTime()">
       Read There Is Still Time
     </button>
   </div>
@@ -447,6 +447,81 @@ button {
       </p>
     </div>
   </div>
+    <div id="stillTimeModal" class="faith-modal" aria-hidden="true">
+    <div class="faith-modal-box" role="dialog" aria-modal="true" aria-labelledby="stillTimeTitle">
+      <button type="button" class="faith-close" onclick="closeStillTime()" aria-label="Close There Is Still Time">×</button>
+
+      <h2 id="stillTimeTitle">There Is Still Time</h2>
+
+      <p>
+        One day as I napped after a hard day’s work, I was given a vision.
+      </p>
+
+      <p>
+        In it, scenes from my life were vivid and relentless. As each scene scrolled through my mind I grew restless.
+      </p>
+
+      <p>
+        As the vision continued, I realized I had been quite successful in life.
+      </p>
+
+      <p>
+        I had accumulated some things and had suffered no loss of children or wife.
+      </p>
+
+      <p>
+        I had it all, comfort, possessions, family, friends and the respect of the world.
+      </p>
+
+      <p>
+        Then I noticed the one, who many years before, had promised me a good life, full and satisfying. However, he had a different appearance from then, somehow aged and repulsive.
+      </p>
+
+      <p>
+        Then I noticed I was standing on the brink of a huge smoldering pit.
+      </p>
+
+      <p>
+        The fire was unquenchable and smelled horrible, as with the souls of many people.
+      </p>
+
+      <p>
+        The one whom I had served told me, it is time, you must jump in.
+      </p>
+
+      <p>
+        From the other side of the pit, I heard a still small voice.
+      </p>
+
+      <p>
+        I saw one standing there dressed in a brilliant white robe, hand out-stretched.
+      </p>
+
+      <p>
+        “There is still time” he said. You now see the lies of your father; your destiny is still yours.
+      </p>
+
+      <p>
+        Just then, the one I had followed charged straight at me as to push me over the brink into the only hell I would have ever known.
+      </p>
+
+      <p>
+        As I tumbled head over heels into the abyss, I suddenly, awoke.
+      </p>
+
+      <p>
+        These words were now scrolling through my mind, “For God so Loved the World that He gave His only begotten Son, that whoever believes in Him should not perish, but have everlasting life”.
+      </p>
+
+      <p>
+        There had been one reaching out to me (that I had ignored) as I walked through my life. Oh Lord, I thank you for rescuing me from the father of lies, from my arrogant and prideful heart.
+      </p>
+
+      <p class="faith-closing">
+        Thank You Lord for pursuing me, for Loving me, for Patience and Grace.
+      </p>
+    </div>
+  </div>
     <script>
           function openFaithStatement() {
       const modal = document.getElementById("faithModal");
@@ -459,7 +534,18 @@ button {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
     }
-    function startPrayerRequest() {
+       function openStillTime() {
+      const modal = document.getElementById("stillTimeModal");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeStillTime() {
+      const modal = document.getElementById("stillTimeModal");
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+      function startPrayerRequest() {
       const input = document.getElementById("userInput");
       input.value = "Prayer request: ";
       input.focus();
