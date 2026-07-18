@@ -269,7 +269,16 @@ button {
 .faith-modal-box .faith-closing {
   font-weight: 700;
   color: var(--solomon-brown);
-} 
+} .still-time-banner {
+  display: block;
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 0 24px 0;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+}
 @media (max-width: 860px) {
       .main-layout {
         grid-template-columns: 1fr;
@@ -452,6 +461,11 @@ button {
       <button type="button" class="faith-close" onclick="closeStillTime()" aria-label="Close There Is Still Time">×</button>
 
       <h2 id="stillTimeTitle">There Is Still Time</h2>
+      <img
+  src="Desolate%20valley%20with%20a%20divine%20light.png"
+  alt="A white-robed figure reaching toward a person across a dark, smoky landscape"
+  class="still-time-banner"
+/>
 
       <p>
         One day as I napped after a hard day’s work, I was given a vision.
