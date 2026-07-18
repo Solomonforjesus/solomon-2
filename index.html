@@ -530,21 +530,24 @@ button {
     }
 
     function closeFaithStatement() {
-      const modal = document.getElementById("faithModal");
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-    }
-       function openStillTime() {
-      const modal = document.getElementById("stillTimeModal");
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-    }
+  const modal = document.getElementById("faithModal");
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+}
 
-    function closeStillTime() {
-      const modal = document.getElementById("stillTimeModal");
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-    }
+function openStillTime() {
+  const modal = document.getElementById("stillTimeModal");
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function closeStillTime() {
+  const modal = document.getElementById("stillTimeModal");
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+    
       function startPrayerRequest() {
       const input = document.getElementById("userInput");
       input.value = "Prayer request: ";
