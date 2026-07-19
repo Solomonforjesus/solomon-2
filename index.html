@@ -269,7 +269,55 @@ button {
 .faith-modal-box .faith-closing {
   font-weight: 700;
   color: var(--solomon-brown);
-} .still-time-banner {
+}
+   
+.article-modal-box {
+  max-height: 88vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.article-scripture {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 5px solid #8a6428;
+  background: rgba(138, 100, 40, 0.08);
+  border-radius: 0 12px 12px 0;
+}
+
+.article-scripture p {
+  margin: 0 0 8px;
+  color: var(--solomon-brown);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(18px, 2vw, 22px);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.article-scripture cite {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.article-modal-box .article-emphasis {
+  color: var(--solomon-brown);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.article-modal-box .article-invitation {
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid rgba(117, 82, 39, 0.28);
+  border-radius: 14px;
+  background: rgba(255, 244, 214, 0.72);
+  color: var(--solomon-brown);
+  font-weight: 700;
+}
+    .still-time-banner {
   display: block;
   width: 100%;
   max-height: 340px;
@@ -687,7 +735,220 @@ button {
         <span>Is the Bible Trustworthy?</span>
       </div>
     </aside>
-  </section>
+   </section>
+
+  <div id="whyJesusModal" class="faith-modal" aria-hidden="true">
+    <div
+      class="faith-modal-box article-modal-box"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="whyJesusArticleTitle"
+    >
+      <button
+        type="button"
+        class="faith-close"
+        onclick="closeWhyJesusArticle()"
+        aria-label="Close Why Jesus Christ Matters article"
+      >
+        ×
+      </button>
+
+      <h2 id="whyJesusArticleTitle">Why Jesus Christ Matters</h2>
+
+      <p>
+        Most people do not begin the day thinking about eternity. They wake up,
+        go to work, pay bills, care for family, solve problems, and try to make
+        it through another week. Life keeps moving, and the deepest questions
+        are easy to postpone.
+      </p>
+
+      <p>
+        But they do not go away.
+      </p>
+
+      <p>
+        Why am I here? What has gone wrong with the world? What has gone wrong
+        inside me? Is there a God who knows me? Can I be forgiven? What happens
+        when this life ends?
+      </p>
+
+      <p>
+        Jesus Christ matters because He stands at the center of every one of
+        those questions.
+      </p>
+
+      <p>
+        The Bible does not present Jesus merely as a wise teacher, a religious
+        reformer, or a good man whose example we should admire. It declares that
+        He is the eternal Son of God who entered the world He created.
+      </p>
+
+      <blockquote class="article-scripture">
+        <p>
+          “All things were made through Him, and without Him nothing was made
+          that was made.”
+        </p>
+        <cite>John 1:3, NKJV</cite>
+      </blockquote>
+
+      <p>
+        The One who walked the dusty roads of Galilee is the One through whom
+        the stars were formed. He knew hunger, weariness, sorrow, rejection, and
+        pain, yet He never ceased to be Lord. Jesus matters because God did not
+        remain distant from our suffering. He came near.
+      </p>
+
+      <p>
+        And He came for a reason.
+      </p>
+
+      <p>
+        Our greatest problem is not simply that life is difficult or that the
+        world is unfair. Our deepest problem is sin. We have turned from God,
+        chosen our own way, and failed to love Him and one another as we should.
+        Scripture says plainly:
+      </p>
+
+      <blockquote class="article-scripture">
+        <p>“For all have sinned and fall short of the glory of God.”</p>
+        <cite>Romans 3:23, NKJV</cite>
+      </blockquote>
+
+      <p>
+        That includes respectable people and ruined people, religious people
+        and skeptical people, the outwardly successful and the openly broken.
+        We may hide our guilt from neighbors, family, and even ourselves, but we
+        cannot hide it from God.
+      </p>
+
+      <p>
+        Yet Jesus did not come merely to expose our sin. He came to save us from
+        it.
+      </p>
+
+      <p>
+        He lived the righteous life we have not lived. He showed mercy to the
+        ashamed, touched those others avoided, welcomed repentant sinners,
+        confronted proud hearts, and spoke truth without fear. Then He willingly
+        went to the cross.
+      </p>
+
+      <p>
+        There, Jesus took upon Himself the judgment sinners deserved.
+      </p>
+
+      <blockquote class="article-scripture">
+        <p>“Christ died for our sins according to the Scriptures.”</p>
+        <cite>1 Corinthians 15:3, NKJV</cite>
+      </blockquote>
+
+      <p>
+        The cross was not an unfortunate ending to an otherwise inspiring life.
+        It was the mission. Jesus stood in the place of guilty people. The
+        sinless Son of God bore sin so that sinners could be forgiven, cleansed,
+        and reconciled to God.
+      </p>
+
+      <p>
+        But the cross was not the end.
+      </p>
+
+      <p>
+        On the third day, Jesus rose bodily from the grave. Death could not hold
+        Him. The tomb was opened, the stone was rolled away, and the risen
+        Christ appeared to His followers. His resurrection was God’s declaration
+        that the sacrifice had been accepted and that death itself had been
+        defeated.
+      </p>
+
+      <p class="article-emphasis">
+        Jesus matters because He is alive.
+      </p>
+
+      <p>
+        He is not merely a memory from ancient history. He reigns now. He hears
+        prayer now. He forgives now. He changes lives now. He gives peace to the
+        guilty, hope to the grieving, strength to the weary, and eternal life to
+        those who trust Him.
+      </p>
+
+      <p>
+        And this is where the question becomes personal.
+      </p>
+
+      <p>
+        It is possible to know facts about Jesus and still refuse Him. It is
+        possible to admire His teachings while keeping Him at a safe distance.
+        It is possible to attend church, own a Bible, and speak religious
+        language without ever surrendering to Christ.
+      </p>
+
+      <p>
+        Jesus did not say, “Consider Me when convenient.” He said:
+      </p>
+
+      <blockquote class="article-scripture">
+        <p>
+          “I am the way, the truth, and the life. No one comes to the Father
+          except through Me.”
+        </p>
+        <cite>John 14:6, NKJV</cite>
+      </blockquote>
+
+      <p>
+        That claim leaves no room for treating Him as one spiritual option among
+        many. If Jesus is who He said He is, then no decision matters more than
+        what you do with Him.
+      </p>
+
+      <p>
+        Your achievements cannot erase your sin. Your good intentions cannot
+        conquer death. Religion cannot manufacture eternal life. Money cannot
+        purchase peace with God. Time will not make the question disappear.
+      </p>
+
+      <p class="article-emphasis">
+        But Jesus can save you.
+      </p>
+
+      <p>
+        He invites you to turn from sin, stop trusting in yourself, and place
+        your faith in Him. Salvation is not earned by becoming good enough. It
+        is received by grace through faith in the crucified and risen Christ.
+      </p>
+
+      <blockquote class="article-scripture">
+        <p>“Believe on the Lord Jesus Christ, and you will be saved.”</p>
+        <cite>Acts 16:31, NKJV</cite>
+      </blockquote>
+
+      <p>
+        Jesus matters because without Him we remain separated from God, guilty
+        in our sin, and unprepared for eternity.
+      </p>
+
+      <p>
+        Jesus matters because He loved sinners enough to die in their place.
+      </p>
+
+      <p>
+        Jesus matters because He rose from the dead.
+      </p>
+
+      <p class="article-emphasis">
+        Jesus matters because He is Lord.
+      </p>
+
+      <p class="article-emphasis">
+        And Jesus matters because, right now, He is calling you to come.
+      </p>
+
+      <p class="article-invitation">
+        Do not wait for a better time, a cleaner past, or a more convenient
+        moment. Come to Christ as you are. Ask Solomon 2.0, “How can I be saved?”
+      </p>
+    </div>
+  </div>
 
     <script>
           function openFaithStatement() {
@@ -713,7 +974,17 @@ function closeStillTime() {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
 }
+function openWhyJesusArticle() {
+  const modal = document.getElementById("whyJesusModal");
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+}
 
+function closeWhyJesusArticle() {
+  const modal = document.getElementById("whyJesusModal");
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+}
     
       function startPrayerRequest() {
       const input = document.getElementById("userInput");
@@ -768,8 +1039,33 @@ function closeStillTime() {
         solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Something went wrong. Please try again.`;
       }
 
-      messages.scrollTop = messages.scrollHeight;
+           messages.scrollTop = messages.scrollHeight;
     }
+
+const whyJesusButton = document.getElementById("openWhyJesusArticle");
+const whyJesusModal = document.getElementById("whyJesusModal");
+const faithModal = document.getElementById("faithModal");
+const stillTimeModal = document.getElementById("stillTimeModal");
+
+whyJesusButton.addEventListener("click", openWhyJesusArticle);
+
+[faithModal, stillTimeModal, whyJesusModal].forEach((modal) => {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeFaithStatement();
+    closeStillTime();
+    closeWhyJesusArticle();
+  }
+});
+
   </script>
 </body>
 </html>
