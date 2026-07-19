@@ -301,6 +301,118 @@ button {
       }
     }
 
+       .article-feature-section {
+      width: 100%;
+      max-width: 1180px;
+      margin: clamp(32px, 5vw, 56px) auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+      gap: clamp(18px, 3vw, 30px);
+      align-items: stretch;
+    }
+
+    .article-feature-card,
+    .article-link-panel {
+      border: 1px solid rgba(117, 82, 39, 0.24);
+      border-radius: 20px;
+      background: rgba(255, 252, 244, 0.92);
+      box-shadow: 0 10px 28px rgba(78, 55, 31, 0.08);
+    }
+
+    .article-feature-card {
+      padding: clamp(26px, 4vw, 42px);
+    }
+
+    .article-feature-label {
+      margin: 0 0 10px;
+      color: #8a6428;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .article-feature-card h2,
+    .article-link-panel h2 {
+      margin: 0;
+      color: #6f1919;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.2;
+    }
+
+    .article-feature-card h2 {
+      font-size: clamp(28px, 3.4vw, 42px);
+    }
+
+    .article-feature-card > p:not(.article-feature-label) {
+      margin: 18px 0 0;
+      color: var(--ink-soft);
+      font-size: clamp(17px, 1.7vw, 20px);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .article-open-link {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: #1e5f9e;
+      font: inherit;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .article-open-link:hover {
+      color: #174976;
+      text-decoration: underline;
+    }
+
+    .article-open-link:focus-visible {
+      outline: 3px solid rgba(30, 95, 158, 0.35);
+      outline-offset: 5px;
+    }
+
+    .article-link-panel {
+      padding: clamp(24px, 3vw, 34px);
+    }
+
+    .article-link-panel h2 {
+      font-size: clamp(23px, 2.5vw, 31px);
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(117, 82, 39, 0.2);
+    }
+
+    .article-link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 8px;
+    }
+
+    .article-link-list span {
+      display: block;
+      padding: 14px 0;
+      color: #1e5f9e;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.35;
+      border-bottom: 1px solid rgba(117, 82, 39, 0.14);
+    }
+
+    .article-link-list span:last-child {
+      border-bottom: 0;
+    }
+
+    @media (max-width: 820px) {
+      .article-feature-section {
+        grid-template-columns: 1fr;
+      }
+    }
     @media (max-width: 520px) {
       .page {
         padding: 20px 12px;
@@ -539,6 +651,44 @@ button {
       </p>
     </div>
   </div>
+
+  <section class="article-feature-section" aria-labelledby="whyJesusTitle">
+    <article class="article-feature-card">
+      <p class="article-feature-label">Featured Article</p>
+
+      <h2 id="whyJesusTitle">Why Jesus Christ Matters</h2>
+
+      <p>
+        Most people do not begin the day thinking about eternity. Life is filled
+        with work, bills, family, and the problems directly in front of us. Yet
+        the deepest questions do not disappear. Why am I here? Can God forgive
+        me? What happens when this life ends? Jesus Christ matters because He
+        stands at the center of every one of those questions—and because He did
+        not come merely to teach us, but to save us.
+      </p>
+
+      <button
+        type="button"
+        class="article-open-link"
+        id="openWhyJesusArticle"
+      >
+        Read the full article →
+      </button>
+    </article>
+
+    <aside class="article-link-panel" aria-labelledby="relatedQuestionsTitle">
+      <h2 id="relatedQuestionsTitle">Questions Worth Asking</h2>
+
+      <div class="article-link-list">
+        <span>Who Is Jesus Christ?</span>
+        <span>Can God Forgive Me?</span>
+        <span>What Is the Gospel?</span>
+        <span>Why Does God Allow Suffering?</span>
+        <span>Is the Bible Trustworthy?</span>
+      </div>
+    </aside>
+  </section>
+
     <script>
           function openFaithStatement() {
       const modal = document.getElementById("faithModal");
