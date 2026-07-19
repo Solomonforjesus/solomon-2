@@ -451,7 +451,31 @@ button {
       line-height: 1.35;
       border-bottom: 1px solid rgba(117, 82, 39, 0.14);
     }
+.article-link-list button {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(117, 82, 39, 0.14);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #1e5f9e;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
 
+.article-link-list button:hover {
+  background: transparent;
+  color: #174976;
+  box-shadow: none;
+  transform: none;
+  text-decoration: underline;
+}
     .article-link-list span:last-child {
       border-bottom: 0;
     }
@@ -1516,7 +1540,7 @@ document.querySelectorAll(".article-modal-close").forEach((button) => {
     modal.setAttribute("aria-hidden", "true");
   });
 });
-[faithModal, stillTimeModal, whyJesusModal].forEach((modal) => {
+document.querySelectorAll(".faith-modal").forEach((modal) => {
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
       modal.classList.remove("is-open");
