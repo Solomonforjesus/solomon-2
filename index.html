@@ -715,10 +715,10 @@ button {
         not come merely to teach us, but to save us.
       </p>
 
-      <button
+           <button
         type="button"
-        class="article-open-link"
-        id="openWhyJesusArticle"
+        class="article-open-link article-modal-trigger"
+        data-modal-target="whyJesusModal"
       >
         Read the full article →
       </button>
@@ -974,17 +974,6 @@ function closeStillTime() {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
 }
-function openWhyJesusArticle() {
-  const modal = document.getElementById("whyJesusModal");
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-}
-
-function closeWhyJesusArticle() {
-  const modal = document.getElementById("whyJesusModal");
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-}
     
       function startPrayerRequest() {
       const input = document.getElementById("userInput");
@@ -1042,12 +1031,22 @@ function closeWhyJesusArticle() {
            messages.scrollTop = messages.scrollHeight;
     }
 
-const whyJesusButton = document.getElementById("openWhyJesusArticle");
+
 const whyJesusModal = document.getElementById("whyJesusModal");
 const faithModal = document.getElementById("faithModal");
 const stillTimeModal = document.getElementById("stillTimeModal");
 
-whyJesusButton.addEventListener("click", openWhyJesusArticle);
+document.querySelectorAll(".article-modal-trigger").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const modalId = trigger.dataset.modalTarget;
+    const modal = document.getElementById(modalId);
+
+    if (!modal) return;
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+  });
+});
 
 [faithModal, stillTimeModal, whyJesusModal].forEach((modal) => {
   modal.addEventListener("click", (event) => {
@@ -1060,9 +1059,10 @@ whyJesusButton.addEventListener("click", openWhyJesusArticle);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    closeFaithStatement();
-    closeStillTime();
-    closeWhyJesusArticle();
+    document.querySelectorAll(".faith-modal.is-open").forEach((modal) => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    });
   }
 });
 
