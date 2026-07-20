@@ -1572,7 +1572,18 @@ function closeStillTime() {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
 }
-    
+    function openOurPrayer() {
+  const modal = document.getElementById("ourPrayerModal");
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function closeOurPrayer() {
+  const modal = document.getElementById("ourPrayerModal");
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+}
+     
       function startPrayerRequest() {
       const input = document.getElementById("userInput");
       input.value = "Prayer request: ";
