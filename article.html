@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A Solomon 2.0 Reading Library article." />
+  <title>Reading Library | Solomon 2.0</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3ead8; color: #232323; font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    .reader-header { background: #ffffff; border-bottom: 1px solid #d8cdb9; }
+    .reader-header-inner { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 18px 0; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .site-name { color: #174976; font-family: Arial, sans-serif; font-weight: 700; text-decoration: none; font-size: 1.1rem; }
+    .back-link { color: #1e5f9e; font-family: Arial, sans-serif; text-decoration: none; font-weight: 700; }
+    .back-link:hover, .back-link:focus-visible { text-decoration: underline; }
+    main { width: min(820px, calc(100% - 28px)); margin: 34px auto 60px; background: #fff; border: 1px solid #d8cdb9; border-radius: 18px; box-shadow: 0 12px 34px rgba(56, 43, 24, .11); padding: clamp(26px, 5vw, 58px); }
+    h1 { color: #174976; font-size: clamp(2rem, 5vw, 3.15rem); line-height: 1.12; margin: 0 0 10px; }
+    .article-meta { color: #6b6256; font-family: Arial, sans-serif; font-size: .95rem; margin-bottom: 34px; }
+    .article-body h2 { color: #174976; font-size: clamp(1.35rem, 3vw, 1.8rem); line-height: 1.25; margin: 42px 0 14px; }
+    .article-body p { margin: 0 0 17px; font-size: 1.08rem; }
+    .article-body blockquote { margin: 26px 0; padding: 20px 24px; border-left: 5px solid #c7902f; background: #faf6ed; }
+    .article-body blockquote p { margin-bottom: 8px; font-style: italic; }
+    .article-body cite { display: block; color: #655b4e; font-family: Arial, sans-serif; font-size: .92rem; font-style: normal; }
+    .article-question { color: #174976; font-size: 1.18rem !important; }
+    .article-closing { color: #174976; font-size: 1.3rem !important; margin-top: 28px !important; }
+    .inline-link { color: #1e5f9e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .reader-footer { text-align: center; font-family: Arial, sans-serif; color: #6b6256; padding: 0 20px 36px; }
+    @media (max-width: 600px) { main { margin-top: 18px; border-radius: 12px; } .reader-header-inner { align-items: flex-start; flex-direction: column; gap: 6px; } }
+  </style>
+</head>
+<body>
+  <header class="reader-header">
+    <div class="reader-header-inner">
+      <a class="site-name" href="/">Solomon 2.0</a>
+      <a class="back-link" href="/#reading-library">← Back to Reading Library</a>
+    </div>
+  </header>
+  <main>
+    <article aria-labelledby="articleTitle">
+      <h1 id="articleTitle">Loading article…</h1>
+      <p id="articleMeta" class="article-meta"></p>
+      <div id="articleBody" class="article-body" aria-live="polite"></div>
+    </article>
+  </main>
+  <footer class="reader-footer">Wisdom. Truth. Hope in Jesus Christ.</footer>
+  <script src="/article-reader.js" defer></script>
+</body>
+</html>
