@@ -591,6 +591,246 @@ button {
       .reading-library-heading { font-size: 1.7rem; }
     }
 
+
+    /* Reading Library guide and two-column layout */
+    .reading-library-layout {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.36fr) minmax(0, 1fr);
+      gap: clamp(20px, 3vw, 30px);
+      align-items: start;
+    }
+
+    .visitor-guide {
+      position: sticky;
+      top: 18px;
+      padding: 20px;
+      border: 1px solid rgba(117, 82, 39, 0.22);
+      border-radius: 14px;
+      background: rgba(247, 244, 236, 0.9);
+    }
+
+    .visitor-guide-title {
+      margin: 0 0 6px;
+      color: var(--solomon-brown);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+    }
+
+    .visitor-guide-intro {
+      margin: 0 0 10px;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .guide-item {
+      padding: 15px 0;
+      border-top: 1px solid rgba(117, 82, 39, 0.16);
+    }
+
+    .guide-item:first-of-type {
+      margin-top: 8px;
+    }
+
+    .guide-label {
+      margin: 0 0 5px;
+      color: #8a6428;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .guide-copy {
+      margin: 0 0 7px;
+      color: var(--ink-dark);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .guide-link,
+    .footer-link,
+    .legal-link {
+      width: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #1e5f9e;
+      font: inherit;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .guide-link:hover,
+    .guide-link:focus-visible,
+    .footer-link:hover,
+    .footer-link:focus-visible,
+    .legal-link:hover,
+    .legal-link:focus-visible {
+      background: transparent;
+      color: #174976;
+      transform: none;
+      text-decoration: underline;
+      outline-offset: 4px;
+    }
+
+    .reading-library-main {
+      min-width: 0;
+    }
+
+    /* Site footer */
+    .site-footer {
+      margin-top: clamp(42px, 6vw, 72px);
+      border-top: 4px solid var(--solomon-brown);
+      background: #2f2418;
+      color: #f7f0e3;
+    }
+
+    .site-footer-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: clamp(30px, 5vw, 50px) clamp(16px, 4vw, 32px) 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(170px, 0.8fr) minmax(190px, 0.9fr);
+      gap: clamp(24px, 4vw, 46px);
+      align-items: start;
+    }
+
+    .footer-heading {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+    }
+
+    .footer-kicker {
+      margin: 0 0 10px;
+      color: #ead7ac;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-copy {
+      margin: 0;
+      color: #e9e1d4;
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link,
+    .legal-link {
+      color: #d9e8f7;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible,
+    .legal-link:hover,
+    .legal-link:focus-visible {
+      color: #ffffff;
+    }
+
+    .footer-disclosures {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer-disclosures p {
+      margin: 0;
+      color: #ddd4c6;
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .footer-disclosures strong {
+      color: #ffffff;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      padding-top: 4px;
+    }
+
+    .footer-bottom {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      text-align: center;
+    }
+
+    .footer-copyright {
+      margin: 0;
+      color: #d8d0c3;
+      font-size: 0.84rem;
+    }
+
+    .footer-praise {
+      margin: 14px auto 0;
+      max-width: 760px;
+      color: #f3dfae;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .legal-modal-box h3 {
+      margin: 24px 0 8px;
+      color: var(--solomon-brown);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+    }
+
+    .legal-modal-box ul {
+      margin: 0 0 18px 22px;
+      padding: 0;
+      color: var(--ink-dark);
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.65;
+    }
+
+    .legal-updated {
+      color: var(--ink-soft) !important;
+      font-size: 0.92rem !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 820px) {
+      .reading-library-layout,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visitor-guide {
+        position: static;
+        order: 2;
+      }
+
+      .reading-library-main {
+        order: 1;
+      }
+    }
+
   </style>
 </head>
 
@@ -1001,7 +1241,41 @@ button {
     <p class="reading-library-intro">
       Clear, thoughtful articles for life’s deepest questions—grounded in Scripture and centered on Jesus Christ.
     </p>
-    <div id="readingLibraryCards" class="reading-library-cards" aria-live="polite"></div>
+
+    <div class="reading-library-layout">
+      <aside class="visitor-guide" aria-labelledby="visitorGuideTitle">
+        <h3 id="visitorGuideTitle" class="visitor-guide-title">Where Would You Like to Go?</h3>
+        <p class="visitor-guide-intro">Four simple paths for your next step.</p>
+
+        <div class="guide-item">
+          <p class="guide-label">Start Here</p>
+          <p class="guide-copy">Ask Solomon an honest question.</p>
+          <button type="button" class="guide-link" onclick="goToSolomon()">Ask Solomon →</button>
+        </div>
+
+        <div class="guide-item">
+          <p class="guide-label">Questions Worth Asking</p>
+          <p class="guide-copy">Explore clear answers about God, faith, and Jesus Christ.</p>
+          <button type="button" class="guide-link" onclick="focusReadingLibrary()">Browse the Library →</button>
+        </div>
+
+        <div class="guide-item">
+          <p class="guide-label">Need Prayer?</p>
+          <p class="guide-copy">You do not have to carry everything alone.</p>
+          <button type="button" class="guide-link" onclick="goToPrayerRequest()">Prayer Request →</button>
+        </div>
+
+        <div class="guide-item">
+          <p class="guide-label">There Is Still Time</p>
+          <p class="guide-copy">Your story is not finished.</p>
+          <button type="button" class="guide-link" onclick="openStillTime()">Read More →</button>
+        </div>
+      </aside>
+
+      <div class="reading-library-main">
+        <div id="readingLibraryCards" class="reading-library-cards" aria-live="polite"></div>
+      </div>
+    </div>
   </section>
 
   <div id="whyJesusModal" class="faith-modal" aria-hidden="true">
@@ -3898,10 +4172,176 @@ button {
     </div>
   </div>
 
+
+
+  <footer class="site-footer" aria-labelledby="footerTitle">
+    <div class="site-footer-inner">
+      <div class="footer-grid">
+        <section>
+          <p class="footer-kicker">Solomon 2.0</p>
+          <h2 id="footerTitle" class="footer-heading">Wisdom, truth, and hope in Jesus Christ.</h2>
+          <p class="footer-copy">
+            A free Christian resource created to help people explore questions about God, Scripture, faith, suffering, forgiveness, and salvation.
+          </p>
+        </section>
+
+        <nav aria-label="Footer site navigation">
+          <p class="footer-kicker">Explore</p>
+          <div class="footer-links">
+            <button type="button" class="footer-link" onclick="goToSolomon()">Ask Solomon</button>
+            <button type="button" class="footer-link" onclick="openFaithStatement()">Statement of Faith</button>
+            <button type="button" class="footer-link" onclick="focusReadingLibrary()">Reading Library</button>
+            <button type="button" class="footer-link" onclick="openStillTime()">There Is Still Time</button>
+          </div>
+        </nav>
+
+        <nav aria-label="Footer help navigation">
+          <p class="footer-kicker">Help &amp; Information</p>
+          <div class="footer-links">
+            <button type="button" class="footer-link" onclick="goToPrayerRequest()">Prayer Request</button>
+            <button type="button" class="footer-link" onclick="emailPastor()">Contact</button>
+            <button type="button" class="footer-link legal-modal-trigger" data-modal-target="privacyModal">Privacy</button>
+            <button type="button" class="footer-link legal-modal-trigger" data-modal-target="termsModal">Terms of Use</button>
+            <button type="button" class="footer-link legal-modal-trigger" data-modal-target="accessibilityModal">Accessibility</button>
+            <button type="button" class="footer-link legal-modal-trigger" data-modal-target="aiNoticeModal">AI &amp; Content Notice</button>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-disclosures">
+        <p>
+          <strong>Powered by continually improving AI.</strong> Solomon uses modern artificial intelligence as a tool, but its responses are guided by Scripture, carefully designed safeguards, and a commitment to present the Gospel of Jesus Christ faithfully.
+        </p>
+        <p>
+          <strong>Important:</strong> Solomon provides Christian information, encouragement, and general guidance. It is not a substitute for emergency services, professional medical or mental-health care, legal advice, financial advice, or the personal care of a trusted pastor or qualified professional.
+        </p>
+        <p>
+          <strong>Immediate danger:</strong> If you are in immediate danger or believe you may harm yourself or someone else, call emergency services now. In the United States, call 911 or call or text 988 for crisis support.
+        </p>
+        <p>
+          <strong>Scripture notice:</strong> Scripture quotations are identified by translation where applicable and are used in accordance with the quotation and attribution policies of their respective copyright holders. All rights in copyrighted Bible translations remain with their respective publishers.
+        </p>
+
+        <div class="footer-legal-links" aria-label="Legal information">
+          <button type="button" class="legal-link legal-modal-trigger" data-modal-target="privacyModal">Privacy Notice</button>
+          <button type="button" class="legal-link legal-modal-trigger" data-modal-target="termsModal">Terms of Use</button>
+          <button type="button" class="legal-link legal-modal-trigger" data-modal-target="accessibilityModal">Accessibility</button>
+          <button type="button" class="legal-link legal-modal-trigger" data-modal-target="aiNoticeModal">AI &amp; Content Notice</button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Solomon for Jesus. All rights reserved.</p>
+        <p class="footer-praise">To Him be the Praise, Honor, Glory forever and ever and ten thousand evers! Amen!</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="privacyModal" class="faith-modal" aria-hidden="true">
+    <div class="faith-modal-box article-modal-box legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+      <button type="button" class="faith-close legal-modal-close" aria-label="Close Privacy Notice">×</button>
+      <h2 id="privacyTitle">Privacy Notice</h2>
+      <p class="legal-updated">Last updated July 26, 2026.</p>
+      <p><strong>Solomon does not currently require an account and does not maintain personal user profiles.</strong></p>
+      <h3>Information You Choose to Provide</h3>
+      <p>When you type a message into Solomon, the text you submit is sent through the site’s hosting infrastructure and to the artificial-intelligence service used to generate a response. If you use the email or prayer-request features, your email service will process the information you choose to send.</p>
+      <p>Please do not submit passwords, Social Security numbers, financial account information, detailed medical records, or other highly sensitive personal information.</p>
+      <h3>Technical Information</h3>
+      <p>The site’s hosting and technology providers may process ordinary technical information needed to operate, secure, troubleshoot, and protect the service, such as request information, device or browser information, approximate location derived from an internet address, and security or error logs. Provider retention and handling practices are governed by their own policies and account settings.</p>
+      <h3>AI Processing</h3>
+      <p>Messages submitted to the chat are processed by OpenAI’s API to generate responses. OpenAI states that API data is not used to train its models unless the API customer affirmatively opts in, and that abuse-monitoring logs may ordinarily be retained for up to 30 days unless different approved data controls or legal requirements apply.</p>
+      <h3>No Sale of Visitor Information</h3>
+      <p>Solomon for Jesus does not operate a business that sells personal information submitted through this website.</p>
+      <h3>Children</h3>
+      <p>This general-audience site is not designed to knowingly collect personal information from children. A parent or guardian should supervise a child’s use and should not permit a child to submit private identifying information.</p>
+      <h3>Changes and Contact</h3>
+      <p>This notice may be updated as the site’s features or providers change. Questions may be sent to <strong>contact@solomonforjesus.com</strong>.</p>
+    </div>
+  </div>
+
+  <div id="termsModal" class="faith-modal" aria-hidden="true">
+    <div class="faith-modal-box article-modal-box legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+      <button type="button" class="faith-close legal-modal-close" aria-label="Close Terms of Use">×</button>
+      <h2 id="termsTitle">Terms of Use</h2>
+      <p class="legal-updated">Last updated July 26, 2026.</p>
+      <p>By using Solomon for Jesus, you agree to use the site lawfully and responsibly. If you do not agree with these terms, please do not use the service.</p>
+      <h3>Christian Information, Not Professional Services</h3>
+      <p>Solomon offers Christian information, biblical discussion, encouragement, and general educational content. It does not create a pastor-member, counselor-client, doctor-patient, attorney-client, fiduciary, or other professional relationship.</p>
+      <p>Do not delay emergency help, medical or mental-health treatment, legal counsel, financial guidance, or other qualified professional care because of something presented by Solomon.</p>
+      <h3>Artificial-Intelligence Limitations</h3>
+      <p>Artificial intelligence can misunderstand a question, omit important context, or generate inaccurate, incomplete, or inappropriate information. Users should compare biblical claims with Scripture and seek wise human counsel for serious personal decisions.</p>
+      <h3>Emergency Use</h3>
+      <p>Solomon is not an emergency service and cannot contact authorities or provide real-time intervention. In immediate danger, contact local emergency services. In the United States, call 911 or call or text 988 for crisis support.</p>
+      <h3>Acceptable Use</h3>
+      <p>You may not misuse the site, attempt unauthorized access, interfere with its operation, submit unlawful or malicious content, exploit it to harm another person, or use automated methods that unreasonably burden the service.</p>
+      <h3>Content and Availability</h3>
+      <p>The site and its content are provided without a guarantee that every response will be error-free, uninterrupted, or suitable for every purpose. Features, content, safeguards, and these terms may be changed or discontinued.</p>
+      <h3>Copyright</h3>
+      <p>Original site design and original written content are protected by applicable law. Scripture quotations and other third-party materials remain the property of their respective rights holders and are subject to their quotation, attribution, and permission policies.</p>
+      <h3>Limitation of Responsibility</h3>
+      <p>To the fullest extent permitted by applicable law, Solomon for Jesus and those who maintain it are not responsible for losses arising from reliance on AI-generated responses, misuse of the site, interruption of service, or third-party services. Nothing in these terms excludes responsibility that cannot lawfully be excluded.</p>
+      <h3>Contact</h3>
+      <p>Questions about these terms may be sent to <strong>contact@solomonforjesus.com</strong>.</p>
+    </div>
+  </div>
+
+  <div id="accessibilityModal" class="faith-modal" aria-hidden="true">
+    <div class="faith-modal-box article-modal-box legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="accessibilityTitle">
+      <button type="button" class="faith-close legal-modal-close" aria-label="Close Accessibility Statement">×</button>
+      <h2 id="accessibilityTitle">Accessibility Statement</h2>
+      <p class="legal-updated">Last updated July 26, 2026.</p>
+      <p>Solomon for Jesus is committed to making its content usable by as many people as reasonably possible, including visitors who use keyboards, screen readers, magnification, or other assistive technology.</p>
+      <p>The site is being developed with readable contrast, responsive layouts, descriptive labels, keyboard-operable controls, and meaningful document structure. Accessibility is an ongoing responsibility, and some content or features may still need improvement.</p>
+      <p>If you encounter an accessibility barrier, please email <strong>contact@solomonforjesus.com</strong> and describe the page, feature, and difficulty. We will make a good-faith effort to provide the information in another usable form and to improve the site.</p>
+    </div>
+  </div>
+
+  <div id="aiNoticeModal" class="faith-modal" aria-hidden="true">
+    <div class="faith-modal-box article-modal-box legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="aiNoticeTitle">
+      <button type="button" class="faith-close legal-modal-close" aria-label="Close AI and Content Notice">×</button>
+      <h2 id="aiNoticeTitle">AI &amp; Content Notice</h2>
+      <p class="legal-updated">Last updated July 26, 2026.</p>
+      <p><strong>Solomon is powered by continually improving artificial intelligence.</strong> AI is used as a tool, while the site’s answer system is guided by Scripture, designed safeguards, and a commitment to present the Gospel of Jesus Christ faithfully.</p>
+      <h3>AI Can Be Wrong</h3>
+      <p>Solomon may occasionally misunderstand a question, cite a passage incorrectly, overlook context, or provide an incomplete or mistaken response. No AI-generated answer should be treated as infallible or as equal to Scripture.</p>
+      <h3>Biblical Authority</h3>
+      <p>The Holy Bible—not the AI system—is the final authority for Christian doctrine and practice presented by Solomon. Readers are encouraged to examine cited passages in context and seek guidance from a trustworthy local church or pastor.</p>
+      <h3>Human and Professional Care</h3>
+      <p>Solomon cannot know every fact about a visitor’s circumstances and cannot replace personal pastoral care, emergency intervention, medical or mental-health treatment, legal advice, or financial counsel.</p>
+      <h3>Scripture Quotations</h3>
+      <p>Scripture quotations are identified by translation where applicable and are used in accordance with the quotation and attribution policies of their respective copyright holders. All rights in copyrighted Bible translations remain with their respective publishers.</p>
+    </div>
+  </div>
+
+
   <script src="/reading-library.js" defer></script>
 
   <script>   
-      function openFaithStatement() {
+  
+    function scrollToElement(element) {
+      if (!element) return;
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function goToSolomon() {
+      const chat = document.querySelector(".chat-box");
+      const input = document.getElementById("userInput");
+      scrollToElement(chat);
+      window.setTimeout(() => input && input.focus(), 450);
+    }
+
+    function focusReadingLibrary() {
+      const cards = document.getElementById("readingLibraryCards");
+      scrollToElement(cards || document.getElementById("reading-library"));
+    }
+
+    function goToPrayerRequest() {
+      const chat = document.querySelector(".chat-box");
+      scrollToElement(chat);
+      window.setTimeout(startPrayerRequest, 450);
+    }
+
+    function openFaithStatement() {
       const modal = document.getElementById("faithModal");
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
@@ -4003,7 +4443,7 @@ const whyJesusModal = document.getElementById("whyJesusModal");
 const faithModal = document.getElementById("faithModal");
 const stillTimeModal = document.getElementById("stillTimeModal");
 
-document.querySelectorAll(".article-modal-trigger").forEach((trigger) => {
+document.querySelectorAll(".article-modal-trigger, .legal-modal-trigger").forEach((trigger) => {
   trigger.addEventListener("click", () => {
     const modalId = trigger.dataset.modalTarget;
     const modal = document.getElementById(modalId);
@@ -4014,7 +4454,7 @@ document.querySelectorAll(".article-modal-trigger").forEach((trigger) => {
     modal.setAttribute("aria-hidden", "false");
   });
 });
-document.querySelectorAll(".article-modal-close").forEach((button) => {
+document.querySelectorAll(".article-modal-close, .legal-modal-close").forEach((button) => {
   button.addEventListener("click", () => {
     const modal = button.closest(".faith-modal");
 
