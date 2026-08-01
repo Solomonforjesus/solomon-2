@@ -4396,10 +4396,36 @@ button {
   modal.setAttribute("aria-hidden", "true");
 }
 
+const stillTimeArticleReturnKey = "solomonStillTimeArticleReturn";
 let stillTimeReturnState = null;
+
+function getStillTimeArticleReturn() {
+  try {
+    const saved = sessionStorage.getItem(stillTimeArticleReturnKey);
+    if (!saved) return null;
+
+    const parsed = JSON.parse(saved);
+    const isRecent = Date.now() - Number(parsed.savedAt || 0) < 2 * 60 * 60 * 1000;
+    const isArticleUrl = typeof parsed.url === "string" && parsed.url.startsWith("/article.html?slug=");
+
+    if (!isRecent || !isArticleUrl) {
+      sessionStorage.removeItem(stillTimeArticleReturnKey);
+      return null;
+    }
+
+    return parsed;
+  } catch (error) {
+    sessionStorage.removeItem(stillTimeArticleReturnKey);
+    return null;
+  }
+}
 
 function openStillTime() {
   const modal = document.getElementById("stillTimeModal");
+
+  // A direct homepage opening should never inherit an abandoned article return.
+  sessionStorage.removeItem(stillTimeArticleReturnKey);
+
   const sourceModal = Array.from(document.querySelectorAll(".faith-modal.is-open"))
     .find((openModal) => openModal !== modal);
 
@@ -4428,6 +4454,12 @@ function closeStillTime() {
   const modal = document.getElementById("stillTimeModal");
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
+
+  const articleReturn = getStillTimeArticleReturn();
+  if (articleReturn) {
+    window.location.assign(articleReturn.url);
+    return;
+  }
 
   if (stillTimeReturnState && stillTimeReturnState.modal) {
     const { modal: sourceModal, scrollTop } = stillTimeReturnState;
