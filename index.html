@@ -97,6 +97,39 @@
       font-family: Georgia, "Times New Roman", serif;
     }
 
+    .language-invitation {
+      margin: -2px 0 16px;
+      padding: 12px 14px;
+      border: 1px solid rgba(117, 82, 39, 0.2);
+      border-radius: 12px;
+      background: rgba(247, 244, 236, 0.82);
+      text-align: center;
+    }
+
+    .language-invitation-title {
+      margin: 0;
+      color: var(--solomon-brown);
+      font-size: clamp(15px, 1.55vw, 17px);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .language-invitation-list {
+      margin: 5px 0 0;
+      color: #174976;
+      font-size: clamp(14px, 1.45vw, 16px);
+      font-weight: 700;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .language-invitation-help {
+      margin: 5px 0 0;
+      color: var(--ink-soft);
+      font-size: clamp(13px, 1.35vw, 15px);
+      line-height: 1.45;
+    }
+
     .messages {
       flex: 1;
       min-height: clamp(330px, 48vh, 560px);
@@ -502,6 +535,10 @@ button {
       textarea {
         min-height: 105px;
       }
+
+      .language-invitation {
+        padding: 11px 10px;
+      }
     }
   
 
@@ -847,6 +884,12 @@ button {
     <main class="main-layout">
       <section class="chat-box" aria-label="Solomon chat interface">
         <h2 class="chat-heading">Ask Solomon</h2>
+
+        <div class="language-invitation" aria-label="Languages supported by Solomon">
+          <p class="language-invitation-title">Ask Solomon in your language.</p>
+          <p class="language-invitation-list">English · Español · Français · Português · العربية · 中文 · हिन्दी · and more</p>
+          <p class="language-invitation-help">Simply begin typing in the language you prefer.</p>
+        </div>
 
         <div class="messages" id="messages">
           <div class="message">
@@ -4353,8 +4396,30 @@ button {
   modal.setAttribute("aria-hidden", "true");
 }
 
+let stillTimeReturnState = null;
+
 function openStillTime() {
   const modal = document.getElementById("stillTimeModal");
+  const sourceModal = Array.from(document.querySelectorAll(".faith-modal.is-open"))
+    .find((openModal) => openModal !== modal);
+
+  if (sourceModal) {
+    const sourceScrollBox = sourceModal.querySelector(".article-modal-box, .faith-modal-box");
+
+    stillTimeReturnState = {
+      modal: sourceModal,
+      scrollTop: sourceScrollBox ? sourceScrollBox.scrollTop : 0
+    };
+
+    sourceModal.classList.remove("is-open");
+    sourceModal.setAttribute("aria-hidden", "true");
+  } else {
+    stillTimeReturnState = null;
+  }
+
+  const stillTimeScrollBox = modal.querySelector(".faith-modal-box");
+  if (stillTimeScrollBox) stillTimeScrollBox.scrollTop = 0;
+
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
 }
@@ -4363,6 +4428,20 @@ function closeStillTime() {
   const modal = document.getElementById("stillTimeModal");
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
+
+  if (stillTimeReturnState && stillTimeReturnState.modal) {
+    const { modal: sourceModal, scrollTop } = stillTimeReturnState;
+    const sourceScrollBox = sourceModal.querySelector(".article-modal-box, .faith-modal-box");
+
+    sourceModal.classList.add("is-open");
+    sourceModal.setAttribute("aria-hidden", "false");
+
+    window.requestAnimationFrame(() => {
+      if (sourceScrollBox) sourceScrollBox.scrollTop = scrollTop;
+    });
+  }
+
+  stillTimeReturnState = null;
 }
     function openOurPrayer() {
   const modal = document.getElementById("ourPrayerModal");
@@ -4467,14 +4546,25 @@ document.querySelectorAll(".article-modal-close, .legal-modal-close").forEach((b
 document.querySelectorAll(".faith-modal").forEach((modal) => {
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
+      if (modal.id === "stillTimeModal") {
+        closeStillTime();
+      } else {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+      }
     }
   });
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    const openStillTimeModal = document.getElementById("stillTimeModal");
+
+    if (openStillTimeModal.classList.contains("is-open")) {
+      closeStillTime();
+      return;
+    }
+
     document.querySelectorAll(".faith-modal.is-open").forEach((modal) => {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
