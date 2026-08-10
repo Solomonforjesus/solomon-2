@@ -3057,6 +3057,371 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "1 Corinthians 15:3-4; Ephesians 2:8-9",
     active: true
   },
+  /* =======================================================
+     LEVEL 9 — LIVING FOR JESUS
+     ======================================================= */
+
+  {
+    id: "L9-Q001",
+    factKey: "holy-spirit-promised-helper",
+    level: 9,
+    type: "multiple-choice",
+    question: "Who did Jesus promise would help His followers after He returned to the Father?",
+    answers: [
+      "The Holy Spirit",
+      "Moses",
+      "David",
+      "Elijah"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus promised the Holy Spirit would be with His followers and help them.",
+    scripture: "John 14:16-17",
+    active: true
+  },
+
+  {
+    id: "L9-Q002",
+    factKey: "holy-spirit-teaches-reminds",
+    level: 9,
+    type: "true-false",
+    question: "True or False: The Holy Spirit helps believers understand and remember Jesus' teaching.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus said the Holy Spirit would teach His followers and remind them of His words.",
+    scripture: "John 14:26",
+    active: true
+  },
+
+  {
+    id: "L9-Q003",
+    factKey: "christians-read-scripture",
+    level: 9,
+    type: "multiple-choice",
+    question: "What should Christians regularly read to learn God's truth?",
+    answers: [
+      "Scripture",
+      "Only newspapers",
+      "Only stories",
+      "Only schoolbooks"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God's Word teaches, corrects, and trains us in righteousness.",
+    scripture: "2 Timothy 3:16-17",
+    active: true
+  },
+
+  {
+    id: "L9-Q004",
+    factKey: "word-lamp-light-path",
+    level: 9,
+    type: "fill-blank",
+    question: "The Bible says, 'Your word is a lamp to my feet and a ________ to my path.'",
+    acceptedAnswers: [
+      "light",
+      "a light"
+    ],
+    displayAnswer: "light",
+    explanation:
+      "God's Word gives us truth and guidance for how we live.",
+    scripture: "Psalm 119:105",
+    active: true
+  },
+
+  {
+    id: "L9-Q005",
+    factKey: "pray-not-only-in-trouble",
+    level: 9,
+    type: "true-false",
+    question: "True or False: Christians should pray only when something bad happens.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Prayer is part of an ongoing relationship with God, not only something we do during trouble.",
+    scripture: "1 Thessalonians 5:17",
+    active: true
+  },
+
+  {
+    id: "L9-Q006",
+    factKey: "confess-sin-to-god",
+    level: 9,
+    type: "multiple-choice",
+    question: "What should we do when we realize we have sinned?",
+    answers: [
+      "Hide it from God",
+      "Confess it to God",
+      "Pretend it never happened",
+      "Blame someone else"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God calls us to confess our sins and promises forgiveness and cleansing.",
+    scripture: "1 John 1:9",
+    active: true
+  },
+
+  {
+    id: "L9-Q007",
+    factKey: "compassion-care-for-hurting",
+    level: 9,
+    type: "multiple-choice",
+    question: "Which word describes showing kindness and care to someone who is hurting?",
+    answers: [
+      "Compassion",
+      "Pride",
+      "Envy",
+      "Anger"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus showed compassion, and His followers are called to care for others too.",
+    scripture: "Colossians 3:12",
+    active: true
+  },
+
+  {
+    id: "L9-Q008",
+    factKey: "christians-encourage-one-another",
+    level: 9,
+    type: "true-false",
+    question: "True or False: Christians should encourage one another.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Scripture tells believers to encourage and build one another up.",
+    scripture: "1 Thessalonians 5:11",
+    active: true
+  },
+
+  {
+    id: "L9-Q009",
+    factKey: "bring-worries-to-god-prayer",
+    level: 9,
+    type: "multiple-choice",
+    question: "What does the Bible tell Christians to do with their worries?",
+    answers: [
+      "Keep them secret forever",
+      "Give them to God in prayer",
+      "Pretend they do not exist",
+      "Worry even more"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God invites us to bring our worries and requests to Him in prayer.",
+    scripture: "Philippians 4:6-7",
+    active: true
+  },
+
+  {
+    id: "L9-Q010",
+    factKey: "christ-strengthens-me",
+    level: 9,
+    type: "fill-blank",
+    question: "Paul wrote, 'I can do all things through Christ who ________ me.'",
+    acceptedAnswers: [
+      "strengthens",
+      "strengthens me"
+    ],
+    displayAnswer: "strengthens",
+    explanation:
+      "Paul learned to depend on Christ's strength in every circumstance.",
+    scripture: "Philippians 4:13",
+    active: true
+  },
+
+  {
+    id: "L9-Q011",
+    factKey: "fruit-spirit-love",
+    level: 9,
+    type: "multiple-choice",
+    question: "Which of these is part of the fruit of the Spirit?",
+    answers: [
+      "Love",
+      "Revenge",
+      "Jealousy",
+      "Pride"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Love is one part of the fruit the Holy Spirit produces in a believer's life.",
+    scripture: "Galatians 5:22-23",
+    active: true
+  },
+
+  {
+    id: "L9-Q012",
+    factKey: "fruit-spirit-joy-peace",
+    level: 9,
+    type: "true-false",
+    question: "True or False: Joy and peace are also listed as fruit of the Spirit.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "The fruit of the Spirit includes love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.",
+    scripture: "Galatians 5:22-23",
+    active: true
+  },
+
+  {
+    id: "L9-Q013",
+    factKey: "do-good-help-others",
+    level: 9,
+    type: "multiple-choice",
+    question: "What should Christians do when they are able to help someone in need?",
+    answers: [
+      "Ignore them",
+      "Do good and help",
+      "Make fun of them",
+      "Wait for someone else"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Scripture calls us to do good and care for others when we have the opportunity.",
+    scripture: "Galatians 6:10",
+    active: true
+  },
+
+  {
+    id: "L9-Q014",
+    factKey: "forgive-others-as-god-forgave",
+    level: 9,
+    type: "multiple-choice",
+    question: "What should a Christian do after being forgiven by God when someone else wrongs them?",
+    answers: [
+      "Refuse to forgive",
+      "Seek revenge",
+      "Be willing to forgive",
+      "Never speak to anyone again"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Because God has forgiven us in Christ, we are called to forgive others.",
+    scripture: "Ephesians 4:32",
+    active: true
+  },
+
+  {
+    id: "L9-Q015",
+    factKey: "be-kind-forgiving-one-another",
+    level: 9,
+    type: "fill-blank",
+    question: "The Bible says, 'Be kind to one another, tenderhearted, ________ one another.'",
+    acceptedAnswers: [
+      "forgiving",
+      "forgiving one another"
+    ],
+    displayAnswer: "forgiving",
+    explanation:
+      "Christians are called to show kindness, compassion, and forgiveness.",
+    scripture: "Ephesians 4:32",
+    active: true
+  },
+
+  {
+    id: "L9-Q016",
+    factKey: "christian-choices-still-matter",
+    level: 9,
+    type: "true-false",
+    question: "True or False: Following Jesus means our choices and behavior no longer matter.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Salvation is God's gift, and those who belong to Christ are called to live in ways that honor Him.",
+    scripture: "Ephesians 2:8-10",
+    active: true
+  },
+
+  {
+    id: "L9-Q017",
+    factKey: "believers-gather-worship-encourage",
+    level: 9,
+    type: "multiple-choice",
+    question: "Why do Christians gather together with other believers?",
+    answers: [
+      "To encourage one another and worship God",
+      "Only to compete",
+      "Only to eat food",
+      "Because God cannot hear them at home"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Christians gather to worship, learn, pray, and encourage one another.",
+    scripture: "Hebrews 10:24-25",
+    active: true
+  },
+
+  {
+    id: "L9-Q018",
+    factKey: "jesus-commanded-baptism",
+    level: 9,
+    type: "multiple-choice",
+    question: "What public act did Jesus command new disciples to receive?",
+    answers: [
+      "Baptism",
+      "A crown",
+      "A special uniform",
+      "A new name"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus commanded His disciples to baptize those who become His followers.",
+    scripture: "Matthew 28:19",
+    active: true
+  },
+
+  {
+    id: "L9-Q019",
+    factKey: "ready-share-hope-in-jesus",
+    level: 9,
+    type: "true-false",
+    question: "True or False: Christians should be ready to tell others about the hope they have in Jesus.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Followers of Jesus should be ready to explain their hope with gentleness and respect.",
+    scripture: "1 Peter 3:15",
+    active: true
+  },
+
+  {
+    id: "L9-Q020",
+    factKey: "living-for-jesus-honor-christ",
+    level: 9,
+    type: "multiple-choice",
+    question: "What is the main goal of living for Jesus?",
+    answers: [
+      "Becoming more famous than everyone else",
+      "Honoring Christ with our lives",
+      "Never making another mistake",
+      "Winning every argument"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Living for Jesus means trusting Him, growing in His truth, loving others, and seeking to honor Him with our lives.",
+    scripture: "Colossians 3:17",
+    active: true
+  },
    
 ];
 
