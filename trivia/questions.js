@@ -2694,6 +2694,369 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "John 11:25",
     active: true
   },
+  /* =======================================================
+     LEVEL 8 — THE GOSPEL
+     ======================================================= */
+
+  {
+    id: "L8-Q001",
+    factKey: "everyone-has-sinned",
+    level: 8,
+    type: "multiple-choice",
+    question: "What does the Bible say everyone has done?",
+    answers: [
+      "Become famous",
+      "Sinned",
+      "Traveled",
+      "Become wise"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Every person has sinned and falls short of God's glory.",
+    scripture: "Romans 3:23",
+    active: true
+  },
+
+  {
+    id: "L8-Q002",
+    factKey: "sin-separates-from-god",
+    level: 8,
+    type: "true-false",
+    question: "True or False: Sin separates us from God and is a serious problem.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Sin is more than making mistakes. It is rebellion against God and separates us from Him.",
+    scripture: "Isaiah 59:2; Romans 6:23",
+    active: true
+  },
+
+  {
+    id: "L8-Q003",
+    factKey: "wages-of-sin-death",
+    level: 8,
+    type: "fill-blank",
+    question: "The Bible says, 'The wages of sin is ________.'",
+    acceptedAnswers: [
+      "death"
+    ],
+    displayAnswer: "death",
+    explanation:
+      "Sin brings death, but Romans 6:23 continues with wonderful news: God offers eternal life in Jesus Christ.",
+    scripture: "Romans 6:23",
+    active: true
+  },
+
+  {
+    id: "L8-Q004",
+    factKey: "cannot-save-by-good-works",
+    level: 8,
+    type: "multiple-choice",
+    question: "Can we save ourselves simply by doing enough good things?",
+    answers: [
+      "Yes",
+      "No"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Salvation is God's gift of grace. We cannot earn it by doing enough good works.",
+    scripture: "Ephesians 2:8-9",
+    active: true
+  },
+
+  {
+    id: "L8-Q005",
+    factKey: "jesus-came-save-sinners",
+    level: 8,
+    type: "multiple-choice",
+    question: "Why did Jesus come into the world?",
+    answers: [
+      "Only to teach history",
+      "To save sinners",
+      "To become a Roman ruler",
+      "To build a palace"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus came into the world to save sinners.",
+    scripture: "1 Timothy 1:15",
+    active: true
+  },
+
+  {
+    id: "L8-Q006",
+    factKey: "jesus-lived-without-sin",
+    level: 8,
+    type: "true-false",
+    question: "True or False: Jesus lived without sin.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus was tempted, yet He remained completely without sin.",
+    scripture: "Hebrews 4:15",
+    active: true
+  },
+
+  {
+    id: "L8-Q007",
+    factKey: "jesus-died-for-sins-gospel",
+    level: 8,
+    type: "multiple-choice",
+    question: "What did Jesus do for our sins?",
+    answers: [
+      "Ignored them",
+      "Died for them",
+      "Pretended they were unimportant",
+      "Told us to solve the problem ourselves"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Christ died for our sins according to the Scriptures.",
+    scripture: "1 Corinthians 15:3",
+    active: true
+  },
+
+  {
+    id: "L8-Q008",
+    factKey: "jesus-rose-after-burial-gospel",
+    level: 8,
+    type: "multiple-choice",
+    question: "What happened after Jesus died and was buried?",
+    answers: [
+      "He remained in the grave",
+      "He rose from the dead",
+      "His disciples forgot Him",
+      "He became a legend many years later"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus truly rose from the dead on the third day.",
+    scripture: "1 Corinthians 15:4",
+    active: true
+  },
+
+  {
+    id: "L8-Q009",
+    factKey: "salvation-gift-of-grace",
+    level: 8,
+    type: "fill-blank",
+    question: "Salvation is a gift of God's ________.",
+    acceptedAnswers: [
+      "grace"
+    ],
+    displayAnswer: "grace",
+    explanation:
+      "Grace means God gives us what we could never earn for ourselves.",
+    scripture: "Ephesians 2:8",
+    active: true
+  },
+
+  {
+    id: "L8-Q010",
+    factKey: "eternal-life-through-jesus",
+    level: 8,
+    type: "multiple-choice",
+    question: "Through whom does God give eternal life?",
+    answers: [
+      "Moses",
+      "Jesus Christ",
+      "David",
+      "Abraham"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Eternal life is God's gift through Jesus Christ our Lord.",
+    scripture: "Romans 6:23",
+    active: true
+  },
+
+  {
+    id: "L8-Q011",
+    factKey: "salvation-not-earned-by-comparison",
+    level: 8,
+    type: "true-false",
+    question: "True or False: We can earn salvation by being better than other people.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Salvation is not a prize for being better than someone else. It is God's gift through Christ.",
+    scripture: "Ephesians 2:8-9",
+    active: true
+  },
+
+  {
+    id: "L8-Q012",
+    factKey: "repent-turn-from-sin-to-god",
+    level: 8,
+    type: "multiple-choice",
+    question: "What does it mean to repent?",
+    answers: [
+      "To turn from sin toward God",
+      "To become perfect instantly",
+      "To memorize the whole Bible",
+      "To hide our mistakes"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Repentance means turning from sin toward God with a changed heart.",
+    scripture: "Acts 3:19",
+    active: true
+  },
+
+  {
+    id: "L8-Q013",
+    factKey: "place-faith-in-jesus",
+    level: 8,
+    type: "multiple-choice",
+    question: "What are we called to place in Jesus Christ?",
+    answers: [
+      "Our faith",
+      "Our money",
+      "Our popularity",
+      "Our possessions"
+    ],
+    correctIndex: 0,
+    explanation:
+      "The Gospel calls us to trust in Jesus Christ rather than ourselves.",
+    scripture: "Acts 16:31",
+    active: true
+  },
+
+  {
+    id: "L8-Q014",
+    factKey: "believe-in-lord-jesus",
+    level: 8,
+    type: "fill-blank",
+    question: "The Bible says, 'Believe in the Lord ________, and you will be saved.'",
+    acceptedAnswers: [
+      "Jesus",
+      "Jesus Christ",
+      "Christ Jesus"
+    ],
+    displayAnswer: "Jesus",
+    explanation:
+      "Scripture calls us to believe in the Lord Jesus Christ.",
+    scripture: "Acts 16:31",
+    active: true
+  },
+
+  {
+    id: "L8-Q015",
+    factKey: "forgiveness-needed-because-sin",
+    level: 8,
+    type: "true-false",
+    question: "True or False: God forgives people because they have never done anything wrong.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "We need forgiveness precisely because we have sinned. God offers forgiveness through Jesus Christ.",
+    scripture: "Ephesians 1:7",
+    active: true
+  },
+
+  {
+    id: "L8-Q016",
+    factKey: "god-faithful-forgive-confessed-sins",
+    level: 8,
+    type: "multiple-choice",
+    question: "What does God promise to those who confess their sins?",
+    answers: [
+      "He will never listen",
+      "He is faithful and just to forgive",
+      "They must hide forever",
+      "They must earn another chance"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God is faithful and just to forgive our sins and cleanse us from unrighteousness.",
+    scripture: "1 John 1:9",
+    active: true
+  },
+
+  {
+    id: "L8-Q017",
+    factKey: "god-loved-world-gave-son",
+    level: 8,
+    type: "multiple-choice",
+    question: "According to John 3:16, why did God give His only Son?",
+    answers: [
+      "Because God loved the world",
+      "Because people deserved Him",
+      "Because Rome requested it",
+      "Because the disciples demanded it"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God's gift of His Son flows from His great love for the world.",
+    scripture: "John 3:16",
+    active: true
+  },
+
+  {
+    id: "L8-Q018",
+    factKey: "john-316-everlasting-life",
+    level: 8,
+    type: "fill-blank",
+    question: "John 3:16 says whoever believes in Him should not perish but have everlasting ________.",
+    acceptedAnswers: [
+      "life",
+      "eternal life",
+      "everlasting life"
+    ],
+    displayAnswer: "life",
+    explanation:
+      "Jesus offers everlasting life to those who believe in Him.",
+    scripture: "John 3:16",
+    active: true
+  },
+
+  {
+    id: "L8-Q019",
+    factKey: "gospel-good-news-jesus-saves",
+    level: 8,
+    type: "true-false",
+    question: "True or False: The Gospel is good news about what Jesus Christ has done to save sinners.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "The Gospel is the good news of Jesus Christ: His death for our sins and His resurrection from the dead.",
+    scripture: "1 Corinthians 15:1-4",
+    active: true
+  },
+
+  {
+    id: "L8-Q020",
+    factKey: "gospel-summary-faith-in-jesus",
+    level: 8,
+    type: "multiple-choice",
+    question: "Which answer best summarizes the Gospel?",
+    answers: [
+      "Try hard enough and God may accept you",
+      "Jesus died for our sins, rose again, and salvation is received through faith in Him",
+      "Everyone saves themselves in a different way",
+      "Bible knowledge alone saves us"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus Christ died for our sins and rose again. Salvation is God's gift, received through faith in Him.",
+    scripture: "1 Corinthians 15:3-4; Ephesians 2:8-9",
+    active: true
+  },
    
 ];
 
