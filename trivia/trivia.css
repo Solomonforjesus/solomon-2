@@ -346,13 +346,13 @@ input:focus-visible {
 .level-seven-cross,
 .level-ten-cross {
   display: block;
-  width: min(120px, 30vw);
+  width: min(64px, 16vw);
   height: auto;
-  margin: 0 auto 12px;
+  margin: 0 auto 8px;
   object-fit: contain;
   filter:
-    drop-shadow(0 0 10px rgba(255, 188, 74, 0.42))
-    drop-shadow(0 0 20px rgba(255, 143, 32, 0.26));
+    drop-shadow(0 0 8px rgba(255, 188, 74, 0.38))
+    drop-shadow(0 0 16px rgba(255, 143, 32, 0.22));
 }
 
 .level-seven-card {
@@ -361,11 +361,6 @@ input:focus-visible {
 
 .level-ten-card {
   border-width: 2px;
-}
-
-.level-ten-cross {
-  width: min(145px, 34vw);
-  margin-bottom: 14px;
 }
 
 .game-brand::before,
