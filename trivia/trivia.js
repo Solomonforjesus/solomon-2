@@ -348,12 +348,6 @@ function showScreen(screenName) {
 
 function handleStartGame() {
 
-  /*
-    PRIVACY:
-    Player name remains only in temporary
-    JavaScript memory during this page session.
-  */
-
   gameState.playerName =
     sanitizePlayerName(
       playerNameInput.value
@@ -657,13 +651,32 @@ function resetAnswerPresentation() {
 
   answerButtons.forEach(button => {
 
+    const answerText =
+      button.querySelector(".answer-text");
+
+    const answerLetter =
+      button.querySelector(".answer-letter");
+
+
     button.hidden = false;
+    button.style.display = "";
     button.disabled = false;
+
 
     button.classList.remove(
       "correct-answer",
       "incorrect-answer"
     );
+
+
+    if (answerText) {
+      answerText.textContent = "";
+    }
+
+
+    if (answerLetter) {
+      answerLetter.textContent = "";
+    }
   });
 }
 
@@ -685,14 +698,10 @@ function renderButtonQuestion(question) {
         question.answers[index];
 
       const answerText =
-        button.querySelector(
-          ".answer-text"
-        );
+        button.querySelector(".answer-text");
 
       const answerLetter =
-        button.querySelector(
-          ".answer-letter"
-        );
+        button.querySelector(".answer-letter");
 
 
       button.classList.remove(
@@ -703,41 +712,54 @@ function renderButtonQuestion(question) {
 
       button.disabled = false;
 
-
-      if (answer !== undefined) {
-
-        button.hidden = false;
-
-        answerText.textContent =
-          answer;
+      answerText.textContent = "";
+      answerLetter.textContent = "";
 
 
-        /*
-          True / False looks cleaner without
-          pretending it has four choices.
-        */
+      /*
+        IMPORTANT:
+        If the current question has no answer
+        for this button position, remove it
+        completely from the layout.
+      */
 
-        if (
-          question.type ===
-          "true-false"
-        ) {
+      if (answer === undefined) {
 
-          answerLetter.textContent =
-            index === 0
-              ? "T"
-              : "F";
+        button.hidden = true;
+        button.style.display = "none";
 
-        } else {
+        return;
+      }
 
-          answerLetter.textContent =
-            String.fromCharCode(
-              65 + index
-            );
-        }
+
+      /*
+        This button belongs to the current
+        question, so restore it explicitly.
+      */
+
+      button.hidden = false;
+      button.style.display = "";
+
+      answerText.textContent =
+        answer;
+
+
+      if (
+        question.type ===
+        "true-false"
+      ) {
+
+        answerLetter.textContent =
+          index === 0
+            ? "T"
+            : "F";
 
       } else {
 
-        button.hidden = true;
+        answerLetter.textContent =
+          String.fromCharCode(
+            65 + index
+          );
       }
     }
   );
@@ -891,10 +913,6 @@ function handleFillBlankSubmission() {
     );
 
 
-  /*
-    Do not score an empty submission.
-  */
-
   if (!typedAnswer) {
     return;
   }
@@ -993,7 +1011,11 @@ function disableAnswerButtons() {
   answerButtons.forEach(
     button => {
 
-      if (!button.hidden) {
+      if (
+        !button.hidden &&
+        button.style.display !== "none"
+      ) {
+
         button.disabled = true;
       }
     }
@@ -1651,11 +1673,6 @@ function handlePlayAgain() {
 
 function saveProgress() {
 
-  /*
-    Only anonymous progress is stored.
-    Player name is NEVER included.
-  */
-
   const progress = {
 
     highestUnlockedLevel:
@@ -1760,7 +1777,7 @@ function loadSavedProgress() {
 
 
 /* =========================================================
-   DEVELOPMENT / TESTING HELPERS
+   DEVELOPMENT / TESTING HELPER
    ========================================================= */
 
 window.resetSolomonTriviaProgress =
