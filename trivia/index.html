@@ -1,1 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <meta
+    name="description"
+    content="Bible Trivia with Solomon — a free, family-friendly Bible trivia game for children and families."
+  />
+
+  <title>Bible Trivia with Solomon</title>
+
+  <link rel="stylesheet" href="./trivia.css" />
+</head>
+
+<body>
+
+  <!-- =========================================================
+       ACCESSIBILITY: SKIP LINK
+  ========================================================== -->
+  <a class="skip-link" href="#game-main">
+    Skip to game
+  </a>
+
+
+  <!-- =========================================================
+       PAGE BACKGROUND / DECORATIVE LAYERS
+  ========================================================== -->
+  <div class="page-glow page-glow-left" aria-hidden="true"></div>
+  <div class="page-glow page-glow-right" aria-hidden="true"></div>
+
+
+  <!-- =========================================================
+       TOP NAVIGATION
+  ========================================================== -->
+  <header class="trivia-topbar">
+
+    <a
+      class="return-solomon-link"
+      href="/"
+      aria-label="Return to Solomon"
+    >
+      <span class="return-arrow" aria-hidden="true">←</span>
+      <span>Return to Solomon</span>
+    </a>
+
+    <div class="topbar-title" aria-hidden="true">
+      Bible Trivia with Solomon
+    </div>
+
+    <a
+      class="feedback-link"
+      href="/#contact"
+      aria-label="Return to Solomon to share feedback"
+    >
+      Tell Us What You Think
+    </a>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN GAME WRAPPER
+  ========================================================== -->
+  <main id="game-main" class="game-page">
+
+    <section
+      class="game-shell"
+      aria-live="polite"
+      aria-atomic="false"
+    >
+
+
+      <!-- =====================================================
+           GAME HEADER / IDENTITY
+      ====================================================== -->
+      <div class="game-brand">
+
+        <!--
+          CROSS ARTWORK PLACEHOLDER
+
+          Once Gary provides the approved special cross image,
+          we can place it here as a prominent permanent part
+          of the game identity.
+
+          Example later:
+
+          <img
+            src="./assets/solomon-cross.png"
+            alt=""
+            class="game-cross"
+            aria-hidden="true"
+          />
+        -->
+
+        <div class="brand-eyebrow">
+          A Solomon for Jesus Family Experience
+        </div>
+
+        <h1 class="game-title">
+          Bible Trivia
+          <span class="game-title-small">with Solomon</span>
+        </h1>
+
+        <p class="game-subtitle">
+          Discover the Bible. Grow in understanding. Have some fun along the way.
+        </p>
+
+      </div>
+
+
+      <!-- =====================================================
+           SCREEN: WELCOME
+      ====================================================== -->
+      <section
+        id="screen-welcome"
+        class="game-screen active-screen"
+        data-screen="welcome"
+      >
+
+        <div class="welcome-card">
+
+          <div class="solomon-medallion" aria-hidden="true">
+            <span class="medallion-crown">♛</span>
+          </div>
+
+          <h2>
+            Ready for Bible Trivia?
+          </h2>
+
+          <p class="welcome-intro">
+            Solomon has questions waiting for you!
+            Start with Bible Beginnings and work your way
+            through all ten levels.
+          </p>
+
+
+          <!-- OPTIONAL PLAYER NAME -->
+          <div class="name-entry">
+
+            <label for="player-name">
+              What should Solomon call you?
+            </label>
+
+            <input
+              id="player-name"
+              name="player-name"
+              type="text"
+              maxlength="24"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="First name or nickname"
+              aria-describedby="name-help parent-privacy-note"
+            />
+
+            <p id="name-help" class="field-help">
+              You can leave this blank if you prefer.
+            </p>
+
+          </div>
+
+
+          <!-- PARENT PRIVACY NOTICE -->
+          <aside
+            id="parent-privacy-note"
+            class="parent-note"
+            aria-label="Information for parents"
+          >
+            <strong>For Parents:</strong>
+            A first name or nickname is optional and is used only so Solomon
+            can respond personally during this game session. It is not sent
+            to us, stored in an account, or used for any other purpose.
+          </aside>
+
+
+          <button
+            id="start-game-btn"
+            class="primary-game-btn"
+            type="button"
+          >
+            <span>Start Playing</span>
+            <span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SCREEN: LEVEL MAP
+      ====================================================== -->
+      <section
+        id="screen-levels"
+        class="game-screen"
+        data-screen="levels"
+        hidden
+      >
+
+        <div class="screen-heading">
+
+          <p class="screen-kicker">
+            Your Bible Journey
+          </p>
+
+          <h2>
+            Choose a Level
+          </h2>
+
+          <p id="level-welcome-message" class="screen-description">
+            Begin your journey through Scripture.
+          </p>
+
+        </div>
+
+
+        <!-- CROWN PROGRESS -->
+        <div class="crown-progress-card">
+
+          <div class="crown-display" aria-hidden="true">
+
+            <div class="crown-symbol">
+              ♛
+            </div>
+
+            <div
+              id="crown-jewels"
+              class="crown-jewels"
+              aria-hidden="true"
+            >
+              <span class="crown-jewel" data-jewel="1"></span>
+              <span class="crown-jewel" data-jewel="2"></span>
+              <span class="crown-jewel" data-jewel="3"></span>
+              <span class="crown-jewel" data-jewel="4"></span>
+              <span class="crown-jewel" data-jewel="5"></span>
+              <span class="crown-jewel" data-jewel="6"></span>
+              <span class="crown-jewel" data-jewel="7"></span>
+              <span class="crown-jewel" data-jewel="8"></span>
+              <span class="crown-jewel" data-jewel="9"></span>
+              <span class="crown-jewel" data-jewel="10"></span>
+            </div>
+
+          </div>
+
+          <div class="crown-progress-copy">
+            <strong>Your Solomon Crown</strong>
+            <span id="crown-progress-text">
+              Complete levels to illuminate the crown.
+            </span>
+          </div>
+
+        </div>
+
+
+        <!-- LEVEL BUTTONS -->
+        <div
+          id="level-grid"
+          class="level-grid"
+          aria-label="Bible trivia levels"
+        >
+
+          <button
+            class="level-card"
+            type="button"
+            data-level="1"
+          >
+            <span class="level-number">Level 1</span>
+            <span class="level-name">Bible Beginnings</span>
+            <span class="level-focus">
+              Creation, Noah, early Bible stories
+            </span>
+            <span class="level-status">
+              Ready to Play
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="2"
+            disabled
+          >
+            <span class="level-number">Level 2</span>
+            <span class="level-name">Heroes of Faith</span>
+            <span class="level-focus">
+              Abraham, Joseph, Moses, David and more
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 1
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="3"
+            disabled
+          >
+            <span class="level-number">Level 3</span>
+            <span class="level-name">Amazing Bible Events</span>
+            <span class="level-focus">
+              Red Sea, Jericho, Goliath, Jonah and more
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 2
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="4"
+            disabled
+          >
+            <span class="level-number">Level 4</span>
+            <span class="level-name">Kings, Prophets &amp; Promises</span>
+            <span class="level-focus">
+              Solomon, Elijah, Isaiah and God's promises
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 3
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="5"
+            disabled
+          >
+            <span class="level-number">Level 5</span>
+            <span class="level-name">Meet Jesus</span>
+            <span class="level-focus">
+              His birth, disciples, miracles and teaching
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 4
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="6"
+            disabled
+          >
+            <span class="level-number">Level 6</span>
+            <span class="level-name">Walking with Jesus</span>
+            <span class="level-focus">
+              Faith, prayer, compassion and forgiveness
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 5
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="7"
+            disabled
+          >
+            <span class="level-number">Level 7</span>
+            <span class="level-name">The Cross &amp; Resurrection</span>
+            <span class="level-focus">
+              Jesus' sacrifice, burial and resurrection
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 6
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="8"
+            disabled
+          >
+            <span class="level-number">Level 8</span>
+            <span class="level-name">The Gospel</span>
+            <span class="level-focus">
+              Sin, grace, faith, salvation and forgiveness
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 7
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked"
+            type="button"
+            data-level="9"
+            disabled
+          >
+            <span class="level-number">Level 9</span>
+            <span class="level-name">Living for Jesus</span>
+            <span class="level-focus">
+              Holy Spirit, Scripture, prayer and Christian life
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 8
+            </span>
+          </button>
+
+
+          <button
+            class="level-card locked final-level"
+            type="button"
+            data-level="10"
+            disabled
+          >
+            <span class="level-number">Level 10</span>
+            <span class="level-name">Kingdom Champion</span>
+            <span class="level-focus">
+              Put your whole Bible journey together
+            </span>
+            <span class="level-status">
+              🔒 Complete Level 9
+            </span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SCREEN: ACTIVE QUESTION
+      ====================================================== -->
+      <section
+        id="screen-question"
+        class="game-screen"
+        data-screen="question"
+        hidden
+      >
+
+        <!-- QUESTION TOP STATUS -->
+        <div class="question-status">
+
+          <button
+            id="back-to-levels-btn"
+            class="quiet-btn"
+            type="button"
+            aria-label="Return to level selection"
+          >
+            ← Levels
+          </button>
+
+          <div class="question-progress-copy">
+
+            <span id="current-level-label">
+              Level 1
+            </span>
+
+            <span aria-hidden="true">•</span>
+
+            <span id="question-counter">
+              Question 1 of 10
+            </span>
+
+          </div>
+
+          <div
+            id="star-counter"
+            class="star-counter"
+            aria-label="0 correct answers"
+          >
+            <span aria-hidden="true">★</span>
+            <span id="current-score">0</span>
+          </div>
+
+        </div>
+
+
+        <!-- PROGRESS BAR -->
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Level progress"
+          aria-valuemin="0"
+          aria-valuemax="10"
+          aria-valuenow="1"
+        >
+          <div
+            id="question-progress-bar"
+            class="progress-fill"
+          ></div>
+        </div>
+
+
+        <!-- QUESTION CARD -->
+        <article class="question-card">
+
+          <div class="question-level-name">
+            <span id="question-level-name">
+              Bible Beginnings
+            </span>
+          </div>
+
+          <h2
+            id="question-text"
+            class="question-text"
+          >
+            Question text will appear here.
+          </h2>
+
+
+          <!-- ANSWER BUTTONS -->
+          <div
+            id="answer-grid"
+            class="answer-grid"
+            role="group"
+            aria-label="Answer choices"
+          >
+
+            <button
+              class="answer-btn"
+              type="button"
+              data-answer-index="0"
+            >
+              <span class="answer-letter">A</span>
+              <span class="answer-text">
+                Answer choice
+              </span>
+            </button>
+
+            <button
+              class="answer-btn"
+              type="button"
+              data-answer-index="1"
+            >
+              <span class="answer-letter">B</span>
+              <span class="answer-text">
+                Answer choice
+              </span>
+            </button>
+
+            <button
+              class="answer-btn"
+              type="button"
+              data-answer-index="2"
+            >
+              <span class="answer-letter">C</span>
+              <span class="answer-text">
+                Answer choice
+              </span>
+            </button>
+
+            <button
+              class="answer-btn"
+              type="button"
+              data-answer-index="3"
+            >
+              <span class="answer-letter">D</span>
+              <span class="answer-text">
+                Answer choice
+              </span>
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- SOLOMON RESPONSE PANEL -->
+        <aside
+          id="solomon-response"
+          class="solomon-response"
+          aria-live="assertive"
+          hidden
+        >
+
+          <div
+            id="response-icon"
+            class="response-icon"
+            aria-hidden="true"
+          >
+            ★
+          </div>
+
+          <div class="response-copy">
+
+            <h3 id="response-heading">
+              Correct!
+            </h3>
+
+            <p id="response-message">
+              Solomon's response will appear here.
+            </p>
+
+            <p
+              id="response-scripture"
+              class="response-scripture"
+              hidden
+            ></p>
+
+          </div>
+
+        </aside>
+
+
+        <!-- NEXT QUESTION -->
+        <div
+          id="next-question-wrap"
+          class="next-question-wrap"
+          hidden
+        >
+          <button
+            id="next-question-btn"
+            class="primary-game-btn compact-btn"
+            type="button"
+          >
+            Next Question
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SCREEN: LEVEL COMPLETE
+      ====================================================== -->
+      <section
+        id="screen-level-complete"
+        class="game-screen"
+        data-screen="level-complete"
+        hidden
+      >
+
+        <div class="completion-card">
+
+          <div
+            id="completion-celebration"
+            class="completion-celebration"
+            aria-hidden="true"
+          >
+            <span class="celebration-star star-one">★</span>
+            <span class="celebration-star star-two">★</span>
+            <span class="celebration-star star-three">★</span>
+
+            <div class="completion-crown">
+              ♛
+            </div>
+          </div>
+
+
+          <p class="screen-kicker">
+            Level Complete
+          </p>
+
+          <h2 id="completion-title">
+            Great Work!
+          </h2>
+
+          <p id="completion-message">
+            You completed this level.
+          </p>
+
+
+          <!-- RESULT BADGE -->
+          <div
+            id="result-badge"
+            class="result-badge"
+          >
+
+            <span
+              id="result-badge-icon"
+              class="result-badge-icon"
+              aria-hidden="true"
+            >
+              ★
+            </span>
+
+            <div>
+              <strong id="result-badge-title">
+                Gold Star
+              </strong>
+
+              <span id="result-badge-score">
+                8 of 10 correct
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- JEWEL REWARD -->
+          <div class="jewel-earned">
+
+            <span
+              class="earned-jewel-icon"
+              aria-hidden="true"
+            >
+              ◆
+            </span>
+
+            <div>
+              <strong>
+                Crown Jewel Illuminated!
+              </strong>
+
+              <span id="jewel-message">
+                Your Solomon Crown is growing.
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- COMPLETION ACTIONS -->
+          <div class="completion-actions">
+
+            <button
+              id="continue-btn"
+              class="primary-game-btn"
+              type="button"
+            >
+              Continue Journey
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <button
+              id="replay-level-btn"
+              class="secondary-game-btn"
+              type="button"
+            >
+              Play This Level Again
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SCREEN: FINAL COMPLETION
+      ====================================================== -->
+      <section
+        id="screen-final"
+        class="game-screen"
+        data-screen="final"
+        hidden
+      >
+
+        <div class="finale-card">
+
+          <div
+            class="finale-stars"
+            aria-hidden="true"
+          >
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+
+          <div
+            class="final-crown"
+            aria-hidden="true"
+          >
+            ♛
+          </div>
+
+
+          <!--
+            SPECIAL CROSS ARTWORK WILL ALSO RECEIVE
+            PROMINENT PLACEMENT HERE.
+          -->
+
+
+          <p class="screen-kicker">
+            Your Journey Is Complete
+          </p>
+
+          <h2>
+            You Completed Bible Trivia with Solomon!
+          </h2>
+
+          <p class="finale-lead">
+            You traveled from Creation through the Bible to Jesus Christ,
+            the Gospel, and following Him.
+          </p>
+
+
+          <div class="final-solomon-message">
+
+            <strong>Solomon says:</strong>
+
+            <p>
+              Knowing Bible facts is wonderful—but the greatest truth
+              in Scripture is knowing who Jesus Christ is and what He
+              has done for us.
+            </p>
+
+          </div>
+
+
+          <div class="final-actions">
+
+            <button
+              id="play-again-btn"
+              class="primary-game-btn"
+              type="button"
+            >
+              Play Again
+            </button>
+
+            <button
+              id="choose-level-btn"
+              class="secondary-game-btn"
+              type="button"
+            >
+              Choose a Level
+            </button>
+
+            <a
+              class="secondary-game-btn link-button"
+              href="/"
+            >
+              Return to Solomon
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           BOTTOM FAMILY / PRIVACY NOTE
+      ====================================================== -->
+      <footer class="trivia-footer">
+
+        <p>
+          Bible Trivia with Solomon is free to play.
+          No child account is required.
+        </p>
+
+        <div class="footer-links">
+
+          <a href="/">
+            Return to Solomon
+          </a>
+
+          <span aria-hidden="true">•</span>
+
+          <a href="/#contact">
+            Tell Us What You Think
+          </a>
+
+        </div>
+
+      </footer>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       questions.js MUST LOAD FIRST
+  ========================================================== -->
+  <script src="./questions.js"></script>
+  <script src="./trivia.js"></script>
+
+</body>
+</html>
