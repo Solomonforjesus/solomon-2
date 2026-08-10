@@ -1817,22 +1817,6 @@ input:focus-visible {
 
 
 /* =========================================================
-   OPTIONAL CROSS IMAGE
-   Ready for Gary's approved artwork
-   ========================================================= */
-
-.game-cross {
-  width: clamp(72px, 10vw, 118px);
-
-  margin: 0 auto 14px;
-
-  filter:
-    drop-shadow(0 10px 16px rgba(0, 0, 0, 0.28))
-    drop-shadow(0 0 14px rgba(216, 180, 91, 0.18));
-}
-
-
-/* =========================================================
    REDUCED MOTION
    ========================================================= */
 
