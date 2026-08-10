@@ -12,7 +12,7 @@ const SOLOMON_TRIVIA_LEVELS = [
   {
     level: 2,
     name: "Heroes of Faith",
-    focus: "Abraham, Joseph, Moses, David and more"
+    focus: "Moses, David, Daniel, Jonah and other familiar Bible people"
   },
   {
     level: 3,
@@ -59,18 +59,6 @@ const SOLOMON_TRIVIA_LEVELS = [
 
 /* =========================================================
    SUPPORTED QUESTION TYPES
-
-   multiple-choice
-      Standard 3-4 answer button question.
-
-   true-false
-      Uses the same answer-button system with:
-      ["True", "False"]
-
-   fill-blank
-      Used primarily in later levels.
-      The player types a short answer.
-
    ========================================================= */
 
 const SOLOMON_TRIVIA_TYPES = [
@@ -82,54 +70,6 @@ const SOLOMON_TRIVIA_TYPES = [
 
 /* =========================================================
    QUESTION BANK
-
-   COMMON FIELDS:
-
-   id
-      Unique question ID.
-
-   factKey
-      Unique underlying Bible fact. Prevents accidental
-      duplication even when wording is changed.
-
-   level
-      Trivia level number.
-
-   type
-      multiple-choice
-      true-false
-      fill-blank
-
-   question
-      Text shown to the player.
-
-   explanation
-      Solomon's short teaching response.
-
-   scripture
-      Scripture reference.
-
-   active
-      Allows a question to be retired without deleting it.
-
-
-   MULTIPLE CHOICE / TRUE-FALSE:
-
-   answers
-      Array of choices.
-
-   correctIndex
-      Zero-based index of correct answer.
-
-
-   FILL-IN-THE-BLANK:
-
-   acceptedAnswers
-      Array of acceptable typed answers.
-
-   displayAnswer
-      Friendly version Solomon shows after an incorrect answer.
-
    ========================================================= */
 
 const SOLOMON_TRIVIA_QUESTIONS = [
@@ -516,6 +456,385 @@ const SOLOMON_TRIVIA_QUESTIONS = [
       "Genesis is the first book of the Bible and tells us about the beginning of God's creation and His early dealings with humanity.",
     scripture: "Genesis",
     active: true
+  },
+
+
+  /* =======================================================
+     LEVEL 2 — HEROES OF FAITH
+     ======================================================= */
+
+  {
+    id: "L2-Q001",
+    factKey: "moses-baby-basket-river",
+    level: 2,
+    type: "multiple-choice",
+    question: "Moses was placed in a basket when he was a baby. Where was the basket placed?",
+    answers: [
+      "In a river",
+      "In a cave",
+      "In a palace",
+      "On a mountain"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Moses' mother placed him in a basket among the reeds by the river, where Pharaoh's daughter found him.",
+    scripture: "Exodus 2:3-5",
+    active: true
+  },
+
+  {
+    id: "L2-Q002",
+    factKey: "david-cared-for-sheep",
+    level: 2,
+    type: "multiple-choice",
+    question: "Before David became king, what animals did he care for?",
+    answers: [
+      "Camels",
+      "Sheep",
+      "Horses",
+      "Goats"
+    ],
+    correctIndex: 1,
+    explanation:
+      "David was a shepherd before he became king of Israel.",
+    scripture: "1 Samuel 16:11",
+    active: true
+  },
+
+  {
+    id: "L2-Q003",
+    factKey: "daniel-thrown-lions-den",
+    level: 2,
+    type: "multiple-choice",
+    question: "Daniel kept praying to God even when it became dangerous. Where was he thrown?",
+    answers: [
+      "Into a furnace",
+      "Into the sea",
+      "Into a lions' den",
+      "Into prison"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Daniel stayed faithful to God, and God protected him among the lions.",
+    scripture: "Daniel 6:16-23",
+    active: true
+  },
+
+  {
+    id: "L2-Q004",
+    factKey: "jonah-swallowed-great-fish",
+    level: 2,
+    type: "multiple-choice",
+    question: "Jonah tried to run away from what God told him to do. What swallowed him?",
+    answers: [
+      "A great fish",
+      "A lion",
+      "A crocodile",
+      "A giant bird"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God appointed a great fish to swallow Jonah, and Jonah was inside it for three days and three nights.",
+    scripture: "Jonah 1:17",
+    active: true
+  },
+
+  {
+    id: "L2-Q005",
+    factKey: "moses-burning-bush",
+    level: 2,
+    type: "multiple-choice",
+    question: "God spoke to Moses from something that was burning but did not burn up. What was it?",
+    answers: [
+      "A tree",
+      "A bush",
+      "A tent",
+      "A pile of wood"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God called Moses from the burning bush and gave him an important mission.",
+    scripture: "Exodus 3:2-10",
+    active: true
+  },
+
+  {
+    id: "L2-Q006",
+    factKey: "david-sling-stone",
+    level: 2,
+    type: "multiple-choice",
+    question: "David used a sling when he faced Goliath. What did he put in the sling?",
+    answers: [
+      "A coin",
+      "An arrow",
+      "A stone",
+      "A piece of wood"
+    ],
+    correctIndex: 2,
+    explanation:
+      "David trusted God and used a stone from his sling to strike Goliath.",
+    scripture: "1 Samuel 17:49",
+    active: true
+  },
+
+  {
+    id: "L2-Q007",
+    factKey: "samson-great-strength",
+    level: 2,
+    type: "true-false",
+    question: "True or False: Samson was known for great physical strength.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Samson was given unusual strength by God during his life.",
+    scripture: "Judges 14:5-6",
+    active: true
+  },
+
+  {
+    id: "L2-Q008",
+    factKey: "ruth-stayed-with-naomi",
+    level: 2,
+    type: "multiple-choice",
+    question: "Ruth chose to stay with which woman instead of leaving her?",
+    answers: [
+      "Esther",
+      "Naomi",
+      "Sarah",
+      "Miriam"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Ruth stayed faithfully with Naomi and traveled with her to a new home.",
+    scripture: "Ruth 1:16-17",
+    active: true
+  },
+
+  {
+    id: "L2-Q009",
+    factKey: "aaron-moses-brother",
+    level: 2,
+    type: "multiple-choice",
+    question: "What was the name of Moses' brother?",
+    answers: [
+      "Aaron",
+      "David",
+      "Samuel",
+      "Jonah"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Aaron helped Moses speak before Pharaoh and the people.",
+    scripture: "Exodus 4:14-16",
+    active: true
+  },
+
+  {
+    id: "L2-Q010",
+    factKey: "miriam-moses-sister",
+    level: 2,
+    type: "multiple-choice",
+    question: "What was the name of Moses' sister?",
+    answers: [
+      "Ruth",
+      "Rachel",
+      "Miriam",
+      "Esther"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Miriam watched over baby Moses from a distance when he was placed near the river.",
+    scripture: "Exodus 2:4",
+    active: true
+  },
+
+  {
+    id: "L2-Q011",
+    factKey: "samuel-heard-god-call",
+    level: 2,
+    type: "multiple-choice",
+    question: "Young Samuel heard someone calling his name during the night. Who was calling him?",
+    answers: [
+      "King Saul",
+      "Moses",
+      "God",
+      "David"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Samuel first thought Eli was calling him, but it was the Lord speaking to him.",
+    scripture: "1 Samuel 3:4-10",
+    active: true
+  },
+
+  {
+    id: "L2-Q012",
+    factKey: "solomon-famous-wisdom",
+    level: 2,
+    type: "multiple-choice",
+    question: "Solomon became especially famous for something God gave him. What was it?",
+    answers: [
+      "Great speed",
+      "Wisdom",
+      "Great height",
+      "Musical talent"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Solomon asked God for wisdom, and God gave him great understanding.",
+    scripture: "1 Kings 3:9-12",
+    active: true
+  },
+
+  {
+    id: "L2-Q013",
+    factKey: "esther-became-queen",
+    level: 2,
+    type: "multiple-choice",
+    question: "Esther became what in the land where she lived?",
+    answers: [
+      "A shepherd",
+      "A queen",
+      "A prophet",
+      "A judge"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Esther became queen and later showed courage in helping her people.",
+    scripture: "Esther 2:17",
+    active: true
+  },
+
+  {
+    id: "L2-Q014",
+    factKey: "david-shepherd-before-king",
+    level: 2,
+    type: "true-false",
+    question: "True or False: David was a shepherd before he became king.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "David cared for sheep before God led him into a very different future.",
+    scripture: "1 Samuel 16:11",
+    active: true
+  },
+
+  {
+    id: "L2-Q015",
+    factKey: "daniel-protected-lions-den",
+    level: 2,
+    type: "multiple-choice",
+    question: "What happened to Daniel while he was in the lions' den?",
+    answers: [
+      "God kept him safe",
+      "He escaped through a tunnel",
+      "The lions carried him away",
+      "He fought the lions himself"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God sent His angel and shut the lions' mouths so Daniel was not harmed.",
+    scripture: "Daniel 6:22",
+    active: true
+  },
+
+  {
+    id: "L2-Q016",
+    factKey: "jonah-fish-spit-dry-land",
+    level: 2,
+    type: "multiple-choice",
+    question: "After Jonah was inside the great fish, what eventually happened?",
+    answers: [
+      "The fish carried him to Egypt",
+      "The fish spit him out onto dry land",
+      "Jonah stayed there forever",
+      "Jonah built a boat inside it"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God commanded the fish, and it released Jonah onto dry land.",
+    scripture: "Jonah 2:10",
+    active: true
+  },
+
+  {
+    id: "L2-Q017",
+    factKey: "moses-led-israel-out-egypt",
+    level: 2,
+    type: "multiple-choice",
+    question: "Moses later helped lead God's people out of which country?",
+    answers: [
+      "Egypt",
+      "Rome",
+      "Greece",
+      "Babylon"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God used Moses to lead the Israelites out of slavery in Egypt.",
+    scripture: "Exodus 12:31-42",
+    active: true
+  },
+
+  {
+    id: "L2-Q018",
+    factKey: "david-became-king-after-saul",
+    level: 2,
+    type: "multiple-choice",
+    question: "After Saul, which man became king of Israel?",
+    answers: [
+      "Daniel",
+      "David",
+      "Aaron",
+      "Jonah"
+    ],
+    correctIndex: 1,
+    explanation:
+      "David became king after Saul and ruled Israel for many years.",
+    scripture: "2 Samuel 5:3-4",
+    active: true
+  },
+
+  {
+    id: "L2-Q019",
+    factKey: "esther-courage-helped-people",
+    level: 2,
+    type: "true-false",
+    question: "True or False: Esther showed courage by helping her people when they were in danger.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Esther bravely spoke up when her people were threatened.",
+    scripture: "Esther 4:14-16",
+    active: true
+  },
+
+  {
+    id: "L2-Q020",
+    factKey: "solomon-father-david",
+    level: 2,
+    type: "multiple-choice",
+    question: "Solomon's father was also a famous king. What was his name?",
+    answers: [
+      "David",
+      "Moses",
+      "Daniel",
+      "Joshua"
+    ],
+    correctIndex: 0,
+    explanation:
+      "David was Solomon's father and king of Israel before him.",
+    scripture: "1 Kings 2:10-12",
+    active: true
   }
 
 ];
@@ -564,13 +883,6 @@ function getQuestionSetForLevel(levelNumber, count = 10) {
 
 /* =========================================================
    QUESTION BANK VALIDATION
-
-   Checks:
-   - duplicate question IDs
-   - duplicate Bible fact keys
-   - missing fact keys
-   - unsupported question types
-   - malformed answer structures
    ========================================================= */
 
 function validateTriviaQuestionBank() {
@@ -587,10 +899,6 @@ function validateTriviaQuestionBank() {
 
   SOLOMON_TRIVIA_QUESTIONS.forEach(question => {
 
-    /* -----------------------------
-       UNIQUE ID CHECK
-       ----------------------------- */
-
     if (seenIds.has(question.id)) {
 
       duplicateIds.push(question.id);
@@ -600,10 +908,6 @@ function validateTriviaQuestionBank() {
       seenIds.add(question.id);
     }
 
-
-    /* -----------------------------
-       UNIQUE FACT CHECK
-       ----------------------------- */
 
     if (!question.factKey) {
 
@@ -625,10 +929,6 @@ function validateTriviaQuestionBank() {
     }
 
 
-    /* -----------------------------
-       QUESTION TYPE CHECK
-       ----------------------------- */
-
     if (
       !SOLOMON_TRIVIA_TYPES.includes(
         question.type
@@ -643,25 +943,17 @@ function validateTriviaQuestionBank() {
     }
 
 
-    /* -----------------------------
-       MULTIPLE CHOICE CHECK
-       ----------------------------- */
-
     if (
-      question.type ===
-      "multiple-choice"
+      question.type === "multiple-choice"
     ) {
 
       if (
         !Array.isArray(question.answers) ||
         question.answers.length < 3 ||
         question.answers.length > 4 ||
-        !Number.isInteger(
-          question.correctIndex
-        ) ||
+        !Number.isInteger(question.correctIndex) ||
         question.correctIndex < 0 ||
-        question.correctIndex >=
-          question.answers.length
+        question.correctIndex >= question.answers.length
       ) {
 
         malformedQuestions.push(
@@ -671,21 +963,14 @@ function validateTriviaQuestionBank() {
     }
 
 
-    /* -----------------------------
-       TRUE / FALSE CHECK
-       ----------------------------- */
-
     if (
-      question.type ===
-      "true-false"
+      question.type === "true-false"
     ) {
 
       if (
         !Array.isArray(question.answers) ||
         question.answers.length !== 2 ||
-        !Number.isInteger(
-          question.correctIndex
-        ) ||
+        !Number.isInteger(question.correctIndex) ||
         question.correctIndex < 0 ||
         question.correctIndex > 1
       ) {
@@ -697,19 +982,12 @@ function validateTriviaQuestionBank() {
     }
 
 
-    /* -----------------------------
-       FILL-IN-THE-BLANK CHECK
-       ----------------------------- */
-
     if (
-      question.type ===
-      "fill-blank"
+      question.type === "fill-blank"
     ) {
 
       if (
-        !Array.isArray(
-          question.acceptedAnswers
-        ) ||
+        !Array.isArray(question.acceptedAnswers) ||
         question.acceptedAnswers.length === 0 ||
         !question.displayAnswer
       ) {
@@ -722,10 +1000,6 @@ function validateTriviaQuestionBank() {
 
   });
 
-
-  /* =======================================================
-     REPORT RESULTS
-     ======================================================= */
 
   if (missingFactKeys.length > 0) {
 
