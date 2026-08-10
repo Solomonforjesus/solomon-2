@@ -2118,3 +2118,21 @@ input:focus-visible {
   }
 
 }
+
+  .level-name {
+    font-size: 1.32rem;
+  }
+
+}
+
+
+/* =========================================================
+   FORCE HIDDEN GAME ELEMENTS TO STAY HIDDEN
+   Prevents unused answer buttons from carrying over
+   between multiple-choice and true/false questions.
+   ========================================================= */
+
+.answer-btn[hidden],
+#fill-blank-wrap[hidden] {
+  display: none !important;
+}
