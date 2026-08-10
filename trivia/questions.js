@@ -835,8 +835,383 @@ const SOLOMON_TRIVIA_QUESTIONS = [
       "David was Solomon's father and king of Israel before him.",
     scripture: "1 Kings 2:10-12",
     active: true
-  }
+  },
+  /* =======================================================
+     LEVEL 3 — AMAZING BIBLE EVENTS
+     ======================================================= */
 
+  {
+    id: "L3-Q001",
+    factKey: "red-sea-divided",
+    level: 3,
+    type: "multiple-choice",
+    question: "When Moses stretched out his hand over the sea, what happened?",
+    answers: [
+      "The water turned red",
+      "The sea divided",
+      "Fish jumped onto the land",
+      "A storm began"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God divided the sea so the Israelites could cross safely.",
+    scripture: "Exodus 14:21-22",
+    active: true
+  },
+
+  {
+    id: "L3-Q002",
+    factKey: "red-sea-crossed-dry-ground",
+    level: 3,
+    type: "multiple-choice",
+    question: "The Israelites walked through the Red Sea on what kind of ground?",
+    answers: [
+      "Muddy ground",
+      "Dry ground",
+      "Sand dunes",
+      "A wooden bridge"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God made a path through the sea, and the people crossed on dry ground.",
+    scripture: "Exodus 14:22",
+    active: true
+  },
+
+  {
+    id: "L3-Q003",
+    factKey: "jericho-walls-fell",
+    level: 3,
+    type: "true-false",
+    question: "True or False: The walls of Jericho fell after the Israelites marched around the city as God instructed.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "The people obeyed God, shouted, and the walls of Jericho fell.",
+    scripture: "Joshua 6:20",
+    active: true
+  },
+
+  {
+    id: "L3-Q004",
+    factKey: "david-defeated-goliath",
+    level: 3,
+    type: "multiple-choice",
+    question: "What did David defeat when he was still a young man?",
+    answers: [
+      "A bear named Saul",
+      "A giant named Goliath",
+      "A king from Egypt",
+      "A lion in a palace"
+    ],
+    correctIndex: 1,
+    explanation:
+      "David trusted God when he faced Goliath and defeated him.",
+    scripture: "1 Samuel 17:45-50",
+    active: true
+  },
+
+  {
+    id: "L3-Q005",
+    factKey: "fiery-furnace-men-protected",
+    level: 3,
+    type: "multiple-choice",
+    question: "Three men were thrown into a fiery furnace because they would not worship a golden image. What happened to them?",
+    answers: [
+      "They escaped before the fire started",
+      "They were protected from the fire",
+      "They hid under the furnace",
+      "They put out the fire themselves"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God protected Shadrach, Meshach, and Abednego in the fiery furnace.",
+    scripture: "Daniel 3:24-27",
+    active: true
+  },
+
+  {
+    id: "L3-Q006",
+    factKey: "manna-fed-israelites",
+    level: 3,
+    type: "multiple-choice",
+    question: "What came down from heaven to feed the Israelites in the wilderness?",
+    answers: [
+      "Manna",
+      "Apples",
+      "Bread from Egypt",
+      "Fish"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God provided manna for His people while they traveled through the wilderness.",
+    scripture: "Exodus 16:14-15",
+    active: true
+  },
+
+  {
+    id: "L3-Q007",
+    factKey: "ten-commandments-mount-sinai",
+    level: 3,
+    type: "true-false",
+    question: "True or False: God gave Moses the Ten Commandments on Mount Sinai.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God gave Moses the commandments on Mount Sinai.",
+    scripture: "Exodus 19-20",
+    active: true
+  },
+
+  {
+    id: "L3-Q008",
+    factKey: "water-from-rock",
+    level: 3,
+    type: "multiple-choice",
+    question: "When the Israelites needed water in the wilderness, what did God provide from a rock?",
+    answers: [
+      "Oil",
+      "Water",
+      "Honey",
+      "Milk"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God provided water for His people from the rock.",
+    scripture: "Exodus 17:5-6",
+    active: true
+  },
+
+  {
+    id: "L3-Q009",
+    factKey: "jordan-river-stopped",
+    level: 3,
+    type: "multiple-choice",
+    question: "What happened when Joshua and the Israelites crossed the Jordan River?",
+    answers: [
+      "The water stopped so they could cross",
+      "They built boats",
+      "They swam across",
+      "A bridge appeared"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God stopped the river so His people could cross safely.",
+    scripture: "Joshua 3:14-17",
+    active: true
+  },
+
+  {
+    id: "L3-Q010",
+    factKey: "sun-stood-still-joshua",
+    level: 3,
+    type: "multiple-choice",
+    question: "What unusual thing happened when Joshua prayed during a battle?",
+    answers: [
+      "The moon disappeared",
+      "The sun stood still",
+      "It began to snow",
+      "The mountains moved"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Scripture says the sun stood still while Joshua and Israel fought their enemies.",
+    scripture: "Joshua 10:12-14",
+    active: true
+  },
+
+  {
+    id: "L3-Q011",
+    factKey: "elijah-fire-mount-carmel",
+    level: 3,
+    type: "multiple-choice",
+    question: "Elijah prayed on Mount Carmel and fire came down from heaven. What did the fire burn?",
+    answers: [
+      "Only the wood",
+      "The sacrifice, wood, stones, and water",
+      "The whole mountain",
+      "Elijah's clothes"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God answered Elijah's prayer with fire, showing the people that the Lord is God.",
+    scripture: "1 Kings 18:36-39",
+    active: true
+  },
+
+  {
+    id: "L3-Q012",
+    factKey: "daniel-survived-lions-den",
+    level: 3,
+    type: "true-false",
+    question: "True or False: Daniel survived spending a night in a lions' den.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God protected Daniel, and he was brought safely out of the lions' den.",
+    scripture: "Daniel 6:22-23",
+    active: true
+  },
+
+  {
+    id: "L3-Q013",
+    factKey: "jonah-fish-after-sea",
+    level: 3,
+    type: "multiple-choice",
+    question: "What happened to Jonah after he was thrown into the sea?",
+    answers: [
+      "He swam to shore",
+      "A great fish swallowed him",
+      "A boat rescued him",
+      "He walked on the water"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God appointed a great fish to swallow Jonah.",
+    scripture: "Jonah 1:17",
+    active: true
+  },
+
+  {
+    id: "L3-Q014",
+    factKey: "gideon-army-300",
+    level: 3,
+    type: "multiple-choice",
+    question: "When Gideon's small army went into battle, how many men did he have?",
+    answers: [
+      "30",
+      "300",
+      "3,000",
+      "30,000"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God reduced Gideon's army to 300 men so Israel would know the victory came from Him.",
+    scripture: "Judges 7:7",
+    active: true
+  },
+
+  {
+    id: "L3-Q015",
+    factKey: "samson-pillars-building-fell",
+    level: 3,
+    type: "multiple-choice",
+    question: "What happened when Samson pushed against the pillars of the building?",
+    answers: [
+      "The doors opened",
+      "The building fell",
+      "Fire came down",
+      "The pillars turned to water"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Samson pushed against the pillars, and the building collapsed.",
+    scripture: "Judges 16:29-30",
+    active: true
+  },
+
+  {
+    id: "L3-Q016",
+    factKey: "balaam-donkey-spoke",
+    level: 3,
+    type: "true-false",
+    question: "True or False: God used a donkey to speak to Balaam.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God opened the donkey's mouth, and it spoke to Balaam.",
+    scripture: "Numbers 22:28",
+    active: true
+  },
+
+  {
+    id: "L3-Q017",
+    factKey: "lots-wife-pillar-salt",
+    level: 3,
+    type: "multiple-choice",
+    question: "What happened to Lot's wife when she looked back toward Sodom?",
+    answers: [
+      "She became a pillar of salt",
+      "She became invisible",
+      "She fell asleep",
+      "She turned into stone"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Scripture says Lot's wife looked back and became a pillar of salt.",
+    scripture: "Genesis 19:26",
+    active: true
+  },
+
+  {
+    id: "L3-Q018",
+    factKey: "pillar-fire-guided-night",
+    level: 3,
+    type: "multiple-choice",
+    question: "What did God send to guide the Israelites by night while they traveled through the wilderness?",
+    answers: [
+      "A bright star",
+      "A pillar of fire",
+      "An angel with a torch",
+      "Lightning"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God guided His people by a pillar of cloud during the day and a pillar of fire at night.",
+    scripture: "Exodus 13:21-22",
+    active: true
+  },
+
+  {
+    id: "L3-Q019",
+    factKey: "elisha-axe-head-floated",
+    level: 3,
+    type: "multiple-choice",
+    question: "A borrowed iron axe head fell into the water during the prophet Elisha's time. What happened next?",
+    answers: [
+      "It floated",
+      "It disappeared",
+      "It turned into gold",
+      "A fish swallowed it"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God worked through Elisha, and the iron axe head floated to the surface.",
+    scripture: "2 Kings 6:5-7",
+    active: true
+  },
+
+  {
+    id: "L3-Q020",
+    factKey: "ravens-fed-elijah",
+    level: 3,
+    type: "multiple-choice",
+    question: "When Elijah stayed near the Brook Cherith, what kind of birds brought him food?",
+    answers: [
+      "Doves",
+      "Eagles",
+      "Ravens",
+      "Sparrows"
+    ],
+    correctIndex: 2,
+    explanation:
+      "God commanded ravens to bring Elijah bread and meat while he stayed near the brook.",
+    scripture: "1 Kings 17:4-6",
+    active: true
+  },
+   
 ];
 
 
