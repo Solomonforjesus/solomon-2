@@ -2328,6 +2328,372 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "John 13:34-35",
     active: true
   },
+  /* =======================================================
+     LEVEL 7 — THE CROSS & RESURRECTION
+     ======================================================= */
+
+  {
+    id: "L7-Q001",
+    factKey: "jesus-entered-jerusalem",
+    level: 7,
+    type: "multiple-choice",
+    question: "What city did Jesus enter shortly before His crucifixion?",
+    answers: [
+      "Bethlehem",
+      "Jerusalem",
+      "Nazareth",
+      "Rome"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus entered Jerusalem as the final events leading to the cross began.",
+    scripture: "Matthew 21:1-10",
+    active: true
+  },
+
+  {
+    id: "L7-Q002",
+    factKey: "jesus-rode-donkey-jerusalem",
+    level: 7,
+    type: "multiple-choice",
+    question: "What did Jesus ride into Jerusalem?",
+    answers: [
+      "A horse",
+      "A donkey",
+      "A camel",
+      "A chariot"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus entered Jerusalem riding on a donkey, fulfilling Scripture.",
+    scripture: "Matthew 21:5-9",
+    active: true
+  },
+
+  {
+    id: "L7-Q003",
+    factKey: "jesus-last-supper-disciples",
+    level: 7,
+    type: "true-false",
+    question: "True or False: Jesus shared a final meal with His disciples before His arrest.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus shared what we call the Last Supper with His disciples.",
+    scripture: "Luke 22:14-20",
+    active: true
+  },
+
+  {
+    id: "L7-Q004",
+    factKey: "last-supper-bread-body",
+    level: 7,
+    type: "multiple-choice",
+    question: "At the Last Supper, Jesus said the bread represented His what?",
+    answers: [
+      "Kingdom",
+      "Body",
+      "Crown",
+      "Temple"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus used the bread to point His disciples toward His body, which would be given for them.",
+    scripture: "Luke 22:19",
+    active: true
+  },
+
+  {
+    id: "L7-Q005",
+    factKey: "jesus-prayed-gethsemane",
+    level: 7,
+    type: "fill-blank",
+    question: "Jesus prayed in the Garden of ________ before He was arrested.",
+    acceptedAnswers: [
+      "Gethsemane",
+      "gethsemane",
+      "Garden of Gethsemane",
+      "garden of gethsemane"
+    ],
+    displayAnswer: "Gethsemane",
+    explanation:
+      "Jesus prayed in Gethsemane before His arrest and crucifixion.",
+    scripture: "Matthew 26:36-39",
+    active: true
+  },
+
+  {
+    id: "L7-Q006",
+    factKey: "judas-betrayed-jesus",
+    level: 7,
+    type: "multiple-choice",
+    question: "Which disciple betrayed Jesus?",
+    answers: [
+      "Peter",
+      "John",
+      "Judas Iscariot",
+      "Thomas"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Judas Iscariot betrayed Jesus and led those who arrested Him to Him.",
+    scripture: "Matthew 26:47-50",
+    active: true
+  },
+
+  {
+    id: "L7-Q007",
+    factKey: "jesus-predicted-suffering-death-resurrection",
+    level: 7,
+    type: "true-false",
+    question: "True or False: Jesus knew beforehand that He would suffer and die.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus repeatedly told His disciples that He would suffer, die, and rise again.",
+    scripture: "Mark 8:31",
+    active: true
+  },
+
+  {
+    id: "L7-Q008",
+    factKey: "peter-denied-jesus-three-times",
+    level: 7,
+    type: "multiple-choice",
+    question: "Which disciple denied knowing Jesus three times?",
+    answers: [
+      "Peter",
+      "Andrew",
+      "Philip",
+      "Matthew"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Peter denied Jesus three times, just as Jesus had said he would.",
+    scripture: "Luke 22:54-62",
+    active: true
+  },
+
+  {
+    id: "L7-Q009",
+    factKey: "pontius-pilate-trial",
+    level: 7,
+    type: "multiple-choice",
+    question: "Who was the Roman governor involved in Jesus' trial?",
+    answers: [
+      "Caesar Augustus",
+      "Pontius Pilate",
+      "Herod the Great",
+      "Cornelius"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus was brought before the Roman governor Pontius Pilate.",
+    scripture: "Matthew 27:11-26",
+    active: true
+  },
+
+  {
+    id: "L7-Q010",
+    factKey: "jesus-crucified",
+    level: 7,
+    type: "multiple-choice",
+    question: "How was Jesus put to death?",
+    answers: [
+      "He was crucified",
+      "He was stoned",
+      "He was imprisoned for life",
+      "He was exiled"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus was crucified on a cross.",
+    scripture: "Luke 23:33",
+    active: true
+  },
+
+  {
+    id: "L7-Q011",
+    factKey: "jesus-died-on-cross",
+    level: 7,
+    type: "fill-blank",
+    question: "Jesus died on a ________.",
+    acceptedAnswers: [
+      "cross",
+      "a cross"
+    ],
+    displayAnswer: "cross",
+    explanation:
+      "Jesus willingly gave His life on the cross.",
+    scripture: "Philippians 2:8",
+    active: true
+  },
+
+  {
+    id: "L7-Q012",
+    factKey: "jesus-without-sin",
+    level: 7,
+    type: "true-false",
+    question: "True or False: Jesus had committed sins that deserved His punishment.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus was without sin. He suffered not for His own wrongdoing, but gave Himself for sinners.",
+    scripture: "1 Peter 2:22-24",
+    active: true
+  },
+
+  {
+    id: "L7-Q013",
+    factKey: "jesus-died-for-our-sins",
+    level: 7,
+    type: "multiple-choice",
+    question: "Why is Jesus' death on the cross so important?",
+    answers: [
+      "He died for our sins",
+      "He wanted to become famous",
+      "He lost a battle",
+      "He was trying to become king of Rome"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus gave Himself for our sins so that sinners could be forgiven and brought to God.",
+    scripture: "1 Corinthians 15:3; 1 Peter 3:18",
+    active: true
+  },
+
+  {
+    id: "L7-Q014",
+    factKey: "jesus-body-placed-tomb",
+    level: 7,
+    type: "multiple-choice",
+    question: "What happened to Jesus' body after He died?",
+    answers: [
+      "It was placed in a tomb",
+      "It was taken to Rome",
+      "It disappeared immediately",
+      "It was placed in the temple"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus' body was wrapped and placed in a tomb.",
+    scripture: "Matthew 27:57-60",
+    active: true
+  },
+
+  {
+    id: "L7-Q015",
+    factKey: "jesus-did-not-remain-dead",
+    level: 7,
+    type: "true-false",
+    question: "True or False: Jesus remained dead in the tomb.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus did not remain in the grave. He rose from the dead.",
+    scripture: "Matthew 28:5-6",
+    active: true
+  },
+
+  {
+    id: "L7-Q016",
+    factKey: "jesus-rose-third-day",
+    level: 7,
+    type: "fill-blank",
+    question: "On the third day, Jesus ________ from the dead.",
+    acceptedAnswers: [
+      "rose",
+      "arose",
+      "rose again"
+    ],
+    displayAnswer: "rose",
+    explanation:
+      "Jesus rose bodily from the dead on the third day.",
+    scripture: "1 Corinthians 15:3-4",
+    active: true
+  },
+
+  {
+    id: "L7-Q017",
+    factKey: "women-found-empty-tomb",
+    level: 7,
+    type: "multiple-choice",
+    question: "Who discovered that Jesus' tomb was empty early on the first day of the week?",
+    answers: [
+      "Women who had followed Jesus",
+      "Roman soldiers",
+      "King Herod",
+      "The Pharisees"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Women who followed Jesus came to the tomb and learned that He had risen.",
+    scripture: "Luke 24:1-6",
+    active: true
+  },
+
+  {
+    id: "L7-Q018",
+    factKey: "risen-jesus-appeared-followers",
+    level: 7,
+    type: "multiple-choice",
+    question: "After His resurrection, did Jesus appear to His followers?",
+    answers: [
+      "Yes",
+      "No"
+    ],
+    correctIndex: 0,
+    explanation:
+      "The risen Jesus appeared to His disciples and many others.",
+    scripture: "1 Corinthians 15:5-8",
+    active: true
+  },
+
+  {
+    id: "L7-Q019",
+    factKey: "resurrection-victory-over-death",
+    level: 7,
+    type: "true-false",
+    question: "True or False: The resurrection shows that death did not defeat Jesus.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus conquered death. His resurrection is at the heart of the Christian Gospel.",
+    scripture: "Revelation 1:17-18",
+    active: true
+  },
+
+  {
+    id: "L7-Q020",
+    factKey: "jesus-resurrection-and-life",
+    level: 7,
+    type: "fill-blank",
+    question: "Jesus said, 'I am the resurrection and the ________.'",
+    acceptedAnswers: [
+      "life",
+      "the life"
+    ],
+    displayAnswer: "life",
+    explanation:
+      "Jesus declared that He is the resurrection and the life. Our hope is found in Him.",
+    scripture: "John 11:25",
+    active: true
+  },
    
 ];
 
