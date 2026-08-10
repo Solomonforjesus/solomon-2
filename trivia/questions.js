@@ -58,19 +58,78 @@ const SOLOMON_TRIVIA_LEVELS = [
 
 
 /* =========================================================
+   SUPPORTED QUESTION TYPES
+
+   multiple-choice
+      Standard 3-4 answer button question.
+
+   true-false
+      Uses the same answer-button system with:
+      ["True", "False"]
+
+   fill-blank
+      Used primarily in later levels.
+      The player types a short answer.
+
+   ========================================================= */
+
+const SOLOMON_TRIVIA_TYPES = [
+  "multiple-choice",
+  "true-false",
+  "fill-blank"
+];
+
+
+/* =========================================================
    QUESTION BANK
 
-   Each question contains:
+   COMMON FIELDS:
 
-   id              Unique question ID
-   factKey         Unique fact/topic key
-   level           Level number
-   question        Question text
-   answers         Answer choices
-   correctIndex    Zero-based correct answer
-   explanation     Solomon's short teaching response
-   scripture       Optional Scripture reference
-   active          Allows us to retire a question later
+   id
+      Unique question ID.
+
+   factKey
+      Unique underlying Bible fact. Prevents accidental
+      duplication even when wording is changed.
+
+   level
+      Trivia level number.
+
+   type
+      multiple-choice
+      true-false
+      fill-blank
+
+   question
+      Text shown to the player.
+
+   explanation
+      Solomon's short teaching response.
+
+   scripture
+      Scripture reference.
+
+   active
+      Allows a question to be retired without deleting it.
+
+
+   MULTIPLE CHOICE / TRUE-FALSE:
+
+   answers
+      Array of choices.
+
+   correctIndex
+      Zero-based index of correct answer.
+
+
+   FILL-IN-THE-BLANK:
+
+   acceptedAnswers
+      Array of acceptable typed answers.
+
+   displayAnswer
+      Friendly version Solomon shows after an incorrect answer.
+
    ========================================================= */
 
 const SOLOMON_TRIVIA_QUESTIONS = [
@@ -83,6 +142,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q001",
     factKey: "creation-god-created-heavens-earth",
     level: 1,
+    type: "multiple-choice",
     question: "Who created the heavens and the earth?",
     answers: [
       "God",
@@ -101,6 +161,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q002",
     factKey: "adam-eve-first-man-woman",
     level: 1,
+    type: "multiple-choice",
     question: "What were the names of the first man and woman?",
     answers: [
       "Abraham and Sarah",
@@ -119,6 +180,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q003",
     factKey: "eden-garden-location",
     level: 1,
+    type: "multiple-choice",
     question: "Where did Adam and Eve live at the beginning?",
     answers: [
       "Jerusalem",
@@ -137,6 +199,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q004",
     factKey: "noah-built-ark",
     level: 1,
+    type: "multiple-choice",
     question: "Who built the ark before the great flood?",
     answers: [
       "Noah",
@@ -155,6 +218,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q005",
     factKey: "noah-rainbow-covenant",
     level: 1,
+    type: "multiple-choice",
     question: "What sign did God place in the sky after the flood?",
     answers: [
       "A bright star",
@@ -173,6 +237,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q006",
     factKey: "creation-six-days",
     level: 1,
+    type: "multiple-choice",
     question: "How many days did God use to create the heavens and the earth before resting on the seventh day?",
     answers: [
       "Three days",
@@ -191,6 +256,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q007",
     factKey: "creation-first-day-light",
     level: 1,
+    type: "multiple-choice",
     question: "What did God create on the first day?",
     answers: [
       "Light",
@@ -209,6 +275,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q008",
     factKey: "noah-dove-olive-leaf",
     level: 1,
+    type: "multiple-choice",
     question: "What did Noah send out from the ark that later returned with an olive leaf?",
     answers: [
       "An eagle",
@@ -227,6 +294,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q009",
     factKey: "cain-killed-abel",
     level: 1,
+    type: "multiple-choice",
     question: "Who was the son of Adam and Eve who killed his brother Abel?",
     answers: [
       "Cain",
@@ -245,6 +313,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q010",
     factKey: "babel-tower",
     level: 1,
+    type: "multiple-choice",
     question: "What was the name of the tower people tried to build high into the heavens?",
     answers: [
       "Tower of David",
@@ -263,6 +332,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q011",
     factKey: "abraham-called-leave-homeland",
     level: 1,
+    type: "multiple-choice",
     question: "Who was told by God to leave his homeland and go to a land God would show him?",
     answers: [
       "Abraham",
@@ -281,6 +351,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q012",
     factKey: "sarah-wife-abraham",
     level: 1,
+    type: "multiple-choice",
     question: "What was the name of Abraham's wife?",
     answers: [
       "Rachel",
@@ -299,6 +370,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q013",
     factKey: "isaac-promised-son",
     level: 1,
+    type: "multiple-choice",
     question: "What was the name of Abraham and Sarah's promised son?",
     answers: [
       "Isaac",
@@ -317,6 +389,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q014",
     factKey: "jacob-renamed-israel",
     level: 1,
+    type: "multiple-choice",
     question: "Who was Isaac's son whose name was later changed to Israel?",
     answers: [
       "Esau",
@@ -335,6 +408,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q015",
     factKey: "joseph-special-coat",
     level: 1,
+    type: "multiple-choice",
     question: "Which of Jacob's sons received a special coat from his father?",
     answers: [
       "Judah",
@@ -353,6 +427,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q016",
     factKey: "joseph-leader-egypt",
     level: 1,
+    type: "multiple-choice",
     question: "Where did Joseph eventually become a powerful leader?",
     answers: [
       "Rome",
@@ -371,6 +446,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q017",
     factKey: "joseph-sold-by-brothers",
     level: 1,
+    type: "multiple-choice",
     question: "What happened to Joseph after his brothers became jealous of him?",
     answers: [
       "They made him king",
@@ -389,6 +465,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q018",
     factKey: "humanity-created-image-of-god",
     level: 1,
+    type: "multiple-choice",
     question: "What did God make in His own image?",
     answers: [
       "The stars",
@@ -407,6 +484,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q019",
     factKey: "creation-very-good",
     level: 1,
+    type: "multiple-choice",
     question: "What did God say about everything He had made at the end of creation?",
     answers: [
       "It was unfinished",
@@ -425,6 +503,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L1-Q020",
     factKey: "genesis-first-book",
     level: 1,
+    type: "multiple-choice",
     question: "Which book of the Bible tells us about Creation, Noah, Abraham, and Joseph?",
     answers: [
       "Genesis",
@@ -486,49 +565,170 @@ function getQuestionSetForLevel(levelNumber, count = 10) {
 /* =========================================================
    QUESTION BANK VALIDATION
 
-   This checks:
+   Checks:
    - duplicate question IDs
-   - duplicate fact keys
+   - duplicate Bible fact keys
    - missing fact keys
-
-   It does NOT affect normal gameplay.
+   - unsupported question types
+   - malformed answer structures
    ========================================================= */
 
 function validateTriviaQuestionBank() {
+
   const seenIds = new Set();
   const seenFactKeys = new Set();
 
   const duplicateIds = [];
   const duplicateFactKeys = [];
   const missingFactKeys = [];
+  const invalidTypes = [];
+  const malformedQuestions = [];
 
 
   SOLOMON_TRIVIA_QUESTIONS.forEach(question => {
 
+    /* -----------------------------
+       UNIQUE ID CHECK
+       ----------------------------- */
+
     if (seenIds.has(question.id)) {
+
       duplicateIds.push(question.id);
+
     } else {
+
       seenIds.add(question.id);
     }
 
+
+    /* -----------------------------
+       UNIQUE FACT CHECK
+       ----------------------------- */
 
     if (!question.factKey) {
 
       missingFactKeys.push(question.id);
 
-    } else if (seenFactKeys.has(question.factKey)) {
+    } else if (
+      seenFactKeys.has(question.factKey)
+    ) {
 
-      duplicateFactKeys.push(question.factKey);
+      duplicateFactKeys.push(
+        question.factKey
+      );
 
     } else {
 
-      seenFactKeys.add(question.factKey);
+      seenFactKeys.add(
+        question.factKey
+      );
+    }
+
+
+    /* -----------------------------
+       QUESTION TYPE CHECK
+       ----------------------------- */
+
+    if (
+      !SOLOMON_TRIVIA_TYPES.includes(
+        question.type
+      )
+    ) {
+
+      invalidTypes.push(
+        `${question.id}: ${question.type}`
+      );
+
+      return;
+    }
+
+
+    /* -----------------------------
+       MULTIPLE CHOICE CHECK
+       ----------------------------- */
+
+    if (
+      question.type ===
+      "multiple-choice"
+    ) {
+
+      if (
+        !Array.isArray(question.answers) ||
+        question.answers.length < 3 ||
+        question.answers.length > 4 ||
+        !Number.isInteger(
+          question.correctIndex
+        ) ||
+        question.correctIndex < 0 ||
+        question.correctIndex >=
+          question.answers.length
+      ) {
+
+        malformedQuestions.push(
+          question.id
+        );
+      }
+    }
+
+
+    /* -----------------------------
+       TRUE / FALSE CHECK
+       ----------------------------- */
+
+    if (
+      question.type ===
+      "true-false"
+    ) {
+
+      if (
+        !Array.isArray(question.answers) ||
+        question.answers.length !== 2 ||
+        !Number.isInteger(
+          question.correctIndex
+        ) ||
+        question.correctIndex < 0 ||
+        question.correctIndex > 1
+      ) {
+
+        malformedQuestions.push(
+          question.id
+        );
+      }
+    }
+
+
+    /* -----------------------------
+       FILL-IN-THE-BLANK CHECK
+       ----------------------------- */
+
+    if (
+      question.type ===
+      "fill-blank"
+    ) {
+
+      if (
+        !Array.isArray(
+          question.acceptedAnswers
+        ) ||
+        question.acceptedAnswers.length === 0 ||
+        !question.displayAnswer
+      ) {
+
+        malformedQuestions.push(
+          question.id
+        );
+      }
     }
 
   });
 
 
+  /* =======================================================
+     REPORT RESULTS
+     ======================================================= */
+
   if (missingFactKeys.length > 0) {
+
     console.warn(
       "Trivia questions missing fact keys:",
       missingFactKeys
@@ -537,6 +737,7 @@ function validateTriviaQuestionBank() {
 
 
   if (duplicateIds.length > 0) {
+
     console.error(
       "Duplicate trivia question IDs found:",
       duplicateIds
@@ -545,6 +746,7 @@ function validateTriviaQuestionBank() {
 
 
   if (duplicateFactKeys.length > 0) {
+
     console.error(
       "Duplicate trivia facts found:",
       duplicateFactKeys
@@ -552,14 +754,34 @@ function validateTriviaQuestionBank() {
   }
 
 
+  if (invalidTypes.length > 0) {
+
+    console.error(
+      "Unsupported trivia question types found:",
+      invalidTypes
+    );
+  }
+
+
+  if (malformedQuestions.length > 0) {
+
+    console.error(
+      "Malformed trivia questions found:",
+      malformedQuestions
+    );
+  }
+
+
   if (
     missingFactKeys.length === 0 &&
     duplicateIds.length === 0 &&
-    duplicateFactKeys.length === 0
+    duplicateFactKeys.length === 0 &&
+    invalidTypes.length === 0 &&
+    malformedQuestions.length === 0
   ) {
 
     console.log(
-      `Trivia bank check passed: ${SOLOMON_TRIVIA_QUESTIONS.length} questions, no duplicate IDs or fact keys.`
+      `Trivia bank check passed: ${SOLOMON_TRIVIA_QUESTIONS.length} questions, no duplicate IDs, duplicate facts, invalid types, or malformed questions.`
     );
   }
 }
