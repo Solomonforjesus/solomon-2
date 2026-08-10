@@ -1211,6 +1211,381 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "1 Kings 17:4-6",
     active: true
   },
+  /* =======================================================
+     LEVEL 4 — KINGS, PROPHETS & PROMISES
+     ======================================================= */
+
+  {
+    id: "L4-Q001",
+    factKey: "solomon-built-temple",
+    level: 4,
+    type: "multiple-choice",
+    question: "Solomon built a magnificent building in Jerusalem for the worship of God. What was it?",
+    answers: [
+      "A palace",
+      "The temple",
+      "A fortress",
+      "A school"
+    ],
+    correctIndex: 1,
+    explanation:
+      "King Solomon built the temple in Jerusalem as a place for Israel to worship God.",
+    scripture: "1 Kings 6:1",
+    active: true
+  },
+
+  {
+    id: "L4-Q002",
+    factKey: "solomon-asked-for-wisdom",
+    level: 4,
+    type: "multiple-choice",
+    question: "When God told Solomon to ask for something, what did Solomon ask for?",
+    answers: [
+      "Great riches",
+      "A larger army",
+      "Wisdom",
+      "A longer life"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Solomon asked God for wisdom to lead the people well.",
+    scripture: "1 Kings 3:5-12",
+    active: true
+  },
+
+  {
+    id: "L4-Q003",
+    factKey: "elijah-challenged-baal-mount-carmel",
+    level: 4,
+    type: "multiple-choice",
+    question: "Elijah challenged the prophets of Baal on what mountain?",
+    answers: [
+      "Mount Sinai",
+      "Mount Carmel",
+      "Mount Ararat",
+      "Mount Zion"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Elijah challenged the prophets of Baal on Mount Carmel, where God showed that He alone is God.",
+    scripture: "1 Kings 18:20-39",
+    active: true
+  },
+
+  {
+    id: "L4-Q004",
+    factKey: "elijah-taken-whirlwind",
+    level: 4,
+    type: "multiple-choice",
+    question: "What happened to Elijah at the end of his earthly ministry?",
+    answers: [
+      "He sailed away",
+      "He was taken up in a whirlwind",
+      "He became king",
+      "He moved to Egypt"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Elijah was taken up toward heaven in a whirlwind.",
+    scripture: "2 Kings 2:11",
+    active: true
+  },
+
+  {
+    id: "L4-Q005",
+    factKey: "elisha-followed-elijah",
+    level: 4,
+    type: "multiple-choice",
+    question: "Elisha continued the work of which prophet?",
+    answers: [
+      "Isaiah",
+      "Jeremiah",
+      "Elijah",
+      "Samuel"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Elisha followed Elijah and continued serving God as a prophet.",
+    scripture: "2 Kings 2:9-15",
+    active: true
+  },
+
+  {
+    id: "L4-Q006",
+    factKey: "prophets-spoke-gods-message",
+    level: 4,
+    type: "true-false",
+    question: "True or False: God used prophets to deliver His messages to people.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God spoke through prophets to teach, warn, and guide His people.",
+    scripture: "Hebrews 1:1",
+    active: true
+  },
+
+  {
+    id: "L4-Q007",
+    factKey: "isaiah-immanuel-prophecy",
+    level: 4,
+    type: "multiple-choice",
+    question: "Which prophet wrote about a child who would be called Immanuel?",
+    answers: [
+      "Isaiah",
+      "Jonah",
+      "Daniel",
+      "Amos"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Isaiah foretold the birth of Immanuel, a name meaning 'God with us.'",
+    scripture: "Isaiah 7:14",
+    active: true
+  },
+
+  {
+    id: "L4-Q008",
+    factKey: "micah-bethlehem-ruler",
+    level: 4,
+    type: "multiple-choice",
+    question: "Which prophet said that a ruler would come from Bethlehem?",
+    answers: [
+      "Micah",
+      "Elijah",
+      "Samuel",
+      "Ezekiel"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Micah foretold that a ruler would come from Bethlehem.",
+    scripture: "Micah 5:2",
+    active: true
+  },
+
+  {
+    id: "L4-Q009",
+    factKey: "david-wrote-psalms",
+    level: 4,
+    type: "multiple-choice",
+    question: "King David wrote many songs and prayers found in which Bible book?",
+    answers: [
+      "Proverbs",
+      "Psalms",
+      "Acts",
+      "Exodus"
+    ],
+    correctIndex: 1,
+    explanation:
+      "David wrote many of the psalms, which include praise, prayer, sorrow, and trust in God.",
+    scripture: "Psalm 23",
+    active: true
+  },
+
+  {
+    id: "L4-Q010",
+    factKey: "solomon-connected-proverbs",
+    level: 4,
+    type: "multiple-choice",
+    question: "Solomon is especially connected with which Bible book filled with wise sayings?",
+    answers: [
+      "Proverbs",
+      "Genesis",
+      "Mark",
+      "Revelation"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Many of the sayings in Proverbs are connected with Solomon and teach practical wisdom.",
+    scripture: "Proverbs 1:1",
+    active: true
+  },
+
+  {
+    id: "L4-Q011",
+    factKey: "david-sinned-needed-forgiveness",
+    level: 4,
+    type: "true-false",
+    question: "True or False: King David was perfect and never sinned.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "David loved God, but he also sinned and needed God's forgiveness.",
+    scripture: "Psalm 51:1-4",
+    active: true
+  },
+
+  {
+    id: "L4-Q012",
+    factKey: "hezekiah-prayed-illness",
+    level: 4,
+    type: "multiple-choice",
+    question: "Which king prayed to God when he became very sick?",
+    answers: [
+      "Hezekiah",
+      "Saul",
+      "Ahab",
+      "Pharaoh"
+    ],
+    correctIndex: 0,
+    explanation:
+      "King Hezekiah prayed during his illness, and God answered him.",
+    scripture: "2 Kings 20:1-6",
+    active: true
+  },
+
+  {
+    id: "L4-Q013",
+    factKey: "jeremiah-called-people-return",
+    level: 4,
+    type: "multiple-choice",
+    question: "Jeremiah often warned God's people to do what?",
+    answers: [
+      "Build ships",
+      "Turn back to God",
+      "Choose a new king",
+      "Leave Jerusalem forever"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jeremiah repeatedly called God's people to turn away from sin and return to Him.",
+    scripture: "Jeremiah 3:12-14",
+    active: true
+  },
+
+  {
+    id: "L4-Q014",
+    factKey: "ezekiel-valley-dry-bones",
+    level: 4,
+    type: "multiple-choice",
+    question: "Which prophet saw a vision of a valley filled with dry bones?",
+    answers: [
+      "Ezekiel",
+      "Jonah",
+      "Nathan",
+      "Malachi"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Ezekiel saw a powerful vision in which God brought the dry bones together and gave them life.",
+    scripture: "Ezekiel 37:1-14",
+    active: true
+  },
+
+  {
+    id: "L4-Q015",
+    factKey: "davidic-covenant-royal-line",
+    level: 4,
+    type: "true-false",
+    question: "True or False: God made a special promise concerning David's royal family line.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God promised David that his royal line would have an important place in His plan.",
+    scripture: "2 Samuel 7:12-16",
+    active: true
+  },
+
+  {
+    id: "L4-Q016",
+    factKey: "prophet-job-speak-gods-word",
+    level: 4,
+    type: "multiple-choice",
+    question: "What was one important job of an Old Testament prophet?",
+    answers: [
+      "Entertain the king",
+      "Speak God's message",
+      "Build roads",
+      "Train soldiers"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Prophets were called to speak God's message faithfully.",
+    scripture: "Jeremiah 1:7",
+    active: true
+  },
+
+  {
+    id: "L4-Q017",
+    factKey: "samuel-anointed-david",
+    level: 4,
+    type: "multiple-choice",
+    question: "Which prophet anointed young David to become king?",
+    answers: [
+      "Samuel",
+      "Isaiah",
+      "Elijah",
+      "Jeremiah"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God sent Samuel to anoint David, even though David was the youngest of Jesse's sons.",
+    scripture: "1 Samuel 16:11-13",
+    active: true
+  },
+
+  {
+    id: "L4-Q018",
+    factKey: "messiah-line-of-david",
+    level: 4,
+    type: "multiple-choice",
+    question: "The promised Messiah would come through the family line of which king?",
+    answers: [
+      "David",
+      "Ahab",
+      "Pharaoh",
+      "Nebuchadnezzar"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God's promises pointed to a coming King from David's family line.",
+    scripture: "Isaiah 11:1",
+    active: true
+  },
+
+  {
+    id: "L4-Q019",
+    factKey: "prophets-future-events",
+    level: 4,
+    type: "true-false",
+    question: "True or False: Some prophets spoke about events that would happen in the future.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God gave some prophets messages about events and promises that were still to come.",
+    scripture: "1 Peter 1:10-12",
+    active: true
+  },
+
+  {
+    id: "L4-Q020",
+    factKey: "isaiah-suffering-servant",
+    level: 4,
+    type: "multiple-choice",
+    question: "Which prophet described a servant who would suffer for the sins of others?",
+    answers: [
+      "Isaiah",
+      "Jonah",
+      "Elijah",
+      "Samuel"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Isaiah described a suffering servant who would bear the sins of others, pointing forward to Jesus.",
+    scripture: "Isaiah 53:4-6",
+    active: true
+  },
    
 ];
 
