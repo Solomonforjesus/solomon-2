@@ -3422,6 +3422,372 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "Colossians 3:17",
     active: true
   },
+  /* =======================================================
+     LEVEL 10 — KINGDOM CHAMPION
+     ======================================================= */
+
+  {
+    id: "L10-Q001",
+    factKey: "god-created-heavens-earth-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "Who created the heavens and the earth?",
+    answers: [
+      "Moses",
+      "God",
+      "David",
+      "Solomon"
+    ],
+    correctIndex: 1,
+    explanation:
+      "The Bible begins by declaring that God created the heavens and the earth.",
+    scripture: "Genesis 1:1",
+    active: true
+  },
+
+  {
+    id: "L10-Q002",
+    factKey: "humans-created-image-god-finale",
+    level: 10,
+    type: "true-false",
+    question: "True or False: Human beings were created in the image of God.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Scripture teaches that people are uniquely created in God's image.",
+    scripture: "Genesis 1:27",
+    active: true
+  },
+
+  {
+    id: "L10-Q003",
+    factKey: "jesus-christ-son-god-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "Who is Jesus Christ?",
+    answers: [
+      "Only a teacher",
+      "The Son of God and the promised Christ",
+      "Only a prophet",
+      "A Roman ruler"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus is the Christ, the Son of the living God.",
+    scripture: "Matthew 16:16",
+    active: true
+  },
+
+  {
+    id: "L10-Q004",
+    factKey: "jesus-way-truth-life-finale",
+    level: 10,
+    type: "fill-blank",
+    question: "Jesus said, 'I am the way, the truth, and the ________.'",
+    acceptedAnswers: [
+      "life",
+      "the life"
+    ],
+    displayAnswer: "life",
+    explanation:
+      "Jesus said He is the way, the truth, and the life.",
+    scripture: "John 14:6",
+    active: true
+  },
+
+  {
+    id: "L10-Q005",
+    factKey: "jesus-died-for-sins-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "What did Jesus do for our sins?",
+    answers: [
+      "Ignored them",
+      "Died for them",
+      "Told us to fix them ourselves",
+      "Pretended they did not matter"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus gave Himself for our sins on the cross.",
+    scripture: "1 Corinthians 15:3",
+    active: true
+  },
+
+  {
+    id: "L10-Q006",
+    factKey: "jesus-rose-from-dead-finale",
+    level: 10,
+    type: "true-false",
+    question: "True or False: Jesus rose from the dead.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus rose from the dead on the third day.",
+    scripture: "1 Corinthians 15:4",
+    active: true
+  },
+
+  {
+    id: "L10-Q007",
+    factKey: "salvation-gift-through-jesus-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "What is salvation?",
+    answers: [
+      "Something we earn by being perfect",
+      "God's gift through Jesus Christ",
+      "A prize for knowing the most Bible facts",
+      "Something only adults can receive"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Salvation is God's gracious gift through Jesus Christ, not something we earn.",
+    scripture: "Ephesians 2:8-9",
+    active: true
+  },
+
+  {
+    id: "L10-Q008",
+    factKey: "believe-lord-jesus-finale",
+    level: 10,
+    type: "fill-blank",
+    question: "The Bible says, 'Believe in the Lord ________, and you will be saved.'",
+    acceptedAnswers: [
+      "Jesus",
+      "Jesus Christ",
+      "Christ Jesus"
+    ],
+    displayAnswer: "Jesus",
+    explanation:
+      "Scripture calls us to trust in the Lord Jesus Christ.",
+    scripture: "Acts 16:31",
+    active: true
+  },
+
+  {
+    id: "L10-Q009",
+    factKey: "goodness-cannot-replace-faith-finale",
+    level: 10,
+    type: "true-false",
+    question: "True or False: Being good enough can replace trusting in Jesus.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Good works cannot replace faith in Christ. Salvation is received through God's grace.",
+    scripture: "Ephesians 2:8-9",
+    active: true
+  },
+
+  {
+    id: "L10-Q010",
+    factKey: "repentance-turn-to-god-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "What does repentance mean?",
+    answers: [
+      "Turning from sin toward God",
+      "Never making another mistake",
+      "Hiding from God",
+      "Memorizing every Bible verse"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Repentance means turning from sin toward God with a changed heart.",
+    scripture: "Acts 3:19",
+    active: true
+  },
+
+  {
+    id: "L10-Q011",
+    factKey: "holy-spirit-helps-believers-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "Who helps believers follow Jesus and grow in faith?",
+    answers: [
+      "The Holy Spirit",
+      "Pharaoh",
+      "Caesar",
+      "Goliath"
+    ],
+    correctIndex: 0,
+    explanation:
+      "God gives believers the Holy Spirit to help, teach, and guide them.",
+    scripture: "John 14:16-17",
+    active: true
+  },
+
+  {
+    id: "L10-Q012",
+    factKey: "scripture-teaches-gods-truth-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "What should Christians use to learn God's truth?",
+    answers: [
+      "Scripture",
+      "Rumors",
+      "Popular opinion",
+      "Only their feelings"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Scripture teaches us God's truth and helps us grow in faith.",
+    scripture: "2 Timothy 3:16-17",
+    active: true
+  },
+
+  {
+    id: "L10-Q013",
+    factKey: "prayer-relationship-with-god-finale",
+    level: 10,
+    type: "true-false",
+    question: "True or False: Prayer is one way Christians grow in their relationship with God.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Prayer allows believers to speak with God, thank Him, confess sin, and bring Him their needs.",
+    scripture: "Philippians 4:6",
+    active: true
+  },
+
+  {
+    id: "L10-Q014",
+    factKey: "disciples-known-by-love-finale",
+    level: 10,
+    type: "fill-blank",
+    question: "Jesus said people would know His disciples by their ________ for one another.",
+    acceptedAnswers: [
+      "love",
+      "their love"
+    ],
+    displayAnswer: "love",
+    explanation:
+      "Love for one another is one of the clearest marks Jesus gave for His disciples.",
+    scripture: "John 13:34-35",
+    active: true
+  },
+
+  {
+    id: "L10-Q015",
+    factKey: "confess-sin-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "What should Christians do when they sin?",
+    answers: [
+      "Hide from God forever",
+      "Confess their sin to God",
+      "Blame someone else",
+      "Stop praying"
+    ],
+    correctIndex: 1,
+    explanation:
+      "God calls believers to confess their sins and trust His forgiveness.",
+    scripture: "1 John 1:9",
+    active: true
+  },
+
+  {
+    id: "L10-Q016",
+    factKey: "following-jesus-love-serve-finale",
+    level: 10,
+    type: "true-false",
+    question: "True or False: Following Jesus means loving and serving other people.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus calls His followers to love and serve others with humility and compassion.",
+    scripture: "Mark 10:43-45",
+    active: true
+  },
+
+  {
+    id: "L10-Q017",
+    factKey: "share-hope-in-jesus-finale",
+    level: 10,
+    type: "multiple-choice",
+    question: "What should Christians be ready to share with others?",
+    answers: [
+      "Their hope in Jesus",
+      "Their possessions",
+      "Their favorite games",
+      "Their disagreements"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Followers of Jesus should be ready to explain the hope they have in Him with gentleness and respect.",
+    scripture: "1 Peter 3:15",
+    active: true
+  },
+
+  {
+    id: "L10-Q018",
+    factKey: "greatest-truth-knowing-jesus",
+    level: 10,
+    type: "multiple-choice",
+    question: "What is the greatest truth this trivia journey points toward?",
+    answers: [
+      "Knowing the most facts",
+      "Winning every level",
+      "Knowing who Jesus is and what He has done",
+      "Getting every answer correct"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Bible knowledge matters, but the greatest truth is knowing who Jesus Christ is and what He has done for us.",
+    scripture: "John 20:31",
+    active: true
+  },
+
+  {
+    id: "L10-Q019",
+    factKey: "jesus-promises-eternal-life-finale",
+    level: 10,
+    type: "true-false",
+    question: "True or False: Jesus promised eternal life to those who believe in Him.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus promises eternal life to those who trust in Him.",
+    scripture: "John 3:16",
+    active: true
+  },
+
+  {
+    id: "L10-Q020",
+    factKey: "whole-trivia-journey-gospel-summary",
+    level: 10,
+    type: "multiple-choice",
+    question: "Which statement best summarizes the entire Bible Trivia with Solomon journey?",
+    answers: [
+      "Bible facts are the most important thing in life",
+      "God created us, sin separated us from Him, Jesus died and rose to save sinners, and we are called to trust and follow Him",
+      "Good people save themselves",
+      "Christianity is mostly about winning and rules"
+    ],
+    correctIndex: 1,
+    explanation:
+      "The Bible's message leads us to Jesus Christ: God created us, sin broke our fellowship with Him, Christ died and rose to save sinners, and He calls us to trust and follow Him.",
+    scripture: "Romans 3:23; Romans 5:8; Romans 6:23; 1 Corinthians 15:3-4",
+    active: true
+  },
    
 ];
 
