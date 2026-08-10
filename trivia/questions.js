@@ -1961,6 +1961,373 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "Matthew 16:15-16",
     active: true
   },
+  /* =======================================================
+     LEVEL 6 — WALKING WITH JESUS
+     ======================================================= */
+
+  {
+    id: "L6-Q001",
+    factKey: "jesus-taught-pray-to-father",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus taught His followers to pray to whom?",
+    answers: [
+      "God the Father",
+      "Angels",
+      "Kings",
+      "Prophets"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught His followers to pray to God and trust Him as our heavenly Father.",
+    scripture: "Matthew 6:9",
+    active: true
+  },
+
+  {
+    id: "L6-Q002",
+    factKey: "jesus-taught-forgive-others",
+    level: 6,
+    type: "true-false",
+    question: "True or False: Jesus taught His followers to forgive others.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught that forgiveness should be part of the life of those who follow Him.",
+    scripture: "Matthew 6:14-15",
+    active: true
+  },
+
+  {
+    id: "L6-Q003",
+    factKey: "golden-rule-treat-others",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus said we should treat other people the way we want them to treat whom?",
+    answers: [
+      "Only our friends",
+      "Us",
+      "Our teachers",
+      "Our families"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus taught us to treat others as we would want to be treated.",
+    scripture: "Matthew 7:12",
+    active: true
+  },
+
+  {
+    id: "L6-Q004",
+    factKey: "good-samaritan-helped-stranger",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus told a story about a man who helped an injured stranger. What is that story usually called?",
+    answers: [
+      "The Good Samaritan",
+      "The Lost Coin",
+      "The Wise Builder",
+      "The Great Banquet"
+    ],
+    correctIndex: 0,
+    explanation:
+      "The Good Samaritan showed mercy to someone who needed help.",
+    scripture: "Luke 10:30-37",
+    active: true
+  },
+
+  {
+    id: "L6-Q005",
+    factKey: "love-and-pray-for-enemies",
+    level: 6,
+    type: "multiple-choice",
+    question: "What did Jesus teach us to do for our enemies?",
+    answers: [
+      "Ignore them forever",
+      "Love them and pray for them",
+      "Get even with them",
+      "Be afraid of them"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus taught His followers to love their enemies and pray for those who mistreat them.",
+    scripture: "Matthew 5:44",
+    active: true
+  },
+
+  {
+    id: "L6-Q006",
+    factKey: "jesus-taught-serve-others",
+    level: 6,
+    type: "true-false",
+    question: "True or False: Jesus said only important people should be served.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus taught His followers to serve others, not just people who seem important.",
+    scripture: "Mark 10:43-45",
+    active: true
+  },
+
+  {
+    id: "L6-Q007",
+    factKey: "jesus-washed-disciples-feet",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus washed His disciples' feet to teach them about what?",
+    answers: [
+      "Winning",
+      "Serving others",
+      "Traveling",
+      "Building churches"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus humbly served His disciples and told them to follow His example.",
+    scripture: "John 13:12-15",
+    active: true
+  },
+
+  {
+    id: "L6-Q008",
+    factKey: "god-cares-for-sparrows",
+    level: 6,
+    type: "multiple-choice",
+    question: "When Jesus taught about God's care, He reminded people that God knows even what small birds?",
+    answers: [
+      "Eagles",
+      "Ravens",
+      "Sparrows",
+      "Peacocks"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Jesus used sparrows to remind us that God knows our needs and cares for us.",
+    scripture: "Matthew 10:29-31",
+    active: true
+  },
+
+  {
+    id: "L6-Q009",
+    factKey: "wise-person-obeys-jesus-words",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus said a wise person hears His words and does what with them?",
+    answers: [
+      "Forgets them",
+      "Obeys them",
+      "Hides them",
+      "Argues about them"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus compared the person who hears and obeys His words to someone building on rock.",
+    scripture: "Matthew 7:24",
+    active: true
+  },
+
+  {
+    id: "L6-Q010",
+    factKey: "wise-builder-rock-foundation",
+    level: 6,
+    type: "multiple-choice",
+    question: "What kind of foundation did the wise builder use in Jesus' story?",
+    answers: [
+      "Sand",
+      "Mud",
+      "Rock",
+      "Wood"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Jesus said the wise builder built his house on rock.",
+    scripture: "Matthew 7:24-25",
+    active: true
+  },
+
+  {
+    id: "L6-Q011",
+    factKey: "helping-people-in-need-matters",
+    level: 6,
+    type: "true-false",
+    question: "True or False: Jesus taught that helping people in need matters to God.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught His followers to show real compassion and care for people in need.",
+    scripture: "Matthew 25:35-40",
+    active: true
+  },
+
+  {
+    id: "L6-Q012",
+    factKey: "blessed-are-peacemakers",
+    level: 6,
+    type: "fill-blank",
+    question: "Jesus said, 'Blessed are the ________.'",
+    acceptedAnswers: [
+      "peacemakers",
+      "the peacemakers"
+    ],
+    displayAnswer: "peacemakers",
+    explanation:
+      "Jesus taught that peacemaking reflects the character God desires in His people.",
+    scripture: "Matthew 5:9",
+    active: true
+  },
+
+  {
+    id: "L6-Q013",
+    factKey: "greatness-through-serving",
+    level: 6,
+    type: "multiple-choice",
+    question: "When His disciples argued about who was greatest, Jesus taught that greatness includes doing what?",
+    answers: [
+      "Serving others",
+      "Becoming rich",
+      "Winning every argument",
+      "Being famous"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught that true greatness is shown through humble service.",
+    scripture: "Mark 9:35",
+    active: true
+  },
+
+  {
+    id: "L6-Q014",
+    factKey: "seek-first-kingdom-of-god",
+    level: 6,
+    type: "fill-blank",
+    question: "Jesus said to seek first the kingdom of ________.",
+    acceptedAnswers: [
+      "God",
+      "god"
+    ],
+    displayAnswer: "God",
+    explanation:
+      "Jesus taught His followers to put God's kingdom and righteousness first.",
+    scripture: "Matthew 6:33",
+    active: true
+  },
+
+  {
+    id: "L6-Q015",
+    factKey: "heart-matters-to-jesus",
+    level: 6,
+    type: "true-false",
+    question: "True or False: Jesus taught that what is inside a person's heart matters.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught that our words and actions reveal what is happening in our hearts.",
+    scripture: "Matthew 15:18-19",
+    active: true
+  },
+
+  {
+    id: "L6-Q016",
+    factKey: "followers-salt-of-earth",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus told His followers that they are the salt of the what?",
+    answers: [
+      "Sea",
+      "Earth",
+      "Desert",
+      "Temple"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus called His followers the salt of the earth, teaching that their lives should make a difference.",
+    scripture: "Matthew 5:13",
+    active: true
+  },
+
+  {
+    id: "L6-Q017",
+    factKey: "followers-light-of-world",
+    level: 6,
+    type: "multiple-choice",
+    question: "Jesus also told His followers that they are the light of the what?",
+    answers: [
+      "World",
+      "Temple",
+      "Palace",
+      "Wilderness"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus said His followers are the light of the world and should let their good works point others toward God.",
+    scripture: "Matthew 5:14-16",
+    active: true
+  },
+
+  {
+    id: "L6-Q018",
+    factKey: "love-jesus-keep-commandments",
+    level: 6,
+    type: "multiple-choice",
+    question: "What did Jesus say His followers should do if they love Him?",
+    answers: [
+      "Keep His commandments",
+      "Become famous",
+      "Travel to Jerusalem",
+      "Never make mistakes"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus connected loving Him with listening to and obeying His teaching.",
+    scripture: "John 14:15",
+    active: true
+  },
+
+  {
+    id: "L6-Q019",
+    factKey: "following-jesus-not-always-easy",
+    level: 6,
+    type: "true-false",
+    question: "True or False: Following Jesus means we will always have an easy life.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus never promised an easy life, but He promised peace in Him even when life is difficult.",
+    scripture: "John 16:33",
+    active: true
+  },
+
+  {
+    id: "L6-Q020",
+    factKey: "disciples-known-by-love",
+    level: 6,
+    type: "fill-blank",
+    question: "Jesus said people would know His disciples by their ________ for one another.",
+    acceptedAnswers: [
+      "love",
+      "their love"
+    ],
+    displayAnswer: "love",
+    explanation:
+      "Jesus said love for one another would be a mark of His disciples.",
+    scripture: "John 13:34-35",
+    active: true
+  },
    
 ];
 
