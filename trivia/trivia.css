@@ -322,7 +322,17 @@ input:focus-visible {
 
   overflow: hidden;
 }
+.game-cross {
+  display: block;
+  width: min(180px, 42vw);
+  height: auto;
+  margin: 0 auto 18px;
+  object-fit: contain;
 
+  filter:
+    drop-shadow(0 0 10px rgba(255, 188, 74, 0.38))
+    drop-shadow(0 0 22px rgba(255, 143, 32, 0.22));
+}
 
 .game-brand::before,
 .game-brand::after {
