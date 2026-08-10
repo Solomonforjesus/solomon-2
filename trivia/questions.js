@@ -1586,6 +1586,381 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     scripture: "Isaiah 53:4-6",
     active: true
   },
+  /* =======================================================
+     LEVEL 5 — MEET JESUS
+     ======================================================= */
+
+  {
+    id: "L5-Q001",
+    factKey: "jesus-born-bethlehem",
+    level: 5,
+    type: "multiple-choice",
+    question: "Where was Jesus born?",
+    answers: [
+      "Nazareth",
+      "Bethlehem",
+      "Jerusalem",
+      "Rome"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus was born in Bethlehem, just as Scripture had foretold.",
+    scripture: "Luke 2:4-7",
+    active: true
+  },
+
+  {
+    id: "L5-Q002",
+    factKey: "mary-mother-of-jesus",
+    level: 5,
+    type: "multiple-choice",
+    question: "Who was Jesus' mother?",
+    answers: [
+      "Martha",
+      "Elizabeth",
+      "Mary",
+      "Ruth"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Mary was chosen to give birth to Jesus.",
+    scripture: "Luke 1:30-31",
+    active: true
+  },
+
+  {
+    id: "L5-Q003",
+    factKey: "jesus-grew-up-nazareth",
+    level: 5,
+    type: "true-false",
+    question: "True or False: Jesus grew up in Nazareth.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus was raised in Nazareth after His family returned from Egypt.",
+    scripture: "Matthew 2:19-23",
+    active: true
+  },
+
+  {
+    id: "L5-Q004",
+    factKey: "john-baptized-jesus",
+    level: 5,
+    type: "multiple-choice",
+    question: "Who baptized Jesus?",
+    answers: [
+      "Peter",
+      "John the Baptist",
+      "Andrew",
+      "Nicodemus"
+    ],
+    correctIndex: 1,
+    explanation:
+      "John the Baptist baptized Jesus in the Jordan River.",
+    scripture: "Matthew 3:13-17",
+    active: true
+  },
+
+  {
+    id: "L5-Q005",
+    factKey: "jesus-baptism-spirit-father",
+    level: 5,
+    type: "multiple-choice",
+    question: "What happened when Jesus was baptized?",
+    answers: [
+      "The heavens opened and the Spirit descended like a dove",
+      "The sea divided",
+      "Fire came down on a mountain",
+      "An angel carried Jesus away"
+    ],
+    correctIndex: 0,
+    explanation:
+      "At Jesus' baptism, the Holy Spirit descended like a dove and the Father spoke from heaven.",
+    scripture: "Matthew 3:16-17",
+    active: true
+  },
+
+  {
+    id: "L5-Q006",
+    factKey: "jesus-chose-twelve-disciples",
+    level: 5,
+    type: "multiple-choice",
+    question: "Jesus called twelve special followers. What were they called?",
+    answers: [
+      "Kings",
+      "Priests",
+      "Disciples",
+      "Judges"
+    ],
+    correctIndex: 2,
+    explanation:
+      "Jesus chose twelve disciples to follow Him closely and learn from Him.",
+    scripture: "Matthew 10:1-4",
+    active: true
+  },
+
+  {
+    id: "L5-Q007",
+    factKey: "peter-walked-on-water",
+    level: 5,
+    type: "multiple-choice",
+    question: "Which disciple walked on water toward Jesus?",
+    answers: [
+      "Peter",
+      "Thomas",
+      "Matthew",
+      "Philip"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Peter stepped out of the boat and walked toward Jesus on the water.",
+    scripture: "Matthew 14:28-29",
+    active: true
+  },
+
+  {
+    id: "L5-Q008",
+    factKey: "jesus-healed-sick",
+    level: 5,
+    type: "true-false",
+    question: "True or False: Jesus healed people who were sick.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus healed many people, showing His compassion and power.",
+    scripture: "Matthew 4:23-24",
+    active: true
+  },
+
+  {
+    id: "L5-Q009",
+    factKey: "feeding-five-thousand-two-fish",
+    level: 5,
+    type: "multiple-choice",
+    question: "Jesus fed more than 5,000 people with five loaves and how many fish?",
+    answers: [
+      "One",
+      "Two",
+      "Five",
+      "Twelve"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus multiplied five loaves and two fish to feed a huge crowd.",
+    scripture: "Matthew 14:17-21",
+    active: true
+  },
+
+  {
+    id: "L5-Q010",
+    factKey: "jesus-calmed-wind-sea",
+    level: 5,
+    type: "multiple-choice",
+    question: "What did Jesus calm during a storm?",
+    answers: [
+      "The wind and the sea",
+      "A volcano",
+      "An earthquake",
+      "A forest fire"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus commanded the wind and waves, and the storm became calm.",
+    scripture: "Mark 4:39-41",
+    active: true
+  },
+
+  {
+    id: "L5-Q011",
+    factKey: "zacchaeus-climbed-tree",
+    level: 5,
+    type: "multiple-choice",
+    question: "Which man climbed a tree because he wanted to see Jesus?",
+    answers: [
+      "Zacchaeus",
+      "Lazarus",
+      "Bartimaeus",
+      "Joseph"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Zacchaeus climbed a sycamore tree to see Jesus as He passed by.",
+    scripture: "Luke 19:1-5",
+    active: true
+  },
+
+  {
+    id: "L5-Q012",
+    factKey: "jesus-raised-lazarus",
+    level: 5,
+    type: "multiple-choice",
+    question: "Jesus raised which man from the dead after he had been in a tomb?",
+    answers: [
+      "Peter",
+      "Lazarus",
+      "John",
+      "Andrew"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus called Lazarus out of the tomb, showing His power over death.",
+    scripture: "John 11:43-44",
+    active: true
+  },
+
+  {
+    id: "L5-Q013",
+    factKey: "jesus-welcomed-children",
+    level: 5,
+    type: "true-false",
+    question: "True or False: Jesus welcomed children.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus welcomed children and told His disciples not to keep them away.",
+    scripture: "Mark 10:13-16",
+    active: true
+  },
+
+  {
+    id: "L5-Q014",
+    factKey: "greatest-commandment-love-god",
+    level: 5,
+    type: "multiple-choice",
+    question: "Jesus said the greatest commandment begins with loving whom?",
+    answers: [
+      "Yourself only",
+      "God",
+      "The king",
+      "Your teacher"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus taught us to love God with all our heart, soul, mind, and strength.",
+    scripture: "Mark 12:29-30",
+    active: true
+  },
+
+  {
+    id: "L5-Q015",
+    factKey: "love-neighbor-as-yourself",
+    level: 5,
+    type: "multiple-choice",
+    question: "Jesus taught that we should also love whom as ourselves?",
+    answers: [
+      "Only our friends",
+      "Our neighbors",
+      "Only our family",
+      "Only people who agree with us"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Jesus taught us to love our neighbor as ourselves.",
+    scripture: "Mark 12:31",
+    active: true
+  },
+
+  {
+    id: "L5-Q016",
+    factKey: "jesus-taught-lords-prayer",
+    level: 5,
+    type: "multiple-choice",
+    question: "Which prayer did Jesus teach His disciples as a model for prayer?",
+    answers: [
+      "The Lord's Prayer",
+      "The Prayer of Jabez",
+      "Hannah's Prayer",
+      "Solomon's Prayer"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught His disciples a model prayer beginning with 'Our Father in heaven.'",
+    scripture: "Matthew 6:9-13",
+    active: true
+  },
+
+  {
+    id: "L5-Q017",
+    factKey: "jesus-taught-forgiveness",
+    level: 5,
+    type: "true-false",
+    question: "True or False: Jesus forgave people and taught His followers to forgive others.",
+    answers: [
+      "True",
+      "False"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus taught forgiveness and showed mercy to sinners who came to Him.",
+    scripture: "Matthew 6:14; Luke 7:48",
+    active: true
+  },
+
+  {
+    id: "L5-Q018",
+    factKey: "jesus-light-of-world",
+    level: 5,
+    type: "multiple-choice",
+    question: "What did Jesus say He is in John 8:12?",
+    answers: [
+      "The light of the world",
+      "A soldier",
+      "A farmer",
+      "A king of Rome"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus said that He is the light of the world.",
+    scripture: "John 8:12",
+    active: true
+  },
+
+  {
+    id: "L5-Q019",
+    factKey: "jesus-way-truth-life",
+    level: 5,
+    type: "multiple-choice",
+    question: "What did Jesus say about Himself in John 14:6?",
+    answers: [
+      "I am the way, the truth, and the life",
+      "I am only a teacher",
+      "I am one prophet among many",
+      "Everyone finds God in a different way"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Jesus said He is the way, the truth, and the life, and that no one comes to the Father except through Him.",
+    scripture: "John 14:6",
+    active: true
+  },
+
+  {
+    id: "L5-Q020",
+    factKey: "peter-confessed-jesus-christ-son-god",
+    level: 5,
+    type: "multiple-choice",
+    question: "Who did Peter say Jesus is?",
+    answers: [
+      "A great soldier",
+      "The Christ, the Son of the living God",
+      "A king from Rome",
+      "Elijah returned"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Peter confessed that Jesus is the Christ, the Son of the living God.",
+    scripture: "Matthew 16:15-16",
+    active: true
+  },
    
 ];
 
