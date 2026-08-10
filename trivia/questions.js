@@ -60,11 +60,13 @@ const SOLOMON_TRIVIA_LEVELS = [
 /* =========================================================
    QUESTION BANK
 
-   Structure:
+   Each question contains:
+
    id              Unique question ID
+   factKey         Unique fact/topic key
    level           Level number
    question        Question text
-   answers         Array of answer choices
+   answers         Answer choices
    correctIndex    Zero-based correct answer
    explanation     Solomon's short teaching response
    scripture       Optional Scripture reference
@@ -79,6 +81,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q001",
+    factKey: "creation-god-created-heavens-earth",
     level: 1,
     question: "Who created the heavens and the earth?",
     answers: [
@@ -96,6 +99,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q002",
+    factKey: "adam-eve-first-man-woman",
     level: 1,
     question: "What were the names of the first man and woman?",
     answers: [
@@ -113,6 +117,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q003",
+    factKey: "eden-garden-location",
     level: 1,
     question: "Where did Adam and Eve live at the beginning?",
     answers: [
@@ -130,6 +135,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q004",
+    factKey: "noah-built-ark",
     level: 1,
     question: "Who built the ark before the great flood?",
     answers: [
@@ -147,6 +153,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q005",
+    factKey: "noah-rainbow-covenant",
     level: 1,
     question: "What sign did God place in the sky after the flood?",
     answers: [
@@ -164,6 +171,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q006",
+    factKey: "creation-six-days",
     level: 1,
     question: "How many days did God use to create the heavens and the earth before resting on the seventh day?",
     answers: [
@@ -181,6 +189,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q007",
+    factKey: "creation-first-day-light",
     level: 1,
     question: "What did God create on the first day?",
     answers: [
@@ -198,6 +207,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q008",
+    factKey: "noah-dove-olive-leaf",
     level: 1,
     question: "What did Noah send out from the ark that later returned with an olive leaf?",
     answers: [
@@ -215,6 +225,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q009",
+    factKey: "cain-killed-abel",
     level: 1,
     question: "Who was the son of Adam and Eve who killed his brother Abel?",
     answers: [
@@ -232,6 +243,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q010",
+    factKey: "babel-tower",
     level: 1,
     question: "What was the name of the tower people tried to build high into the heavens?",
     answers: [
@@ -249,6 +261,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q011",
+    factKey: "abraham-called-leave-homeland",
     level: 1,
     question: "Who was told by God to leave his homeland and go to a land God would show him?",
     answers: [
@@ -266,6 +279,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q012",
+    factKey: "sarah-wife-abraham",
     level: 1,
     question: "What was the name of Abraham's wife?",
     answers: [
@@ -283,6 +297,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q013",
+    factKey: "isaac-promised-son",
     level: 1,
     question: "What was the name of Abraham and Sarah's promised son?",
     answers: [
@@ -300,6 +315,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q014",
+    factKey: "jacob-renamed-israel",
     level: 1,
     question: "Who was Isaac's son whose name was later changed to Israel?",
     answers: [
@@ -317,6 +333,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q015",
+    factKey: "joseph-special-coat",
     level: 1,
     question: "Which of Jacob's sons received a special coat from his father?",
     answers: [
@@ -334,6 +351,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q016",
+    factKey: "joseph-leader-egypt",
     level: 1,
     question: "Where did Joseph eventually become a powerful leader?",
     answers: [
@@ -351,6 +369,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q017",
+    factKey: "joseph-sold-by-brothers",
     level: 1,
     question: "What happened to Joseph after his brothers became jealous of him?",
     answers: [
@@ -368,6 +387,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q018",
+    factKey: "humanity-created-image-of-god",
     level: 1,
     question: "What did God make in His own image?",
     answers: [
@@ -385,6 +405,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q019",
+    factKey: "creation-very-good",
     level: 1,
     question: "What did God say about everything He had made at the end of creation?",
     answers: [
@@ -402,6 +423,7 @@ const SOLOMON_TRIVIA_QUESTIONS = [
 
   {
     id: "L1-Q020",
+    factKey: "genesis-first-book",
     level: 1,
     question: "Which book of the Bible tells us about Creation, Noah, Abraham, and Joseph?",
     answers: [
@@ -459,3 +481,88 @@ function getQuestionSetForLevel(levelNumber, count = 10) {
 
   return shuffleTriviaQuestions(questions).slice(0, count);
 }
+
+
+/* =========================================================
+   QUESTION BANK VALIDATION
+
+   This checks:
+   - duplicate question IDs
+   - duplicate fact keys
+   - missing fact keys
+
+   It does NOT affect normal gameplay.
+   ========================================================= */
+
+function validateTriviaQuestionBank() {
+  const seenIds = new Set();
+  const seenFactKeys = new Set();
+
+  const duplicateIds = [];
+  const duplicateFactKeys = [];
+  const missingFactKeys = [];
+
+
+  SOLOMON_TRIVIA_QUESTIONS.forEach(question => {
+
+    if (seenIds.has(question.id)) {
+      duplicateIds.push(question.id);
+    } else {
+      seenIds.add(question.id);
+    }
+
+
+    if (!question.factKey) {
+
+      missingFactKeys.push(question.id);
+
+    } else if (seenFactKeys.has(question.factKey)) {
+
+      duplicateFactKeys.push(question.factKey);
+
+    } else {
+
+      seenFactKeys.add(question.factKey);
+    }
+
+  });
+
+
+  if (missingFactKeys.length > 0) {
+    console.warn(
+      "Trivia questions missing fact keys:",
+      missingFactKeys
+    );
+  }
+
+
+  if (duplicateIds.length > 0) {
+    console.error(
+      "Duplicate trivia question IDs found:",
+      duplicateIds
+    );
+  }
+
+
+  if (duplicateFactKeys.length > 0) {
+    console.error(
+      "Duplicate trivia facts found:",
+      duplicateFactKeys
+    );
+  }
+
+
+  if (
+    missingFactKeys.length === 0 &&
+    duplicateIds.length === 0 &&
+    duplicateFactKeys.length === 0
+  ) {
+
+    console.log(
+      `Trivia bank check passed: ${SOLOMON_TRIVIA_QUESTIONS.length} questions, no duplicate IDs or fact keys.`
+    );
+  }
+}
+
+
+validateTriviaQuestionBank();
