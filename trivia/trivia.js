@@ -1,6 +1,10 @@
 /* =========================================================
    BIBLE TRIVIA WITH SOLOMON
    Game Engine
+   Supports:
+   - Multiple Choice
+   - True / False
+   - Fill in the Blank
    ========================================================= */
 
 "use strict";
@@ -151,10 +155,61 @@ const chooseLevelButton =
 
 
 /* =========================================================
+   FILL-IN-THE-BLANK UI
+   Created by JavaScript only when needed
+   ========================================================= */
+
+const fillBlankWrap =
+  document.createElement("div");
+
+fillBlankWrap.id = "fill-blank-wrap";
+fillBlankWrap.hidden = true;
+
+fillBlankWrap.innerHTML = `
+  <div class="fill-blank-entry">
+    <label for="fill-blank-input">
+      Type your answer:
+    </label>
+
+    <input
+      id="fill-blank-input"
+      type="text"
+      maxlength="40"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="Your answer"
+    />
+
+    <button
+      id="fill-blank-submit"
+      class="primary-game-btn compact-btn"
+      type="button"
+    >
+      Check Answer
+    </button>
+  </div>
+`;
+
+answerGrid.insertAdjacentElement(
+  "afterend",
+  fillBlankWrap
+);
+
+const fillBlankInput =
+  document.getElementById("fill-blank-input");
+
+const fillBlankSubmit =
+  document.getElementById("fill-blank-submit");
+
+
+/* =========================================================
    INITIALIZATION
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", initializeTriviaGame);
+document.addEventListener(
+  "DOMContentLoaded",
+  initializeTriviaGame
+);
 
 
 function initializeTriviaGame() {
@@ -197,6 +252,22 @@ function bindEvents() {
   answerGrid.addEventListener(
     "click",
     handleAnswerSelection
+  );
+
+
+  fillBlankSubmit.addEventListener(
+    "click",
+    handleFillBlankSubmission
+  );
+
+
+  fillBlankInput.addEventListener(
+    "keydown",
+    event => {
+      if (event.key === "Enter") {
+        handleFillBlankSubmission();
+      }
+    }
   );
 
 
@@ -250,9 +321,12 @@ function showScreen(screenName) {
         return;
       }
 
-      const isActive = name === screenName;
+      const isActive =
+        name === screenName;
 
-      screen.hidden = !isActive;
+      screen.hidden =
+        !isActive;
+
       screen.classList.toggle(
         "active-screen",
         isActive
@@ -275,16 +349,15 @@ function showScreen(screenName) {
 function handleStartGame() {
 
   /*
-    IMPORTANT PRIVACY RULE:
-
-    The player's name exists only in JavaScript memory
-    during the current page session.
-
-    It is NOT placed in localStorage.
+    PRIVACY:
+    Player name remains only in temporary
+    JavaScript memory during this page session.
   */
 
   gameState.playerName =
-    sanitizePlayerName(playerNameInput.value);
+    sanitizePlayerName(
+      playerNameInput.value
+    );
 
   updatePlayerGreeting();
 
@@ -329,12 +402,15 @@ function handleLevelSelection(event) {
     return;
   }
 
+
   const levelNumber =
     Number(card.dataset.level);
+
 
   if (!Number.isInteger(levelNumber)) {
     return;
   }
+
 
   startLevel(levelNumber);
 }
@@ -349,21 +425,17 @@ function startLevel(levelNumber) {
   const level =
     getTriviaLevel(levelNumber);
 
+
   if (!level) {
     return;
   }
 
 
   const availableQuestions =
-    getActiveQuestionsForLevel(levelNumber);
+    getActiveQuestionsForLevel(
+      levelNumber
+    );
 
-
-  /*
-    During development, Levels 2-10 exist structurally
-    before their question banks are installed.
-
-    This guard prevents an empty game screen.
-  */
 
   if (
     availableQuestions.length <
@@ -413,37 +485,50 @@ function showTemporaryLevelMessage(
   const card =
     levelCards.find(
       item =>
-        Number(item.dataset.level) === levelNumber
+        Number(item.dataset.level) ===
+        levelNumber
     );
+
 
   if (!card) {
     return;
   }
 
+
   const status =
     card.querySelector(".level-status");
+
 
   if (!status) {
     return;
   }
 
+
   const previousText =
     status.textContent;
 
-  status.textContent = message;
+
+  status.textContent =
+    message;
+
 
   window.setTimeout(() => {
+
     updateLevelCards();
 
-    if (status.textContent === message) {
-      status.textContent = previousText;
+    if (
+      status.textContent === message
+    ) {
+      status.textContent =
+        previousText;
     }
+
   }, 2200);
 }
 
 
 /* =========================================================
-   RENDER QUESTION
+   RENDER CURRENT QUESTION
    ========================================================= */
 
 function renderCurrentQuestion() {
@@ -464,15 +549,13 @@ function renderCurrentQuestion() {
   }
 
 
-  gameState.answeredCurrentQuestion = false;
+  gameState.answeredCurrentQuestion =
+    false;
 
-
-  /* -----------------------------------------
-     STATUS
-     ----------------------------------------- */
 
   currentLevelLabel.textContent =
     `Level ${gameState.currentLevel}`;
+
 
   questionCounter.textContent =
     `Question ${
@@ -481,8 +564,10 @@ function renderCurrentQuestion() {
       gameState.currentQuestions.length
     }`;
 
+
   currentScore.textContent =
     gameState.score;
+
 
   starCounter.setAttribute(
     "aria-label",
@@ -494,12 +579,9 @@ function renderCurrentQuestion() {
   );
 
 
-  /* -----------------------------------------
-     PROGRESS
-     ----------------------------------------- */
-
   const completedQuestionCount =
     gameState.currentQuestionIndex + 1;
+
 
   const progressPercent =
     (
@@ -507,8 +589,10 @@ function renderCurrentQuestion() {
       gameState.currentQuestions.length
     ) * 100;
 
+
   questionProgressBar.style.width =
     `${progressPercent}%`;
+
 
   progressTrack.setAttribute(
     "aria-valuenow",
@@ -516,20 +600,83 @@ function renderCurrentQuestion() {
   );
 
 
-  /* -----------------------------------------
-     QUESTION
-     ----------------------------------------- */
-
   questionLevelName.textContent =
     level.name;
+
 
   questionText.textContent =
     question.question;
 
 
-  /* -----------------------------------------
-     ANSWERS
-     ----------------------------------------- */
+  resetResponsePanel();
+
+  resetAnswerPresentation();
+
+
+  if (
+    question.type ===
+    "fill-blank"
+  ) {
+
+    renderFillBlankQuestion();
+
+  } else {
+
+    renderButtonQuestion(
+      question
+    );
+  }
+
+
+  questionText.setAttribute(
+    "tabindex",
+    "-1"
+  );
+
+
+  questionText.focus({
+    preventScroll: true
+  });
+}
+
+
+/* =========================================================
+   RESET ANSWER PRESENTATION
+   ========================================================= */
+
+function resetAnswerPresentation() {
+
+  answerGrid.hidden = false;
+
+  fillBlankWrap.hidden = true;
+
+  fillBlankInput.value = "";
+  fillBlankInput.disabled = false;
+  fillBlankSubmit.disabled = false;
+
+
+  answerButtons.forEach(button => {
+
+    button.hidden = false;
+    button.disabled = false;
+
+    button.classList.remove(
+      "correct-answer",
+      "incorrect-answer"
+    );
+  });
+}
+
+
+/* =========================================================
+   MULTIPLE CHOICE / TRUE-FALSE
+   ========================================================= */
+
+function renderButtonQuestion(question) {
+
+  answerGrid.hidden = false;
+  fillBlankWrap.hidden = true;
+
 
   answerButtons.forEach(
     (button, index) => {
@@ -538,16 +685,21 @@ function renderCurrentQuestion() {
         question.answers[index];
 
       const answerText =
-        button.querySelector(".answer-text");
+        button.querySelector(
+          ".answer-text"
+        );
 
       const answerLetter =
-        button.querySelector(".answer-letter");
+        button.querySelector(
+          ".answer-letter"
+        );
 
 
       button.classList.remove(
         "correct-answer",
         "incorrect-answer"
       );
+
 
       button.disabled = false;
 
@@ -559,10 +711,29 @@ function renderCurrentQuestion() {
         answerText.textContent =
           answer;
 
-        answerLetter.textContent =
-          String.fromCharCode(
-            65 + index
-          );
+
+        /*
+          True / False looks cleaner without
+          pretending it has four choices.
+        */
+
+        if (
+          question.type ===
+          "true-false"
+        ) {
+
+          answerLetter.textContent =
+            index === 0
+              ? "T"
+              : "F";
+
+        } else {
+
+          answerLetter.textContent =
+            String.fromCharCode(
+              65 + index
+            );
+        }
 
       } else {
 
@@ -570,39 +741,42 @@ function renderCurrentQuestion() {
       }
     }
   );
-
-
-  /* -----------------------------------------
-     RESPONSE RESET
-     ----------------------------------------- */
-
-  resetResponsePanel();
-
-
-  /*
-    Move keyboard focus to the question
-    without making the heading permanently tabbable.
-  */
-
-  questionText.setAttribute(
-    "tabindex",
-    "-1"
-  );
-
-  questionText.focus({
-    preventScroll: true
-  });
 }
 
 
 /* =========================================================
-   ANSWER HANDLING
+   FILL IN THE BLANK
+   ========================================================= */
+
+function renderFillBlankQuestion() {
+
+  answerGrid.hidden = true;
+  fillBlankWrap.hidden = false;
+
+  fillBlankInput.value = "";
+  fillBlankInput.disabled = false;
+  fillBlankSubmit.disabled = false;
+
+
+  window.setTimeout(() => {
+
+    fillBlankInput.focus({
+      preventScroll: true
+    });
+
+  }, 50);
+}
+
+
+/* =========================================================
+   MULTIPLE CHOICE ANSWER HANDLING
    ========================================================= */
 
 function handleAnswerSelection(event) {
 
   const button =
     event.target.closest(".answer-btn");
+
 
   if (
     !button ||
@@ -613,27 +787,31 @@ function handleAnswerSelection(event) {
   }
 
 
+  const question =
+    getCurrentQuestion();
+
+
+  if (
+    !question ||
+    question.type === "fill-blank"
+  ) {
+    return;
+  }
+
+
   const selectedIndex =
     Number(
       button.dataset.answerIndex
     );
+
 
   if (!Number.isInteger(selectedIndex)) {
     return;
   }
 
 
-  const question =
-    gameState.currentQuestions[
-      gameState.currentQuestionIndex
-    ];
-
-  if (!question) {
-    return;
-  }
-
-
-  gameState.answeredCurrentQuestion = true;
+  gameState.answeredCurrentQuestion =
+    true;
 
 
   const isCorrect =
@@ -661,6 +839,7 @@ function handleAnswerSelection(event) {
         question.correctIndex
       ];
 
+
     if (correctButton) {
 
       correctButton.classList.add(
@@ -672,17 +851,83 @@ function handleAnswerSelection(event) {
 
   disableAnswerButtons();
 
-  currentScore.textContent =
-    gameState.score;
+  updateScoreDisplay();
 
-  starCounter.setAttribute(
-    "aria-label",
-    `${gameState.score} correct ${
-      gameState.score === 1
-        ? "answer"
-        : "answers"
-    }`
+  showSolomonResponse(
+    question,
+    isCorrect
   );
+}
+
+
+/* =========================================================
+   FILL-IN-THE-BLANK ANSWER HANDLING
+   ========================================================= */
+
+function handleFillBlankSubmission() {
+
+  if (
+    gameState.answeredCurrentQuestion
+  ) {
+    return;
+  }
+
+
+  const question =
+    getCurrentQuestion();
+
+
+  if (
+    !question ||
+    question.type !== "fill-blank"
+  ) {
+    return;
+  }
+
+
+  const typedAnswer =
+    normalizeTypedAnswer(
+      fillBlankInput.value
+    );
+
+
+  /*
+    Do not score an empty submission.
+  */
+
+  if (!typedAnswer) {
+    return;
+  }
+
+
+  const acceptedAnswers =
+    question.acceptedAnswers.map(
+      answer =>
+        normalizeTypedAnswer(answer)
+    );
+
+
+  const isCorrect =
+    acceptedAnswers.includes(
+      typedAnswer
+    );
+
+
+  gameState.answeredCurrentQuestion =
+    true;
+
+
+  if (isCorrect) {
+
+    gameState.score += 1;
+  }
+
+
+  fillBlankInput.disabled = true;
+  fillBlankSubmit.disabled = true;
+
+
+  updateScoreDisplay();
 
 
   showSolomonResponse(
@@ -693,7 +938,54 @@ function handleAnswerSelection(event) {
 
 
 /* =========================================================
-   DISABLE ANSWERS
+   NORMALIZE TYPED ANSWER
+   ========================================================= */
+
+function normalizeTypedAnswer(value) {
+
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[.,!?'"“”‘’]/g, "")
+    .replace(/\s+/g, " ");
+}
+
+
+/* =========================================================
+   CURRENT QUESTION HELPER
+   ========================================================= */
+
+function getCurrentQuestion() {
+
+  return gameState.currentQuestions[
+    gameState.currentQuestionIndex
+  ];
+}
+
+
+/* =========================================================
+   SCORE DISPLAY
+   ========================================================= */
+
+function updateScoreDisplay() {
+
+  currentScore.textContent =
+    gameState.score;
+
+
+  starCounter.setAttribute(
+    "aria-label",
+    `${gameState.score} correct ${
+      gameState.score === 1
+        ? "answer"
+        : "answers"
+    }`
+  );
+}
+
+
+/* =========================================================
+   DISABLE ANSWER BUTTONS
    ========================================================= */
 
 function disableAnswerButtons() {
@@ -725,6 +1017,7 @@ function showSolomonResponse(
 
 
   solomonResponse.hidden = false;
+
 
   solomonResponse.classList.remove(
     "correct-response",
@@ -759,10 +1052,26 @@ function showSolomonResponse(
     responseHeading.textContent =
       `Almost${namePart}!`;
 
-    const correctAnswer =
-      question.answers[
-        question.correctIndex
-      ];
+
+    let correctAnswer = "";
+
+
+    if (
+      question.type ===
+      "fill-blank"
+    ) {
+
+      correctAnswer =
+        question.displayAnswer;
+
+    } else {
+
+      correctAnswer =
+        question.answers[
+          question.correctIndex
+        ];
+    }
+
 
     responseMessage.textContent =
       `The correct answer is ${correctAnswer}. ${question.explanation}`;
@@ -774,27 +1083,25 @@ function showSolomonResponse(
     responseScripture.textContent =
       `See ${question.scripture}`;
 
-    responseScripture.hidden = false;
+    responseScripture.hidden =
+      false;
 
   } else {
 
-    responseScripture.hidden = true;
+    responseScripture.hidden =
+      true;
   }
 
 
-  nextQuestionWrap.hidden = false;
+  nextQuestionWrap.hidden =
+    false;
 
-
-  /*
-    Focus Solomon's response so keyboard and
-    assistive-technology users immediately
-    encounter the feedback.
-  */
 
   responseHeading.setAttribute(
     "tabindex",
     "-1"
   );
+
 
   responseHeading.focus({
     preventScroll: true
@@ -808,7 +1115,9 @@ function showSolomonResponse(
 
 function moveToNextQuestion() {
 
-  if (!gameState.answeredCurrentQuestion) {
+  if (
+    !gameState.answeredCurrentQuestion
+  ) {
     return;
   }
 
@@ -838,15 +1147,19 @@ function moveToNextQuestion() {
 
 function resetQuestionScreen() {
 
-  currentScore.textContent = "0";
+  currentScore.textContent =
+    "0";
+
 
   questionProgressBar.style.width =
     "10%";
+
 
   progressTrack.setAttribute(
     "aria-valuenow",
     "1"
   );
+
 
   resetResponsePanel();
 }
@@ -858,25 +1171,34 @@ function resetQuestionScreen() {
 
 function resetResponsePanel() {
 
-  solomonResponse.hidden = true;
+  solomonResponse.hidden =
+    true;
+
 
   solomonResponse.classList.remove(
     "correct-response",
     "gentle-response"
   );
 
+
   responseHeading.textContent =
     "";
+
 
   responseMessage.textContent =
     "";
 
+
   responseScripture.textContent =
     "";
 
-  responseScripture.hidden = true;
 
-  nextQuestionWrap.hidden = true;
+  responseScripture.hidden =
+    true;
+
+
+  nextQuestionWrap.hidden =
+    true;
 }
 
 
@@ -890,6 +1212,7 @@ function completeCurrentLevel() {
     getTriviaLevel(
       gameState.currentLevel
     );
+
 
   if (!level) {
     return;
@@ -912,11 +1235,9 @@ function completeCurrentLevel() {
   updateCrownProgress();
 
 
-  /*
-    Level 10 gets its own final screen.
-  */
-
-  if (gameState.currentLevel === 10) {
+  if (
+    gameState.currentLevel === 10
+  ) {
 
     showScreen("final");
 
@@ -965,8 +1286,10 @@ function renderCompletionScreen(level) {
   resultBadgeIcon.textContent =
     reward.icon;
 
+
   resultBadgeTitle.textContent =
     reward.title;
+
 
   resultBadgeScore.textContent =
     `${score} of ${total} correct`;
@@ -1038,7 +1361,7 @@ function getCompletionTitle(score) {
 
 
 /* =========================================================
-   LEVEL-SPECIFIC LEARNING MESSAGES
+   LEVEL LEARNING MESSAGES
    ========================================================= */
 
 function getLearningMessage(levelNumber) {
@@ -1049,7 +1372,7 @@ function getLearningMessage(levelNumber) {
       "You learned more about God's creation and the beginnings recorded in Genesis.",
 
     2:
-      "You learned more about people who trusted God.",
+      "You learned more about people and stories found throughout the Bible.",
 
     3:
       "You explored some of the Bible's remarkable events.",
@@ -1100,6 +1423,7 @@ function markLevelCompleted(levelNumber) {
       levelNumber
     );
 
+
     gameState.completedLevels.sort(
       (a, b) => a - b
     );
@@ -1137,97 +1461,95 @@ function unlockNextLevel(levelNumber) {
 
 function updateLevelCards() {
 
-  levelCards.forEach(
-    card => {
+  levelCards.forEach(card => {
 
-      const levelNumber =
-        Number(card.dataset.level);
-
-      const status =
-        card.querySelector(
-          ".level-status"
-        );
-
-      const isCompleted =
-        gameState.completedLevels.includes(
-          levelNumber
-        );
-
-      const isUnlocked =
-        levelNumber <=
-        gameState.highestUnlockedLevel;
-
-      const questionCount =
-        getActiveQuestionsForLevel(
-          levelNumber
-        ).length;
-
-      const hasPlayableBank =
-        questionCount >=
-        TRIVIA_CONFIG.questionsPerLevel;
+    const levelNumber =
+      Number(card.dataset.level);
 
 
-      card.classList.toggle(
-        "completed",
-        isCompleted
+    const status =
+      card.querySelector(
+        ".level-status"
       );
 
 
-      /*
-        During initial development:
-        unlocked levels that do not yet have
-        ten questions remain visibly unavailable.
-      */
-
-      const canPlay =
-        isUnlocked &&
-        hasPlayableBank;
-
-
-      card.disabled =
-        !canPlay;
-
-      card.classList.toggle(
-        "locked",
-        !canPlay
+    const isCompleted =
+      gameState.completedLevels.includes(
+        levelNumber
       );
 
 
-      if (!status) {
-        return;
-      }
+    const isUnlocked =
+      levelNumber <=
+      gameState.highestUnlockedLevel;
 
 
-      if (isCompleted) {
+    const questionCount =
+      getActiveQuestionsForLevel(
+        levelNumber
+      ).length;
 
-        status.textContent =
-          "✓ Completed — Play Again";
 
-      } else if (
-        isUnlocked &&
-        hasPlayableBank
-      ) {
+    const hasPlayableBank =
+      questionCount >=
+      TRIVIA_CONFIG.questionsPerLevel;
 
-        status.textContent =
-          "Ready to Play";
 
-      } else if (
-        isUnlocked &&
-        !hasPlayableBank
-      ) {
+    card.classList.toggle(
+      "completed",
+      isCompleted
+    );
 
-        status.textContent =
-          "More Questions Coming";
 
-      } else {
+    const canPlay =
+      isUnlocked &&
+      hasPlayableBank;
 
-        status.textContent =
-          `🔒 Complete Level ${
-            levelNumber - 1
-          }`;
-      }
+
+    card.disabled =
+      !canPlay;
+
+
+    card.classList.toggle(
+      "locked",
+      !canPlay
+    );
+
+
+    if (!status) {
+      return;
     }
-  );
+
+
+    if (isCompleted) {
+
+      status.textContent =
+        "✓ Completed — Play Again";
+
+    } else if (
+      isUnlocked &&
+      hasPlayableBank
+    ) {
+
+      status.textContent =
+        "Ready to Play";
+
+    } else if (
+      isUnlocked &&
+      !hasPlayableBank
+    ) {
+
+      status.textContent =
+        "More Questions Coming";
+
+    } else {
+
+      status.textContent =
+        `🔒 Complete Level ${
+          levelNumber - 1
+        }`;
+    }
+  });
 }
 
 
@@ -1237,23 +1559,23 @@ function updateLevelCards() {
 
 function updateCrownProgress() {
 
-  crownJewels.forEach(
-    jewel => {
+  crownJewels.forEach(jewel => {
 
-      const jewelNumber =
-        Number(jewel.dataset.jewel);
+    const jewelNumber =
+      Number(jewel.dataset.jewel);
 
-      const earned =
-        gameState.completedLevels.includes(
-          jewelNumber
-        );
 
-      jewel.classList.toggle(
-        "earned",
-        earned
+    const earned =
+      gameState.completedLevels.includes(
+        jewelNumber
       );
-    }
-  );
+
+
+    jewel.classList.toggle(
+      "earned",
+      earned
+    );
+  });
 
 
   const completedCount =
@@ -1303,12 +1625,6 @@ function returnToLevelMap() {
 
 function handleContinueJourney() {
 
-  /*
-    Returning to the level map lets the child
-    see the newly illuminated crown jewel and
-    newly unlocked level.
-  */
-
   returnToLevelMap();
 }
 
@@ -1336,9 +1652,8 @@ function handlePlayAgain() {
 function saveProgress() {
 
   /*
-    ONLY anonymous game progress is saved.
-
-    Player name is deliberately excluded.
+    Only anonymous progress is stored.
+    Player name is NEVER included.
   */
 
   const progress = {
@@ -1359,11 +1674,6 @@ function saveProgress() {
     );
 
   } catch (error) {
-
-    /*
-      Game remains fully playable if localStorage
-      is disabled or unavailable.
-    */
 
     console.warn(
       "Trivia progress could not be saved."
@@ -1450,21 +1760,8 @@ function loadSavedProgress() {
 
 
 /* =========================================================
-   DEVELOPMENT / TESTING HELPER
+   DEVELOPMENT / TESTING HELPERS
    ========================================================= */
-
-/*
-  This function is intentionally available from
-  the browser console while we are building.
-
-  It clears anonymous saved game progress.
-
-  In the browser developer console:
-
-      resetSolomonTriviaProgress()
-
-  This does NOT affect anything else on Solomon.
-*/
 
 window.resetSolomonTriviaProgress =
   function resetSolomonTriviaProgress() {
@@ -1476,7 +1773,7 @@ window.resetSolomonTriviaProgress =
       );
 
     } catch (error) {
-      /* Ignore storage failures. */
+      /* Ignore storage failure */
     }
 
 
@@ -1488,10 +1785,12 @@ window.resetSolomonTriviaProgress =
     gameState.score = 0;
     gameState.answeredCurrentQuestion = false;
 
+
     updateLevelCards();
     updateCrownProgress();
 
     showScreen("welcome");
+
 
     console.log(
       "Bible Trivia with Solomon progress reset."
