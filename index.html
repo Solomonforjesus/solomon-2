@@ -873,6 +873,61 @@ button {
     }
 
   
+
+    /* Reusable sharing controls */
+    .share-control {
+      width: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 0;
+      padding: 10px 16px;
+      border: 1px solid #174976;
+      border-radius: 10px;
+      background: #1e5f9e;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .share-control:hover,
+    .share-control:focus-visible {
+      background: #174976;
+      transform: translateY(-1px);
+      outline: 3px solid rgba(30, 95, 158, 0.28);
+      outline-offset: 3px;
+    }
+
+    .article-share-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      margin: -2px 0 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(117, 82, 39, 0.18);
+    }
+
+    .share-status {
+      min-height: 1.2em;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 520px) {
+      .article-share-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .article-share-row .share-control {
+        width: 100%;
+      }
+    }
+
     /* Solomon ecosystem links */
     .ecosystem-strip {
       width: 100%;
@@ -1000,6 +1055,7 @@ button {
   <button type="button" onclick="startPrayerRequest()">Prayer Request</button>
   <button type="button" onclick="emailPastor()">Email the Pastor</button>
   <button type="button" onclick="window.location.href='/trivia/'">Bible Trivia with Solomon</button>
+  <button type="button" onclick="shareSolomonSite()">Share Solomon</button>
 </div>
       </section>
 
@@ -5100,6 +5156,128 @@ function startPrayerRequest() {
            messages.scrollTop = messages.scrollHeight;
     }
 
+
+
+// ---------- Reusable site and article sharing ----------
+function slugifyArticleTitle(title) {
+  return String(title || "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function copyTextFallback(text) {
+  const helper = document.createElement("textarea");
+  helper.value = text;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "fixed";
+  helper.style.opacity = "0";
+  document.body.appendChild(helper);
+  helper.select();
+
+  try {
+    document.execCommand("copy");
+    return true;
+  } catch (error) {
+    return false;
+  } finally {
+    document.body.removeChild(helper);
+  }
+}
+
+async function copyShareLink(url) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(url);
+      return true;
+    } catch (error) {
+      // Fall through to the older copy method.
+    }
+  }
+
+  return copyTextFallback(url);
+}
+
+async function shareSolomonContent({ title, text, url, statusElement }) {
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text, url });
+      if (statusElement) statusElement.textContent = "Shared.";
+      return;
+    } catch (error) {
+      if (error && error.name === "AbortError") return;
+      // If native sharing fails, fall back to copying the link.
+    }
+  }
+
+  const copied = await copyShareLink(url);
+  if (statusElement) {
+    statusElement.textContent = copied
+      ? "Link copied."
+      : "Copy this link: " + url;
+  }
+}
+
+function getSolomonHomeUrl() {
+  return window.location.origin + "/";
+}
+
+function getArticleShareUrl(slug) {
+  return window.location.origin + "/article.html?slug=" + encodeURIComponent(slug);
+}
+
+function shareSolomonSite() {
+  shareSolomonContent({
+    title: "Solomon For Jesus",
+    text: "Wisdom. Truth. Hope in Jesus Christ.",
+    url: getSolomonHomeUrl()
+  });
+}
+
+function installArticleShareControls() {
+  document.querySelectorAll(".faith-modal .article-modal-box").forEach((box) => {
+    if (box.closest(".legal-modal-box") || box.querySelector(".article-share-row")) return;
+
+    const heading = box.querySelector("h2");
+    if (!heading) return;
+
+    const title = heading.textContent.trim();
+    const modal = box.closest(".faith-modal");
+    const explicitSlug = modal && modal.dataset.articleSlug;
+    const slug = explicitSlug || slugifyArticleTitle(title);
+
+    if (!slug) return;
+
+    const row = document.createElement("div");
+    row.className = "article-share-row";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "share-control";
+    button.textContent = "Share This Article";
+
+    const status = document.createElement("span");
+    status.className = "share-status";
+    status.setAttribute("aria-live", "polite");
+
+    button.addEventListener("click", () => {
+      shareSolomonContent({
+        title,
+        text: title + " — Solomon For Jesus",
+        url: getArticleShareUrl(slug),
+        statusElement: status
+      });
+    });
+
+    row.appendChild(button);
+    row.appendChild(status);
+    heading.insertAdjacentElement("afterend", row);
+  });
+}
+
+installArticleShareControls();
 
 const whyJesusModal = document.getElementById("whyJesusModal");
 const faithModal = document.getElementById("faithModal");
