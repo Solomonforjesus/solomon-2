@@ -181,6 +181,13 @@
 
     restoreConversation();
 
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        window.sendMessage();
+      }
+    });
+
     window.sendMessage = async function sendMessageWithContinuity() {
       const text = input.value.trim();
       if (!text) return;
