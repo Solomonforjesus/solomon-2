@@ -99,6 +99,44 @@
 
   installHomepageSeo();
 
+  function installFeaturedJoyArticle() {
+    const featureSection = document.querySelector(".article-feature-section");
+    const featureCard = featureSection && featureSection.querySelector(".article-feature-card");
+    if (!featureCard) return;
+
+    const title = featureCard.querySelector("h2");
+    const paragraphs = featureCard.querySelectorAll(":scope > p:not(.article-feature-label)");
+    const oldButton = featureCard.querySelector(".article-open-link");
+
+    featureSection.setAttribute("aria-labelledby", "joyFeatureTitle");
+    if (title) {
+      title.id = "joyFeatureTitle";
+      title.textContent = "JOY!!! — The Gladness No Circumstance Can Take Away";
+    }
+
+    paragraphs.forEach((paragraph, index) => {
+      if (index === 0) {
+        paragraph.textContent = "There is joy in Jesus Christ. Not painted-on happiness or pretending life is easy, but the deep gladness of knowing that Jesus loves you, receives you, and holds you through every season of life.";
+      } else if (index === 1) {
+        paragraph.textContent = "For the hurting, the curious, the lost, the drifting, the young, the old, the sick, and even those facing death: Jesus Christ is alive, the Gospel is good news, and there is still reason to rejoice.";
+      } else {
+        paragraph.remove();
+      }
+    });
+
+    if (oldButton) {
+      const link = document.createElement("a");
+      link.className = "article-open-link";
+      link.href = "/article.html?slug=joy-the-gladness-no-circumstance-can-take-away";
+      link.textContent = "Read the full article →";
+      oldButton.replaceWith(link);
+    }
+
+    document.querySelectorAll('.article-link-list [data-modal-target="hurtDeeplyModal"]').forEach((button) => button.remove());
+  }
+
+  installFeaturedJoyArticle();
+
   const container = document.getElementById("readingLibraryCards");
 
   if (container) {
@@ -153,11 +191,6 @@
     });
   }
 
-  // ------------------------------------------------------------
-  // Solomon conversation continuity and site-awareness layer.
-  // Stored only in this visitor's browser; nothing is added to
-  // Supabase or another visitor database by this feature.
-  // ------------------------------------------------------------
   const CHAT_STORAGE_KEY = "solomonConversationV1";
   const CHAT_ACTIVITY_KEY = "solomonConversationLastActivityV1";
   const CHAT_INACTIVITY_TIMEOUT_MS = 3 * 60 * 60 * 1000;
@@ -203,7 +236,6 @@
       localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(conversation.slice(-MAX_STORED_MESSAGES)));
       localStorage.setItem(CHAT_ACTIVITY_KEY, String(Date.now()));
     } catch (error) {
-      // Chat should continue even if browser storage is unavailable or full.
     }
   }
 
@@ -337,11 +369,7 @@
 
         if (navigator.share) {
           try {
-            await navigator.share({
-              title: titleText,
-              text: shareText,
-              url
-            });
+            await navigator.share({ title: titleText, text: shareText, url });
             return;
           } catch (error) {
             if (error && error.name === "AbortError") return;
