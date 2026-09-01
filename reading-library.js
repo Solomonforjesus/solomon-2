@@ -123,8 +123,21 @@
       return "I would be honored to pray with you here. You can also use the “Prayer Request” button below the conversation to begin a prayer request, and the “Email the Pastor” button if you would like personal pastoral contact.";
     }
 
-    if (/\b(bible trivia|trivia game|play trivia)\b/.test(normalized)) {
-      return "Yes. Solomon includes Bible Trivia. Use the “Bible Trivia with Solomon” button below the conversation to open it.";
+    const explicitTriviaIntent = /\b(bible trivia|trivia game|play trivia|bible game|game for (?:my )?(?:child|children|kid|kids))\b/.test(normalized);
+    const childAudienceIntent = /\b(child|children|kid|kids|boy|boys|girl|girls|son|sons|daughter|daughters|grandchild|grandchildren|grandson|granddaughter|twin|twins)\b/.test(normalized) &&
+      /\b(enjoy|fun|play|game|activity|something|anything|do|try|like)\b/.test(normalized);
+    const childAgeIntent = /\b(?:[7-9]|1[0-2])(?:[- ]?year[- ]?old| years? old)?\b/.test(normalized) &&
+      /\b(child|children|kid|kids|boy|boys|girl|girls|son|sons|daughter|daughters|grandchild|grandchildren|grandson|granddaughter|twin|twins)\b/.test(normalized);
+
+    if (explicitTriviaIntent || childAudienceIntent || childAgeIntent) {
+      return "Yes. They may enjoy Bible Trivia with Solomon. It is designed especially for children ages 7–12, so eight-year-olds are right in the intended age range. Use the “Bible Trivia with Solomon” button directly below this conversation to open the game.";
+    }
+
+    const shareIntent = /\b(share|send|give|show|forward)\b/.test(normalized) &&
+      /\b(this page|this site|website|site|solomon|link|url|someone|friend|family)\b/.test(normalized);
+
+    if (shareIntent) {
+      return "Use the “Share Solomon” button directly below this conversation. On supported phones, tablets, and computers it opens the device’s sharing options; otherwise it copies the Solomon page link so you can send it to someone.";
     }
 
     if (/\b(reading library|articles|christian articles|read an article)\b/.test(normalized)) {
@@ -136,7 +149,7 @@
     }
 
     if (/\b(what can you do|what does this site do|site features|what is on this site|help me use the site)\b/.test(normalized)) {
-      return "Along with answering questions from a biblical Christian perspective, Solomon can help you reach the Prayer Request and Email the Pastor options, Bible Trivia, the Reading Library, and Solomon Christian Academy. Tell me what you are looking for and I will point you in the right direction.";
+      return "Along with answering questions from a biblical Christian perspective, Solomon can help you reach Prayer Request, Email the Pastor, Bible Trivia, the Reading Library, Solomon Christian Academy, and the Share Solomon feature. Tell me what you are looking for and I will point you in the right direction.";
     }
 
     return null;
