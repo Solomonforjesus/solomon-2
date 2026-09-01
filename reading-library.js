@@ -159,19 +159,39 @@
   // Supabase or another visitor database by this feature.
   // ------------------------------------------------------------
   const CHAT_STORAGE_KEY = "solomonConversationV1";
+  const CHAT_ACTIVITY_KEY = "solomonConversationLastActivityV1";
+  const CHAT_INACTIVITY_TIMEOUT_MS = 3 * 60 * 60 * 1000;
   const MAX_STORED_MESSAGES = 40;
   const MAX_CONTEXT_MESSAGES = 16;
 
+  function clearStoredConversation() {
+    localStorage.removeItem(CHAT_STORAGE_KEY);
+    localStorage.removeItem(CHAT_ACTIVITY_KEY);
+  }
+
+  function conversationHasExpired() {
+    const lastActivity = Number(localStorage.getItem(CHAT_ACTIVITY_KEY));
+    return !Number.isFinite(lastActivity) || lastActivity <= 0 || Date.now() - lastActivity > CHAT_INACTIVITY_TIMEOUT_MS;
+  }
+
   function loadConversation() {
     try {
-      const saved = JSON.parse(localStorage.getItem(CHAT_STORAGE_KEY) || "[]");
+      const rawSaved = localStorage.getItem(CHAT_STORAGE_KEY);
+      if (!rawSaved) return [];
+
+      if (conversationHasExpired()) {
+        clearStoredConversation();
+        return [];
+      }
+
+      const saved = JSON.parse(rawSaved);
       if (!Array.isArray(saved)) return [];
 
       return saved
         .filter((item) => item && (item.role === "user" || item.role === "assistant") && typeof item.content === "string")
         .slice(-MAX_STORED_MESSAGES);
     } catch (error) {
-      localStorage.removeItem(CHAT_STORAGE_KEY);
+      clearStoredConversation();
       return [];
     }
   }
@@ -181,9 +201,18 @@
   function saveConversation() {
     try {
       localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(conversation.slice(-MAX_STORED_MESSAGES)));
+      localStorage.setItem(CHAT_ACTIVITY_KEY, String(Date.now()));
     } catch (error) {
       // Chat should continue even if browser storage is unavailable or full.
     }
+  }
+
+  function expireConversationIfInactive(messagesElement) {
+    if (conversation.length === 0 || !conversationHasExpired()) return;
+
+    conversation = [];
+    clearStoredConversation();
+    if (messagesElement) messagesElement.innerHTML = "";
   }
 
   function appendChatMessage(messagesElement, role, content) {
@@ -347,6 +376,8 @@
     window.sendMessage = async function sendMessageWithContinuity() {
       const text = input.value.trim();
       if (!text) return;
+
+      expireConversationIfInactive(messages);
 
       appendChatMessage(messages, "user", text);
       conversation.push({ role: "user", content: text });
