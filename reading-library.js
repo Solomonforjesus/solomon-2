@@ -1,4 +1,104 @@
 (function () {
+  function ensureMeta(selector, attributes) {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement("meta");
+      document.head.appendChild(element);
+    }
+
+    Object.entries(attributes).forEach(([name, value]) => {
+      element.setAttribute(name, value);
+    });
+
+    return element;
+  }
+
+  function installHomepageSeo() {
+    const canonicalUrl = "https://www.solomonforjesus.com/";
+    const pageTitle = "Solomon For Jesus | Biblical Answers, Christian Articles & Hope in Jesus Christ";
+    const description = "Ask biblical questions, explore Christian articles, request prayer, and discover clear Gospel-centered answers about Jesus Christ, Scripture, forgiveness, suffering, salvation, and eternal life.";
+    const imageUrl = "https://www.solomonforjesus.com/ChatGPT%20Image%20Jun%2027,%202026,%2011_30_33%20AM.png";
+
+    document.title = pageTitle;
+
+    ensureMeta('meta[name="description"]', { name: "description", content: description });
+    ensureMeta('meta[name="robots"]', { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" });
+    ensureMeta('meta[property="og:type"]', { property: "og:type", content: "website" });
+    ensureMeta('meta[property="og:site_name"]', { property: "og:site_name", content: "Solomon For Jesus" });
+    ensureMeta('meta[property="og:title"]', { property: "og:title", content: pageTitle });
+    ensureMeta('meta[property="og:description"]', { property: "og:description", content: description });
+    ensureMeta('meta[property="og:url"]', { property: "og:url", content: canonicalUrl });
+    ensureMeta('meta[property="og:image"]', { property: "og:image", content: imageUrl });
+    ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
+    ensureMeta('meta[name="twitter:title"]', { name: "twitter:title", content: pageTitle });
+    ensureMeta('meta[name="twitter:description"]', { name: "twitter:description", content: description });
+    ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: imageUrl });
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl;
+
+    if (!document.querySelector("h1")) {
+      const heading = document.createElement("h1");
+      heading.textContent = "Solomon For Jesus";
+      heading.setAttribute("aria-label", "Solomon For Jesus");
+      Object.assign(heading.style, {
+        position: "absolute",
+        width: "1px",
+        height: "1px",
+        padding: "0",
+        margin: "-1px",
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        border: "0"
+      });
+      document.body.insertBefore(heading, document.body.firstChild);
+    }
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": canonicalUrl + "#website",
+          "url": canonicalUrl,
+          "name": "Solomon For Jesus",
+          "alternateName": "Solomon 2.0",
+          "description": description,
+          "inLanguage": "en-US",
+          "publisher": { "@id": canonicalUrl + "#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": canonicalUrl + "#organization",
+          "name": "Solomon For Jesus",
+          "url": canonicalUrl,
+          "description": "A free Christian ministry resource offering Gospel-centered biblical answers, prayer access, Bible learning, and Christian reading resources.",
+          "logo": {
+            "@type": "ImageObject",
+            "url": imageUrl
+          }
+        }
+      ]
+    };
+
+    let script = document.getElementById("solomonStructuredData");
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "solomonStructuredData";
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
+  }
+
+  installHomepageSeo();
+
   const container = document.getElementById("readingLibraryCards");
 
   if (container) {
