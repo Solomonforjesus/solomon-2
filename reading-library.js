@@ -174,6 +174,62 @@
     ].join("\n");
   }
 
+  function slugifyArticleTitle(value) {
+    return String(value || "")
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function installLegacyArticleShareFix() {
+    document.addEventListener(
+      "click",
+      async (event) => {
+        const button = event.target.closest("button");
+        if (!button || button.textContent.trim() !== "Share This Article") return;
+
+        const box = button.closest(".article-modal-box");
+        if (!box) return;
+
+        const heading = box.querySelector("h2");
+        const titleText = heading ? heading.textContent.trim() : "Solomon For Jesus Reading Library";
+        const modal = box.closest(".faith-modal");
+        const explicitSlug = modal && modal.dataset.articleSlug;
+        const slug = explicitSlug || slugifyArticleTitle(titleText);
+        if (!slug) return;
+
+        const url = `${window.location.origin}/article.html?slug=${encodeURIComponent(slug)}`;
+        const shareText = `${titleText} — Solomon For Jesus\n\n${url}`;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: titleText,
+              text: shareText,
+              url
+            });
+            return;
+          } catch (error) {
+            if (error && error.name === "AbortError") return;
+          }
+        }
+
+        try {
+          await navigator.clipboard.writeText(url);
+          window.alert("Article link copied.");
+        } catch (error) {
+          window.prompt("Copy this article link:", url);
+        }
+      },
+      true
+    );
+  }
+
   function installConversationContinuity() {
     const input = document.getElementById("userInput");
     const messages = document.getElementById("messages");
@@ -246,5 +302,6 @@
     };
   }
 
+  installLegacyArticleShareFix();
   installConversationContinuity();
 })();
