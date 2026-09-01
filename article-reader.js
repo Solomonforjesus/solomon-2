@@ -8,6 +8,8 @@
   const body = document.getElementById("articleBody");
   const stillTimeArticleReturnKey = "solomonStillTimeArticleReturn";
   const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+  const SITE_URL = "https://www.solomonforjesus.com";
+  const SHARE_IMAGE = `${SITE_URL}/ChatGPT%20Image%20Jun%2027,%202026,%2011_30_33%20AM.png`;
 
   function slugify(value) {
     return String(value || "")
@@ -22,6 +24,23 @@
     return `${window.location.pathname}${window.location.search}${window.location.hash}`;
   }
 
+  function permanentArticleUrl(slug) {
+    return `${SITE_URL}/article.html?slug=${encodeURIComponent(slug)}`;
+  }
+
+  function ensureMeta(selector, attributes) {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement("meta");
+      document.head.appendChild(element);
+    }
+
+    Object.entries(attributes).forEach(([name, value]) => {
+      element.setAttribute(name, value);
+    });
+    return element;
+  }
+
   function setCanonicalUrl(slug) {
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -29,20 +48,71 @@
       canonical.rel = "canonical";
       document.head.appendChild(canonical);
     }
-    canonical.href = `${window.location.origin}/article.html?slug=${encodeURIComponent(slug)}`;
+    canonical.href = permanentArticleUrl(slug);
   }
 
-  function setDescription(description) {
-    const content = String(description || "").trim();
-    if (!content) return;
+  function setArticleSeo(article) {
+    const articleTitle = String(article.title || "").trim();
+    const description = String(
+      article.description || `${articleTitle} — Solomon For Jesus Reading Library.`
+    ).trim();
+    const slug = String(article.slug || requestedSlug || "").trim().toLowerCase();
+    const url = permanentArticleUrl(slug);
+    const pageTitle = `${articleTitle} | Solomon For Jesus`;
 
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement("meta");
-      descriptionMeta.name = "description";
-      document.head.appendChild(descriptionMeta);
+    document.title = pageTitle;
+    setCanonicalUrl(slug);
+
+    ensureMeta('meta[name="description"]', { name: "description", content: description });
+    ensureMeta('meta[name="robots"]', { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" });
+    ensureMeta('meta[property="og:type"]', { property: "og:type", content: "article" });
+    ensureMeta('meta[property="og:site_name"]', { property: "og:site_name", content: "Solomon For Jesus" });
+    ensureMeta('meta[property="og:title"]', { property: "og:title", content: pageTitle });
+    ensureMeta('meta[property="og:description"]', { property: "og:description", content: description });
+    ensureMeta('meta[property="og:url"]', { property: "og:url", content: url });
+    ensureMeta('meta[property="og:image"]', { property: "og:image", content: SHARE_IMAGE });
+    ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
+    ensureMeta('meta[name="twitter:title"]', { name: "twitter:title", content: pageTitle });
+    ensureMeta('meta[name="twitter:description"]', { name: "twitter:description", content: description });
+    ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: SHARE_IMAGE });
+
+    if (article.date) {
+      ensureMeta('meta[property="article:published_time"]', {
+        property: "article:published_time",
+        content: `${article.date}T12:00:00-05:00`
+      });
     }
-    descriptionMeta.content = content;
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: articleTitle,
+      description,
+      url,
+      mainEntityOfPage: url,
+      image: SHARE_IMAGE,
+      author: {
+        "@type": "Organization",
+        name: "Solomon For Jesus",
+        url: `${SITE_URL}/`
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Solomon For Jesus",
+        url: `${SITE_URL}/`
+      }
+    };
+
+    if (article.date) structuredData.datePublished = article.date;
+
+    let script = document.getElementById("articleStructuredData");
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "articleStructuredData";
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
   }
 
   function formatArticleDate(dateValue) {
@@ -146,12 +216,11 @@
     const category = String(article.category || "Reading Library").trim();
     const formattedDate = formatArticleDate(article.date);
 
-    document.title = `${articleTitle} | Solomon 2.0`;
     title.textContent = articleTitle;
     meta.textContent = formattedDate ? `${category} · ${formattedDate}` : category;
     body.innerHTML = articleContent;
 
-    setDescription(article.description || `${articleTitle} — Solomon 2.0 Reading Library.`);
+    setArticleSeo(article);
     installStillTimeLinks();
     restoreArticlePosition();
   }
@@ -174,6 +243,7 @@
       throw new Error("Article slug does not match its file name");
     }
 
+    article.slug = slug;
     return article;
   }
 
@@ -218,13 +288,14 @@
       slug,
       title: articleTitle,
       category: "Reading Library",
-      description: `${articleTitle} — a Solomon 2.0 Reading Library article.`,
+      description: `${articleTitle} — a Solomon For Jesus Reading Library article centered on Scripture and Jesus Christ.`,
       content: clone.innerHTML
     };
   }
 
   function showNotFound() {
-    document.title = "Article Not Found | Solomon 2.0";
+    document.title = "Article Not Found | Solomon For Jesus";
+    ensureMeta('meta[name="robots"]', { name: "robots", content: "noindex, follow" });
     title.textContent = "Article Not Found";
     meta.textContent = "";
     body.innerHTML = '<p>We could not load this article. Please return to the <a href="/#reading-library">Reading Library</a>.</p>';
