@@ -11,6 +11,17 @@ if (!message || typeof message !== "string") {
   return res.status(400).json({ error: "A message is required." });
 }
 
+if (!message.trim()) {
+  return res.status(400).json({ error: "A message is required." });
+}
+
+const MAX_MESSAGE_LENGTH = 12000;
+if (message.length > MAX_MESSAGE_LENGTH) {
+  return res.status(413).json({
+    error: "That message is too long. Please shorten it and try again."
+  });
+}
+
 const normalizedMessage = message.toLowerCase();
 
 const clearCrisisPatterns = [
