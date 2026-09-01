@@ -273,6 +273,7 @@
           : "Solomon 2.0 Reading Library";
 
       const url = window.location.href;
+      const shareText = `${title} — Solomon 2.0\n\nRead the article here:\n${url}`;
 
       shareStatus.textContent = "";
 
@@ -280,7 +281,7 @@
         try {
           await navigator.share({
             title: title,
-            text: title + " — Solomon 2.0",
+            text: shareText,
             url: url
           });
 
