@@ -1,0 +1,34 @@
+name: Add Fingerprint release announcement
+on:
+  push:
+    paths:
+      - '.github/workflows/add-fingerprint-release.yml'
+permissions:
+  contents: write
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add release banner
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          css='''\n    .publication-notice {\n      width: 100%;\n      margin: 0 0 28px;\n      padding: 16px 20px;\n      background: #174976;\n      color: #fff;\n      text-align: center;\n      border: 1px solid rgba(201,162,77,.55);\n      border-radius: 14px;\n      box-shadow: 0 8px 22px rgba(47,36,24,.12);\n    }\n    .publication-notice p { margin: 0; line-height: 1.5; font-size: clamp(.96rem, 1.8vw, 1.12rem); }\n    .publication-notice strong { color: #f3dfaa; }\n    .publication-notice a { color: #fff; font-weight: 700; white-space: nowrap; }\n'''
+          html='''\n    <section class="publication-notice" aria-label="New publication announcement">\n      <p><strong>NOW LIVE:</strong> Our first publication, <em>Fingerprint of Reality: Science, Design, and the Truth Beyond Matter</em> by Gary Dearing. <a href="https://solomonforjesus.org/reader/fingerprint/">Read Free →</a></p>\n    </section>\n'''
+          if 'publication-notice' not in s:
+              s=s.replace('</style>', css+'</style>', 1)
+              marker='<div class="page">'
+              s=s.replace(marker, marker+'\n'+html, 1)
+              p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "Solomonforjesus"
+          git config user.email "fingerprintofreality@outlook.com"
+          git add index.html
+          git commit -m "Announce Fingerprint of Reality on Solomon homepage"
+          git push
