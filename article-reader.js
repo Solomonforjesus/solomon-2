@@ -2,7 +2,8 @@
   "use strict";
 
   const params = new URLSearchParams(window.location.search);
-  const requestedSlug = params.get("slug");
+  const pathMatch = window.location.pathname.match(/^\/articles\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+  const requestedSlug = params.get("slug") || (pathMatch ? pathMatch[1] : null);
   const title = document.getElementById("articleTitle");
   const meta = document.getElementById("articleMeta");
   const body = document.getElementById("articleBody");
@@ -25,7 +26,7 @@
   }
 
   function permanentArticleUrl(slug) {
-    return `${SITE_URL}/article.html?slug=${encodeURIComponent(slug)}`;
+    return `${SITE_URL}/articles/${encodeURIComponent(slug)}/`;
   }
 
   function ensureMeta(selector, attributes) {
@@ -307,6 +308,10 @@
     if (!slug || !SLUG_PATTERN.test(slug)) {
       showNotFound();
       return;
+    }
+
+    if (window.location.pathname === "/article.html") {
+      history.replaceState({}, "", `/articles/${encodeURIComponent(slug)}/`);
     }
 
     setCanonicalUrl(slug);

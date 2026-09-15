@@ -127,7 +127,7 @@
     if (oldButton) {
       const link = document.createElement("a");
       link.className = "article-open-link";
-      link.href = "/article.html?slug=joy-the-gladness-no-circumstance-can-take-away";
+      link.href = "/articles/joy-the-gladness-no-circumstance-can-take-away/";
       link.textContent = "Read the full article →";
       oldButton.replaceWith(link);
     }
@@ -158,7 +158,7 @@
 
             const title = document.createElement("h3");
             const link = document.createElement("a");
-            link.href = `/article.html?slug=${encodeURIComponent(article.slug)}`;
+            link.href = `/articles/${encodeURIComponent(article.slug)}/`;
             link.textContent = article.title;
             title.appendChild(link);
 

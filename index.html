@@ -5048,7 +5048,7 @@ function getStillTimeArticleReturn() {
 
     const parsed = JSON.parse(saved);
     const isRecent = Date.now() - Number(parsed.savedAt || 0) < 2 * 60 * 60 * 1000;
-    const isArticleUrl = typeof parsed.url === "string" && parsed.url.startsWith("/article.html?slug=");
+    const isArticleUrl = typeof parsed.url === "string" && (parsed.url.startsWith("/articles/") || parsed.url.startsWith("/article.html?slug="));
 
     if (!isRecent || !isArticleUrl) {
       sessionStorage.removeItem(stillTimeArticleReturnKey);
@@ -5260,7 +5260,7 @@ function getSolomonHomeUrl() {
 }
 
 function getArticleShareUrl(slug) {
-  return window.location.origin + "/article.html?slug=" + encodeURIComponent(slug);
+  return window.location.origin + "/articles/" + encodeURIComponent(slug) + "/";
 }
 
 function shareSolomonSite() {
