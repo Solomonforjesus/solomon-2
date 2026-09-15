@@ -62,7 +62,8 @@ def local_file(url):
 
 
 def collect_types(value, found=None):
-    found = found or set()
+    if found is None:
+        found = set()
     if isinstance(value, dict):
         t = value.get("@type")
         if isinstance(t, str):
@@ -78,7 +79,8 @@ def collect_types(value, found=None):
 
 
 def collect_ids(value, found=None):
-    found = found or set()
+    if found is None:
+        found = set()
     if isinstance(value, dict):
         if isinstance(value.get("@id"), str):
             found.add(value["@id"])
