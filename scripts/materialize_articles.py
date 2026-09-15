@@ -104,8 +104,8 @@ def build_page(slug, article, shared_style):
         "image": SHARE_IMAGE,
         "inLanguage": "en",
         "isAccessibleForFree": True,
-        "author": {"@type": "Organization", "name": "Solomon For Jesus", "url": SITE + "/"},
-        "publisher": {"@type": "Organization", "name": "Solomon For Jesus", "url": SITE + "/"},
+        "author": {"@id": SITE + "/#organization"},
+        "publisher": {"@id": SITE + "/#organization"},
     }
     if published:
         structured["datePublished"] = published
