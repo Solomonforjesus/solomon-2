@@ -60,41 +60,6 @@
       document.body.insertBefore(heading, document.body.firstChild);
     }
 
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": canonicalUrl + "#website",
-          "url": canonicalUrl,
-          "name": "Solomon For Jesus",
-          "alternateName": "Solomon 2.0",
-          "description": description,
-          "inLanguage": "en-US",
-          "publisher": { "@id": canonicalUrl + "#organization" }
-        },
-        {
-          "@type": "Organization",
-          "@id": canonicalUrl + "#organization",
-          "name": "Solomon For Jesus",
-          "url": canonicalUrl,
-          "description": "A free Christian ministry resource offering Gospel-centered biblical answers, prayer access, Bible learning, and Christian reading resources.",
-          "logo": {
-            "@type": "ImageObject",
-            "url": imageUrl
-          }
-        }
-      ]
-    };
-
-    let script = document.getElementById("solomonStructuredData");
-    if (!script) {
-      script = document.createElement("script");
-      script.id = "solomonStructuredData";
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(structuredData);
   }
 
   installHomepageSeo();
