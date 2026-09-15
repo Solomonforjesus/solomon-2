@@ -1,0 +1,27 @@
+name: Improve Bible Trivia SEO
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/improve-trivia-seo.yml'
+      - 'scripts/improve_trivia_seo.py'
+
+permissions:
+  contents: write
+
+jobs:
+  improve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Improve trivia metadata
+        run: python scripts/improve_trivia_seo.py
+      - name: Commit trivia metadata
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add trivia/index.html
+          git commit -m "Improve Bible Trivia discovery metadata"
+          git push
