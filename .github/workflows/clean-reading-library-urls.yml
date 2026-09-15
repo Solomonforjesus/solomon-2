@@ -1,0 +1,95 @@
+name: Clean Reading Library URLs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/clean-reading-library-urls.yml
+
+permissions:
+  contents: write
+
+jobs:
+  clean-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update Reading Library URLs and routing
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import json, re
+
+          # 1) Article reader: support clean pathname slugs and make clean URLs canonical.
+          p = Path('article-reader.js')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              '  const params = new URLSearchParams(window.location.search);\n  const requestedSlug = params.get("slug");',
+              '  const params = new URLSearchParams(window.location.search);\n  const pathMatch = window.location.pathname.match(/^\\/articles\\/([a-z0-9]+(?:-[a-z0-9]+)*)\\/?$/);\n  const requestedSlug = params.get("slug") || (pathMatch ? pathMatch[1] : null);'
+          )
+          s = s.replace(
+              '    return `${SITE_URL}/article.html?slug=${encodeURIComponent(slug)}`;',
+              '    return `${SITE_URL}/articles/${encodeURIComponent(slug)}/`;'
+          )
+          old = '''    if (!slug || !SLUG_PATTERN.test(slug)) {\n      showNotFound();\n      return;\n    }\n\n    setCanonicalUrl(slug);'''
+          new = '''    if (!slug || !SLUG_PATTERN.test(slug)) {\n      showNotFound();\n      return;\n    }\n\n    if (window.location.pathname === "/article.html") {\n      history.replaceState({}, "", `/articles/${encodeURIComponent(slug)}/`);\n    }\n\n    setCanonicalUrl(slug);'''
+          s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+
+          # 2) Reading Library links.
+          p = Path('reading-library.js')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              'link.href = "/article.html?slug=joy-the-gladness-no-circumstance-can-take-away";',
+              'link.href = "/articles/joy-the-gladness-no-circumstance-can-take-away/";'
+          )
+          s = s.replace(
+              'link.href = `/article.html?slug=${encodeURIComponent(article.slug)}`;',
+              'link.href = `/articles/${encodeURIComponent(article.slug)}/`;'
+          )
+          p.write_text(s, encoding='utf-8')
+
+          # 3) Homepage sharing and return-state validation.
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              'const isArticleUrl = typeof parsed.url === "string" && parsed.url.startsWith("/article.html?slug=");',
+              'const isArticleUrl = typeof parsed.url === "string" && (parsed.url.startsWith("/articles/") || parsed.url.startsWith("/article.html?slug="));'
+          )
+          s = s.replace(
+              'return window.location.origin + "/article.html?slug=" + encodeURIComponent(slug);',
+              'return window.location.origin + "/articles/" + encodeURIComponent(slug) + "/";'
+          )
+          p.write_text(s, encoding='utf-8')
+
+          # 4) Sitemap: replace query-string article URLs with clean permanent paths.
+          p = Path('sitemap.xml')
+          s = p.read_text(encoding='utf-8')
+          s = re.sub(
+              r'https://www\\.solomonforjesus\\.com/article\\.html\\?slug=([a-z0-9-]+)',
+              r'https://www.solomonforjesus.com/articles/\\1/',
+              s
+          )
+          p.write_text(s, encoding='utf-8')
+
+          # 5) Vercel rewrites keep the existing reader implementation while exposing clean URLs.
+          vercel = {
+              "$schema": "https://openapi.vercel.sh/vercel.json",
+              "rewrites": [
+                  {"source": "/articles/:slug", "destination": "/article.html?slug=:slug"},
+                  {"source": "/articles/:slug/", "destination": "/article.html?slug=:slug"}
+              ]
+          }
+          Path('vercel.json').write_text(json.dumps(vercel, indent=2) + "\n", encoding='utf-8')
+          PY
+
+      - name: Commit clean Reading Library URLs
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add article-reader.js reading-library.js index.html sitemap.xml vercel.json
+          git commit -m "Use clean permanent Reading Library URLs"
+          git push
