@@ -1,0 +1,61 @@
+name: Crawler Access Audit
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/crawler-access-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test public crawler access
+        shell: bash
+        run: |
+          set -euo pipefail
+          sites=(
+            "https://www.solomonforjesus.com/"
+            "https://www.solomonforjesus.com/articles/what-happens-when-i-die/"
+            "https://solomonforjesus.net/"
+            "https://solomonforjesus.net/lessons/lesson-3/"
+            "https://solomonforjesus.org/"
+            "https://solomonforjesus.org/reader/fingerprint/"
+            "https://solomonforjesus.org/articles/fine-tuning-is-only-the-beginning/"
+          )
+          names=("OAI-SearchBot" "Googlebot" "bingbot")
+          agents=(
+            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot"
+            "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+            "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+          )
+          for i in "${!agents[@]}"; do
+            echo "=== ${names[$i]} ==="
+            for url in "${sites[@]}"; do
+              code=$(curl -L -sS -o /tmp/crawler-body -w '%{http_code}' --max-time 30 -A "${agents[$i]}" "$url")
+              bytes=$(wc -c < /tmp/crawler-body | tr -d ' ')
+              echo "$code  $bytes bytes  $url"
+              case "$code" in
+                2*|3*) ;;
+                *) echo "Crawler access failed for ${names[$i]}: $url ($code)" >&2; exit 1;;
+              esac
+              test "$bytes" -gt 100 || { echo "Suspiciously empty response: $url" >&2; exit 1; }
+            done
+          done
+
+      - name: Verify live robots directives
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '--- .com robots.txt ---'
+          curl -fsSL https://www.solomonforjesus.com/robots.txt
+          echo
+          echo '--- .net robots.txt ---'
+          curl -fsSL https://solomonforjesus.net/robots.txt
+          echo
+          echo '--- .org robots.txt ---'
+          curl -fsSL https://solomonforjesus.org/robots.txt
