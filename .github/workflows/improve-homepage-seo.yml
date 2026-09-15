@@ -22,20 +22,23 @@ jobs:
           p = Path("index.html")
           s = p.read_text(encoding="utf-8")
           old = "  <title>Solomon For Jesus</title>"
-          new = """  <title>Solomon For Jesus | Christian Answers, Prayer, Bible Study &amp; Hope in Jesus Christ</title>
-  <meta name=\"description\" content=\"Solomon For Jesus is a free Christian resource offering biblical answers, prayer support, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ.\" />
-  <meta name=\"robots\" content=\"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1\" />
-  <link rel=\"canonical\" href=\"https://www.solomonforjesus.com/\" />
-  <meta property=\"og:type\" content=\"website\" />
-  <meta property=\"og:site_name\" content=\"Solomon For Jesus\" />
-  <meta property=\"og:title\" content=\"Solomon For Jesus | Wisdom, Truth, and Hope in Jesus Christ\" />
-  <meta property=\"og:description\" content=\"A free Christian resource for biblical answers, prayer, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ.\" />
-  <meta property=\"og:url\" content=\"https://www.solomonforjesus.com/\" />
-  <meta property=\"og:image\" content=\"https://www.solomonforjesus.com/ChatGPT%20Image%20Jun%2027,%202026,%2011_30_33%20AM.png\" />
-  <meta name=\"twitter:card\" content=\"summary_large_image\" />
-  <meta name=\"twitter:title\" content=\"Solomon For Jesus | Wisdom, Truth, and Hope in Jesus Christ\" />
-  <meta name=\"twitter:description\" content=\"A free Christian resource for biblical answers, prayer, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ.\" />
-  <meta name=\"twitter:image\" content=\"https://www.solomonforjesus.com/ChatGPT%20Image%20Jun%2027,%202026,%2011_30_33%20AM.png\" />"""
+          lines = [
+              '  <title>Solomon For Jesus | Christian Answers, Prayer, Bible Study &amp; Hope in Jesus Christ</title>',
+              '  <meta name="description" content="Solomon For Jesus is a free Christian resource offering biblical answers, prayer support, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ." />',
+              '  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />',
+              '  <link rel="canonical" href="https://www.solomonforjesus.com/" />',
+              '  <meta property="og:type" content="website" />',
+              '  <meta property="og:site_name" content="Solomon For Jesus" />',
+              '  <meta property="og:title" content="Solomon For Jesus | Wisdom, Truth, and Hope in Jesus Christ" />',
+              '  <meta property="og:description" content="A free Christian resource for biblical answers, prayer, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ." />',
+              '  <meta property="og:url" content="https://www.solomonforjesus.com/" />',
+              '  <meta property="og:image" content="https://www.solomonforjesus.com/ChatGPT%20Image%20Jun%2027,%202026,%2011_30_33%20AM.png" />',
+              '  <meta name="twitter:card" content="summary_large_image" />',
+              '  <meta name="twitter:title" content="Solomon For Jesus | Wisdom, Truth, and Hope in Jesus Christ" />',
+              '  <meta name="twitter:description" content="A free Christian resource for biblical answers, prayer, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ." />',
+              '  <meta name="twitter:image" content="https://www.solomonforjesus.com/ChatGPT%20Image%20Jun%2027,%202026,%2011_30_33%20AM.png" />'
+          ]
+          new = "\n".join(lines)
           if old in s:
               s = s.replace(old, new, 1)
           marker = '<body>\n  <div class="page">'
