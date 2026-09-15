@@ -6,6 +6,12 @@ on:
       - main
     paths:
       - '.github/workflows/materialize-reading-library.yml'
+      - 'scripts/materialize_articles.py'
+      - 'index.html'
+      - 'article.html'
+      - 'sitemap.xml'
+      - 'articles/*.json'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,11 +31,11 @@ jobs:
       - name: Commit materialized articles
         run: |
           if git diff --quiet && [ -z "$(git status --porcelain --untracked-files=all articles)" ]; then
-            echo "No changes needed."
+            echo "No generated changes needed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A articles vercel.json
-          git commit -m "Materialize Reading Library as static HTML pages"
+          git add -A articles
+          git commit -m "Refresh static Reading Library pages"
           git push
