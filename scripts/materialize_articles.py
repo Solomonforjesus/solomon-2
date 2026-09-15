@@ -110,6 +110,17 @@ def build_page(slug, article, shared_style):
     if published:
         structured["datePublished"] = published
 
+    article_schema = dict(structured)
+    article_schema.pop("@context", None)
+    breadcrumb_schema = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Solomon For Jesus", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": title, "item": url},
+        ],
+    }
+    structured = {"@context": "https://schema.org", "@graph": [article_schema, breadcrumb_schema]}
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
