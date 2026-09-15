@@ -56,13 +56,17 @@ def style_html():
     return str(style) if style else ""
 
 
+def clean_text(value):
+    return " ".join(str(value or "").split())
+
+
 def article_description(article, content, title):
-    supplied = str(article.get("description") or "").strip()
+    supplied = clean_text(article.get("description"))
     if supplied:
         return supplied
     soup = BeautifulSoup(content, "html.parser")
     first_p = soup.find("p")
-    excerpt = first_p.get_text(" ", strip=True) if first_p else title
+    excerpt = clean_text(first_p.get_text(" ", strip=True) if first_p else title)
     return excerpt if len(excerpt) <= 155 else excerpt[:152].rstrip() + "..."
 
 
@@ -78,10 +82,10 @@ def display_date(category, value):
 
 
 def build_page(slug, article, shared_style):
-    title = str(article.get("title") or "").strip()
+    title = clean_text(article.get("title"))
     content = str(article.get("content") or "").strip()
-    category = str(article.get("category") or "Reading Library").strip()
-    published = str(article.get("date") or "").strip()
+    category = clean_text(article.get("category") or "Reading Library")
+    published = clean_text(article.get("date"))
     if not title or not content:
         raise ValueError(f"Article {slug} is incomplete")
 
