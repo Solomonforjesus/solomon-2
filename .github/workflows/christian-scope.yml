@@ -1,0 +1,15 @@
+name: Christian scope regression checks
+on:
+  push:
+    paths: ['api/**', 'lib/**', 'tests/**', '.github/workflows/christian-scope.yml']
+  pull_request:
+    paths: ['api/**', 'lib/**', 'tests/**', '.github/workflows/christian-scope.yml']
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/christian-scope.test.mjs

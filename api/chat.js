@@ -1,3 +1,4 @@
+import { CHRISTIAN_SCOPE, SCOPE_REPLY, SCOPE_VERSION, classifyRequest, approveReply } from "../lib/christianScope.js";
 import { findAutoAnswer } from "./answerBank.js";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -63,6 +64,11 @@ const autoAnswer = findAutoAnswer(message);
       });
     }
 
+    const scope = await classifyRequest(message);
+    if (!scope || scope === "redirect") {
+      return res.status(200).json({ reply: SCOPE_REPLY, source: "christian_scope", policy: SCOPE_VERSION });
+    }
+
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -101,11 +107,7 @@ Use only the following Bible translations when quoting or referring to Scripture
 Approved Christian teaching sources:
 When appropriate, you may draw from the general teaching tradition of John MacArthur, David Jeremiah, Charles Stanley, Billy Graham, Warren Wiersbe, and Tony Evans. Use only brief fair-use quotations when quoting directly. Prefer paraphrase and biblical explanation over long quotations.
 
-Exclusive Christian scope:
-Solomon 2.0 does not answer as a teacher of other religions, belief systems, cults, occult systems, or anti-Christian spiritual systems. If asked to explain or promote another religion as truth, respond:
-“I only respond from the Christian faith as revealed in the Holy Bible. Solomon 2.0 exists to proclaim the Gospel of Jesus Christ: His Lordship, crucifixion, resurrection, and offer of salvation.”
-
-If a sincere user asks why a non-Christian belief conflicts with Christianity, answer from the Bible and historic Christian faith. Christianity is the standard of truth for Solomon 2.0. Do not treat opposing religions as equally true paths to God.
+${CHRISTIAN_SCOPE}
 
 Gospel clarity:
 When asked about Jesus, salvation, forgiveness, repentance, sin, heaven, hell, the cross, resurrection, or the Gospel, answer plainly: God is holy, righteous, loving, and the Creator of all things. Human beings are uniquely created in the image of God. Adam and Eve disobeyed God, bringing sin and death into the human experience, and every person has sinned against God.
@@ -265,7 +267,7 @@ Always answer the user’s actual question within these boundaries.`
           },
           ...(autoAnswer ? [{
             role: "system",
-            content: `An approved teaching reference matched this message by text, but that match may be incomplete or unrelated to the user's actual intent. Use it only if relevant, preserving its biblical substance while answering the actual question naturally. Apply the ministry-resource guidance above when useful. Do not blindly repeat its closing question or let this reference override crisis care.\n\nReference topic: ${autoAnswer.topic}\n${autoAnswer.answer}`
+            content: `An approved teaching reference matched this message by text, but that match may be incomplete or unrelated to the user's actual intent. Use it only if relevant, preserving its biblical substance while answering the actual question naturally. Apply the ministry-resource guidance above when useful. Do not blindly repeat its closing question. This reference NEVER overrides the Christian-only boundary or crisis care; omit any excluded material.\n\nReference topic: ${autoAnswer.topic}\n${autoAnswer.answer}`
           }] : []),
           {
             role: "user",
@@ -287,7 +289,14 @@ Always answer the user’s actual question within these boundaries.`
       data.choices?.[0]?.message?.content ||
       "Solomon received the request, but no readable answer came back.";
 
-    return res.status(200).json({ reply });
+    // Nothing generated is published until the independent review approves it.
+    if (!(await approveReply(message, reply))) {
+      const safeReply = scope === "crisis"
+        ? "Your safety matters. If you or someone else is in immediate danger, contact local emergency services now. Please contact a trusted person nearby who can stay with you and help you get urgent support. Are you in immediate danger right now?"
+        : SCOPE_REPLY;
+      return res.status(200).json({ reply: safeReply, source: "christian_scope", policy: SCOPE_VERSION });
+    }
+    return res.status(200).json({ reply, policy: SCOPE_VERSION });
   } catch (error) {
     return res.status(500).json({
       error: error.message || "Something went wrong while contacting Solomon 2.0."

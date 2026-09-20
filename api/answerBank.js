@@ -223,7 +223,7 @@ Jesus is not one path among many. He is the way, the truth, and the life.
 
 A helpful passage is John 14:6.
 
-Would you like a deeper answer about Christianity and other religions?`
+Would you like to learn why Christians trust Jesus Christ as Savior?`
   
   },
   {
@@ -371,42 +371,6 @@ Christian love does not mean approving everything someone believes or does. It m
 A helpful passage is Matthew 22:37–39.
 
 Would you like a deeper answer about Christian love and truth?`
-  },
-  {
-    id: "ISLAM-001",
-    topic: "How should Christians treat Muslims?",
-    triggers: [
-      "how should christians treat muslims",
-      "how should a christian treat a muslim",
-      "can a muslim be my friend",
-      "should christians hate muslims",
-      "how should christians talk to muslims"
-    ],
-    answer: `Christians should treat Muslims with love, dignity, kindness, honesty, and prayer. A Muslim is not an enemy to hate, mock, or mistreat. Every person is made in the image of God and should be treated with respect.
-
-At the same time, Christians must remain faithful to the Gospel. Christianity and Islam make different claims about Jesus, salvation, the cross, and the nature of God. Christians should be truthful about those differences while still showing real love.
-
-A helpful passage is 1 Peter 3:15.
-
-Would you like a deeper answer about loving people of other faiths?`
-  },
-  {
-    id: "ISLAM-002",
-    topic: "What is the difference between Christianity and Islam?",
-    triggers: [
-      "what is the difference between christianity and islam",
-      "how is christianity different from islam",
-      "christianity vs islam",
-      "difference between jesus and islam",
-      "do christians and muslims believe the same thing"
-    ],
-    answer: `Christianity and Islam differ most sharply over Jesus Christ. Christianity teaches that Jesus is God the Son, the crucified and risen Savior, and the only way to the Father. Islam denies that Jesus is God the Son and denies the Christian Gospel of salvation through His death and resurrection.
-
-These differences are not small. They concern the identity of Jesus, the cross, salvation, Scripture, and the nature of God. Christians should explain these differences clearly, but without hatred or mockery.
-
-A helpful passage is John 14:6.
-
-Would you like a deeper answer comparing Christianity and Islam?`
   },
   {
     id: "SCI-001",
