@@ -5145,6 +5145,56 @@ function startPrayerRequest() {
       window.location.href = "mailto:contact@solomonforjesus.com?subject=Prayer%20Request%20or%20Pastoral%20Contact";
     }
 
+    function renderChatMessage(element, speaker, text, linkify = false) {
+      element.replaceChildren();
+      const label = document.createElement("span");
+      label.className = speaker === "You" ? "user" : "solomon";
+      label.textContent = speaker + ":";
+      element.append(label, document.createTextNode(" "));
+      const body = document.createElement("span");
+      body.style.whiteSpace = "pre-wrap";
+      element.append(body);
+      const value = String(text);
+      if (!linkify) {
+        body.textContent = value;
+        return;
+      }
+      const links = /\[([^\]\n]+)\]\((https?:\/\/[^\s<>"]+)\)|(https?:\/\/[^\s<>"\]]+)/g;
+      let cursor = 0;
+      for (const match of value.matchAll(links)) {
+        body.append(document.createTextNode(value.slice(cursor, match.index)));
+        const rawUrl = match[2] || match[3];
+        const urlText = match[2] ? rawUrl : rawUrl.replace(/[.,!?;:)}]+$/, "");
+        const trailing = rawUrl.slice(urlText.length);
+        try {
+          const url = new URL(urlText);
+          if (!["https:", "http:"].includes(url.protocol)) throw new Error("Unsupported link");
+          const a = document.createElement("a");
+          a.href = url.href;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.style.textDecoration = "underline";
+          a.style.overflowWrap = "anywhere";
+          const host = url.hostname.replace(/^www\./, "");
+          const resourceLabel =
+            host === "solomonforjesus.org" && url.pathname.startsWith("/reader/fingerprint")
+              ? "Read Fingerprint of Reality free"
+              : host === "solomonforjesus.org"
+                ? "Visit Solomon Christian Publishing"
+                : host === "solomonforjesus.net"
+                  ? "Visit Solomon Christian Academy"
+                  : urlText;
+          a.textContent = match[1] && !/^https?:\/\//.test(match[1])
+            ? match[1] : resourceLabel;
+          body.append(a, document.createTextNode(trailing));
+        } catch {
+          body.append(document.createTextNode(match[0]));
+        }
+        cursor = match.index + match[0].length;
+      }
+      body.append(document.createTextNode(value.slice(cursor)));
+    }
+
     async function sendMessage() {
       const input = document.getElementById("userInput");
       const messages = document.getElementById("messages");
@@ -5156,14 +5206,14 @@ function startPrayerRequest() {
 
       const userMessage = document.createElement("div");
       userMessage.className = "message";
-      userMessage.innerHTML = `<span class="user">You:</span> ${text}`;
+      renderChatMessage(userMessage, "You", text);
       messages.appendChild(userMessage);
 
       input.value = "";
 
       const solomonMessage = document.createElement("div");
       solomonMessage.className = "message";
-      solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Thinking...`;
+      renderChatMessage(solomonMessage, "Solomon", "Thinking...");
       messages.appendChild(solomonMessage);
 
       messages.scrollTop = messages.scrollHeight;
@@ -5180,12 +5230,12 @@ function startPrayerRequest() {
         const data = await response.json();
 
         if (data.reply) {
-          solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.reply}`;
+          renderChatMessage(solomonMessage, "Solomon", data.reply, true);
         } else {
-          solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> ${data.error || "I could not answer that yet. Please try again."}`;
+          renderChatMessage(solomonMessage, "Solomon", data.error || "I could not answer that yet. Please try again.");
         }
       } catch (error) {
-        solomonMessage.innerHTML = `<span class="solomon">Solomon:</span> Something went wrong. Please try again.`;
+        renderChatMessage(solomonMessage, "Solomon", "Something went wrong. Please try again.");
       }
 
            messages.scrollTop = messages.scrollHeight;
