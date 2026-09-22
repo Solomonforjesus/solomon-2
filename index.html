@@ -1046,6 +1046,25 @@ button {
     .publication-notice p { margin: 0; line-height: 1.5; font-size: clamp(.96rem, 1.8vw, 1.12rem); }
     .publication-notice strong { color: #f3dfaa; }
     .publication-notice a { color: #fff; font-weight: 700; white-space: nowrap; }
+
+    /* Chat formatting stays in the browser and adds no model tokens. */
+    .chat-message-body { margin-top: 5px; line-height: 1.65; }
+    .chat-message-body p { margin: 0 0 1em; }
+    .chat-message-body :last-child { margin-bottom: 0; }
+    .chat-message-body ol, .chat-message-body ul { margin: .65em 0 1em; padding-left: 1.65em; }
+    .chat-message-body li { padding-left: .2em; margin-bottom: .85em; }
+    .chat-message-body h3 { margin: 1em 0 .4em; font-size: 1.05em; color: #5f210d; }
+    .chat-message-body blockquote { margin: .8em 0; padding: .65em .9em; border-left: 3px solid #1e5f9e; background: #edf4fa; }
+    .chat-message-body a, .chat-message-body a:visited { color: #165a96; text-decoration: underline; text-underline-offset: 3px; }
+    .chat-message-body a:focus-visible { outline: 3px solid #1e5f9e; outline-offset: 3px; border-radius: 2px; }
+    .rtTooltip { box-sizing: border-box; width: 350px !important; max-width: calc(100vw - 16px) !important; max-height: calc(100dvh - 16px); overflow-y: auto; font-size: 16px !important; line-height: 1.55 !important; }
+    .rtTooltip .rtTooltipBody { font-size: 16px !important; line-height: 1.55 !important; }
+    .rtTooltip .scripture-preview-close { display: block; width: auto; margin: 6px 8px 6px auto; padding: 5px 10px; border-radius: 6px; background: #174976; color: white; font: 700 14px Arial, sans-serif; }
+    .rtTooltip .scripture-preview-close:hover { transform: none; background: #103553; }
+    .rtTooltip a:focus-visible, .rtTooltip button:focus-visible { outline: 3px solid #1e5f9e; outline-offset: 2px; }
+    .scripture-version-note { display: block; margin-top: .5em; color: #4b5563; font-size: 12px; }
+    .scripture-excerpt-note { display: block; margin-top: .7em; color: #4b5563; font-size: 12px; }
+
 </style>
   <script id="solomon-homepage-schema" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.solomonforjesus.com/#website","url":"https://www.solomonforjesus.com/","name":"Solomon For Jesus","alternateName":"Solomon 2.0","description":"A free Christian resource offering biblical answers, prayer support, Bible study, Christian articles, and Gospel-centered hope in Jesus Christ.","publisher":{"@id":"https://www.solomonforjesus.com/#organization"}},{"@type":"Organization","@id":"https://www.solomonforjesus.com/#organization","name":"Solomon For Jesus","alternateName":"Solomon 2.0","url":"https://www.solomonforjesus.com/","description":"A free Christian ministry resource offering Gospel-centered biblical answers, prayer access, Bible learning, Christian reading resources, and connected educational and publishing ministries.","subOrganization":[{"@id":"https://solomonforjesus.net/#organization"},{"@id":"https://solomonforjesus.org/#organization"}]}]}</script>
 </head>
