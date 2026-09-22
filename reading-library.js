@@ -216,12 +216,7 @@
     const row = document.createElement("div");
     row.className = "message";
 
-    const label = document.createElement("span");
-    label.className = role === "user" ? "user" : "solomon";
-    label.textContent = role === "user" ? "You:" : "Solomon:";
-
-    row.appendChild(label);
-    row.appendChild(document.createTextNode(" " + content));
+    window.renderChatMessage(row, role === "user" ? "You" : "Solomon", content, role === "assistant");
     messagesElement.appendChild(row);
     return row;
   }
@@ -401,12 +396,7 @@
         const data = await response.json();
         const reply = data.reply || data.error || "I could not answer that yet. Please try again.";
 
-        thinkingRow.innerHTML = "";
-        const label = document.createElement("span");
-        label.className = "solomon";
-        label.textContent = "Solomon:";
-        thinkingRow.appendChild(label);
-        thinkingRow.appendChild(document.createTextNode(" " + reply));
+        window.renderChatMessage(thinkingRow, "Solomon", reply, Boolean(data.reply));
 
         if (data.reply) {
           conversation.push({ role: "assistant", content: data.reply });
@@ -414,12 +404,7 @@
           saveConversation();
         }
       } catch (error) {
-        thinkingRow.innerHTML = "";
-        const label = document.createElement("span");
-        label.className = "solomon";
-        label.textContent = "Solomon:";
-        thinkingRow.appendChild(label);
-        thinkingRow.appendChild(document.createTextNode(" Something went wrong. Please try again."));
+        window.renderChatMessage(thinkingRow, "Solomon", "Something went wrong. Please try again.");
       }
 
       messages.scrollTop = messages.scrollHeight;
