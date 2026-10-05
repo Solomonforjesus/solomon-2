@@ -60,10 +60,24 @@ def clean_text(value):
     return " ".join(str(value or "").split())
 
 
+ARTICLE_DESCRIPTIONS = {
+    "can-god-forgive-me": "Wondering whether God can forgive your past? Explore biblical teaching on repentance, forgiveness, and the new life offered through faith in Jesus Christ.",
+    "is-the-bible-trustworthy": "Explore why Christians trust the Bible: its preservation, historical roots, unified message, and the authority of Scripture centered on Jesus Christ.",
+    "who-is-jesus-christ": "Discover who Jesus Christ is: the eternal Son of God, fully God and fully man, the crucified and risen Savior who calls us to repentance and faith.",
+    "why-does-god-allow-suffering": "Explore what the Bible says about suffering, grief, human sin, and trusting God, with comfort and resurrection hope found in Jesus Christ.",
+    "when-someone-has-hurt-you-deeply": "Find biblical encouragement after deep hurt: God cares for the wounded, forgiveness does not excuse evil, and seeking safety is compatible with faith.",
+    "why-jesus-christ-matters": "Explore why Jesus Christ matters for your life and eternity: forgiveness of sin, peace with God, and salvation by grace through faith in the risen Lord.",
+    "what-is-the-gospel": "Understand the Gospel: Jesus Christ died for our sins and rose again, offering forgiveness, reconciliation with God, and new life to those who trust Him."
+}
+
+
 def article_description(article, content, title):
     supplied = clean_text(article.get("description"))
     if supplied:
         return supplied
+    curated = ARTICLE_DESCRIPTIONS.get(article.get("slug") or slugify(title))
+    if curated:
+        return curated
     soup = BeautifulSoup(content, "html.parser")
     first_p = soup.find("p")
     excerpt = clean_text(first_p.get_text(" ", strip=True) if first_p else title)
