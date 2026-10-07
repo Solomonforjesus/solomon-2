@@ -179,7 +179,7 @@ def build_page(slug, article, shared_style):
       <div id="articleBody" class="article-body">{content}</div>
     </article>
   </main>
-  <footer class="reader-footer">Wisdom. Truth. Hope in Jesus Christ.</footer>
+  <footer class="reader-footer">Wisdom. Truth. Hope in Jesus Christ. A free Gospel evangelism resource.</footer>
   <script>
     async function shareCurrentArticle() {{
       const shareStatus = document.getElementById("shareStatus");
