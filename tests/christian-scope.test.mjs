@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import handler, { extractCurrentQuestion } from '../api/chat.js';
-import { SCOPE_REPLY, classifyRequest, approveReply, containsExcludedName } from '../lib/christianScope.js';
+import { SCOPE_REPLY, SERVICE_REPLY, reviewReply, classifyRequest, approveReply, containsExcludedName } from '../lib/christianScope.js';
 
 const completion = (content, finish_reason = 'stop') => ({ok:true,json:async()=>({choices:[{message:{content},finish_reason}]})});
 const verdict = value => completion(JSON.stringify({verdict:value}));
@@ -42,7 +42,7 @@ test('excluded request stops before generation',async()=>{
  assert.equal(r.status,200);assert.equal(r.payload.reply,SCOPE_REPLY);assert.equal(r.calls.length,1);
 });
 test('request classifier outage stops before generation',async()=>{
- const r=await invoke('teach me another faith',[{ok:false}]);assert.equal(r.payload.reply,SCOPE_REPLY);assert.equal(r.calls.length,1);
+ const r=await invoke('Who is Jesus?',[{ok:false}]);assert.equal(r.status,503);assert.equal(r.payload.error,SERVICE_REPLY);assert.equal(r.payload.reply,undefined);assert.equal(r.calls.length,1);
 });
 test('even a wrongly allowed request cannot publish named teaching',async()=>{
  const r=await invoke('what is islam about?',[verdict('allow'),completion('Islam teaches these pillars...')]);
@@ -53,7 +53,7 @@ test('unnamed disallowed answer is blocked by semantic review',async()=>{
  assert.equal(r.payload.reply,SCOPE_REPLY);assert.equal(r.calls.length,3);
 });
 test('reviewer outage replaces generated content',async()=>{
- const r=await invoke('Who is Jesus?',[verdict('allow'),completion('Jesus is the Son of God.'),{ok:false}]);assert.equal(r.payload.reply,SCOPE_REPLY);
+ const r=await invoke('Who is Jesus?',[verdict('allow'),completion('Jesus is the Son of God.'),{ok:false}]);assert.equal(r.status,503);assert.equal(r.payload.error,SERVICE_REPLY);assert.equal(r.payload.reply,undefined);
 });
 test('Christian conversion request from another background is served',async()=>{
  const r=await invoke('I am a Mormon and want to follow Jesus.',[verdict('allow'),completion('Jesus Christ welcomes those who turn to Him in faith.'),verdict('approve')]);
@@ -115,4 +115,20 @@ test('a crisis in the current transcript section still takes priority',async()=>
  const r=await invoke(transcript,[]);
  assert.equal(r.payload.source,'crisis_care');
  assert.equal(r.calls.length,0);
+});
+
+
+test('review distinguishes rejected content from service failure', async()=>{
+ assert.equal(await reviewReply('question','Jesus is Lord.',async()=>{throw Error('timeout');}),null);
+ assert.equal(await reviewReply('question','An excluded teaching.',async()=>verdict('reject')),'reject');
+});
+test('sincere objection receives a reviewed answer and direct ministry guidance',async()=>{
+ const r=await invoke('Some say Jesus was just a man. Why?',[verdict('allow'),completion('Jesus Christ is the eternal Son of God, fully God and fully man.'),verdict('approve')]);
+ assert.equal(r.status,200);assert.match(r.payload.reply,/eternal Son of God/);
+ assert.ok(r.calls[1].messages[0].content.includes('Speak from Solomon'));
+ assert.ok(r.calls[0].messages[0].content.includes('Quoting or expressing doubt'));
+});
+test('crisis service failure keeps immediate support',async()=>{
+ const r=await invoke('I am in danger at home',[verdict('crisis'),completion('Please seek immediate help.'),{ok:false}]);
+ assert.equal(r.status,200);assert.match(r.payload.reply,/safety matters/);
 });
