@@ -1,12 +1,26 @@
 import { CHRISTIAN_SCOPE, SCOPE_REPLY, SCOPE_VERSION, classifyRequest, approveReply } from "../lib/christianScope.js";
 import { findAutoAnswer } from "./answerBank.js";
+const CONVERSATION_PREFIX = "Use this prior Solomon conversation only as context for continuity. Answer the current user message naturally and do not mention this transcript unless it is relevant.\n\nPRIOR CONVERSATION:\n";
+const CURRENT_MESSAGE_MARKER = "\n\nCURRENT USER MESSAGE:\n";
+
+// Compatibility for clients that append conversation context to a single string.
+export function extractCurrentQuestion(value) {
+  if (typeof value !== "string" || !value.startsWith(CONVERSATION_PREFIX)) return value;
+  const boundary = value.indexOf(CURRENT_MESSAGE_MARKER, CONVERSATION_PREFIX.length);
+  if (boundary < 0 || value.indexOf(CURRENT_MESSAGE_MARKER, boundary + CURRENT_MESSAGE_MARKER.length) !== -1) return value;
+  return value.slice(boundary + CURRENT_MESSAGE_MARKER.length);
+}
+
 export default async function handler(req, res) {
+  // Chat replies must never be reused for a different message or visitor.
+  res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST requests are allowed." });
   }
 
   try {
-    const { message } = req.body;
+    const conversationMessage = req.body?.message;
+    const message = req.body?.currentMessage ?? extractCurrentQuestion(conversationMessage);
 
 if (!message || typeof message !== "string") {
   return res.status(400).json({ error: "A message is required." });
@@ -17,7 +31,7 @@ if (!message.trim()) {
 }
 
 const MAX_MESSAGE_LENGTH = 12000;
-if (message.length > MAX_MESSAGE_LENGTH) {
+if (message.length > MAX_MESSAGE_LENGTH || (typeof conversationMessage === "string" && conversationMessage.length > MAX_MESSAGE_LENGTH)) {
   return res.status(413).json({
     error: "That message is too long. Please shorten it and try again."
   });
@@ -48,6 +62,7 @@ const isClearCrisis = clearCrisisPatterns.some((pattern) =>
   normalizedMessage.includes(pattern)
 );
 
+
 if (isClearCrisis) {
   return res.status(200).json({
     reply:
@@ -76,8 +91,9 @@ const autoAnswer = findAutoAnswer(message);
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        max_tokens: 700,
+        model: "gpt-6-luna",
+        reasoning_effort: "none",
+        max_completion_tokens: 700,
         messages: [
           {
             role: "system",
@@ -273,7 +289,7 @@ Always answer the user’s actual question within these boundaries.`
           }] : []),
           {
             role: "user",
-            content: message
+            content: typeof conversationMessage === "string" && conversationMessage.startsWith(CONVERSATION_PREFIX) ? conversationMessage : message
           }
         ]
       })
@@ -305,3 +321,5 @@ Always answer the user’s actual question within these boundaries.`
     });
   }
 }
+
+
