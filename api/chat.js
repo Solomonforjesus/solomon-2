@@ -50,6 +50,8 @@ const isClearCrisis = clearCrisisPatterns.some((pattern) =>
   normalizedMessage.includes(pattern)
 );
 
+console.info("solomon_request", JSON.stringify({ messageLength: message.length, clearCrisis: isClearCrisis }));
+
 if (isClearCrisis) {
   return res.status(200).json({
     reply:
