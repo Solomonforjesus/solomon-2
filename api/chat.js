@@ -50,7 +50,7 @@ const isClearCrisis = clearCrisisPatterns.some((pattern) =>
   normalizedMessage.includes(pattern)
 );
 
-console.info("solomon_request", JSON.stringify({ messageLength: message.length, clearCrisis: isClearCrisis }));
+console.info("solomon_request", JSON.stringify({ messageLength: message.length, clearCrisis: isClearCrisis, hasCurrentMessage: typeof req.body?.currentMessage === "string", roleMarkers: Array.from(message.matchAll(/(?:^|\n)(You|User|Solomon|Assistant):/gi), match => ({ role: match[1], offset: match.index })) }));
 
 if (isClearCrisis) {
   return res.status(200).json({
