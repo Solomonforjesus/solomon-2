@@ -5446,6 +5446,16 @@ function startPrayerRequest() {
     };
     document.head.append(scriptureScript);
 
+    // Keep recent turns only in this page's memory; never share them across visitors.
+    const solomonConversation = [];
+    let solomonReplyPending = false;
+    function rememberSolomonTurn(role, content) {
+      solomonConversation.push({ role, content });
+      while (solomonConversation.length > 8 || solomonConversation.reduce((n, turn) => n + turn.content.length, 0) > 8000) {
+        solomonConversation.shift();
+      }
+    }
+
     async function sendMessage() {
       const input = document.getElementById("userInput");
       const messages = document.getElementById("messages");
@@ -5453,7 +5463,8 @@ function startPrayerRequest() {
     
    
 
-      if (!text) return;
+      if (!text || solomonReplyPending) return;
+      solomonReplyPending = true;
 
       const userMessage = document.createElement("div");
       userMessage.className = "message";
@@ -5476,18 +5487,24 @@ function startPrayerRequest() {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ message: text, currentMessage: text })
+          body: JSON.stringify({ message: text, currentMessage: text, history: solomonConversation })
         });
 
         const data = await response.json();
 
         if (data.reply) {
           renderChatMessage(solomonMessage, "Solomon", data.reply, true);
+          if (response.ok && data.source !== "christian_scope") {
+            rememberSolomonTurn("user", text);
+            rememberSolomonTurn("assistant", data.reply);
+          }
         } else {
           renderChatMessage(solomonMessage, "Solomon", data.error || "I could not answer that yet. Please try again.");
         }
       } catch (error) {
         renderChatMessage(solomonMessage, "Solomon", "Something went wrong. Please try again.");
+      } finally {
+        solomonReplyPending = false;
       }
 
            messages.scrollTop = messages.scrollHeight;

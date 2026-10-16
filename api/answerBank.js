@@ -31,13 +31,13 @@ Would you like a deeper answer about who Jesus is?`
       "is jesus divine",
       "is jesus only a prophet"
     ],
-    answer: `Yes. Christianity teaches that Jesus is God the Son, eternally one with the Father and the Holy Spirit. Jesus is not merely a prophet, teacher, or moral example. He receives worship, forgives sin, reigns as Lord, gives eternal life, and remains forever worthy of glory.
+    answer: `Yes. Jesus is God the Son, eternally one with the Father and the Holy Spirit. Jesus is not merely a prophet, teacher, or moral example. He receives worship, forgives sin, reigns as Lord, gives eternal life, and remains forever worthy of glory.
 
 During His earthly ministry, He claimed unity with the Father, fulfilled Scripture, died on the cross, and rose from the dead.
 
 A helpful passage is John 20:28, where Thomas says to Jesus, “My Lord and my God.”
 
-Would you like a deeper answer about why Christians believe Jesus is God?`
+Would you like a deeper answer about how Scripture reveals Jesus as God?`
   },
   {
     id: "JESUS-003",
@@ -91,7 +91,7 @@ Jesus says, “I am the way, and the truth, and the life.”
 
 A helpful passage is John 14:6.
 
-Would you like a deeper answer about why Christianity teaches that Jesus is the only Savior?`
+Would you like a deeper answer about why Jesus is the only Savior?`
   },
   {
     id: "SALV-003",
