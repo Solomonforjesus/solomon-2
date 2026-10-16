@@ -28,12 +28,12 @@ test('normal Christian teaching can pass review',async()=>{
  assert.equal(await approveReply('Who is Jesus?','Jesus Christ is the eternal Son of God.',async()=>verdict('approve')),true);
 });
 
-async function invoke(message, queue) {
+async function invoke(message, queue, extraBody = {}) {
  const oldFetch=globalThis.fetch, oldKey=process.env.OPENAI_API_KEY;
  const calls=[];let payload,status;
  process.env.OPENAI_API_KEY='test-not-a-real-key';
  globalThis.fetch=async(url,init)=>{calls.push(JSON.parse(init.body));assert.ok(queue.length,'Unexpected API call');return queue.shift();};
- try {await handler({method:'POST',body:{message}}, {setHeader(name,value){assert.equal(name,'Cache-Control');assert.equal(value,'no-store');},status(n){status=n;return this;},json(value){payload=value;return this;}});}
+ try {await handler({method:'POST',body:{message,...extraBody}}, {setHeader(name,value){assert.equal(name,'Cache-Control');assert.equal(value,'no-store');},status(n){status=n;return this;},json(value){payload=value;return this;}});}
  finally {globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=oldKey;}
  return {status,payload,calls};
 }
@@ -84,3 +84,11 @@ test('comparison exception and incompatible answer bank entries stay removed',as
 });
 
 
+
+test('explicit current question excludes an earlier crisis transcript',async()=>{
+ const currentMessage='I am ready to trust Jesus. Help me pray.';
+ const r=await invoke('You: I want to kill myself.\\nSolomon: Seek immediate help.\\nYou: '+currentMessage,[verdict('allow'),completion('Turn to Jesus Christ in repentance and faith.'),verdict('approve')],{currentMessage});
+ assert.equal(r.payload.reply,'Turn to Jesus Christ in repentance and faith.');
+ assert.equal(r.calls.length,3);
+ assert.equal(r.calls[0].messages.at(-1).content,JSON.stringify({message:currentMessage}));
+});
