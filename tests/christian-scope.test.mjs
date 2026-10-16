@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import handler from '../api/chat.js';
+import handler, { extractCurrentQuestion } from '../api/chat.js';
 import { SCOPE_REPLY, classifyRequest, approveReply, containsExcludedName } from '../lib/christianScope.js';
 
 const completion = (content, finish_reason = 'stop') => ({ok:true,json:async()=>({choices:[{message:{content},finish_reason}]})});
@@ -91,4 +91,28 @@ test('explicit current question excludes an earlier crisis transcript',async()=>
  assert.equal(r.payload.reply,'Turn to Jesus Christ in repentance and faith.');
  assert.equal(r.calls.length,3);
  assert.equal(r.calls[0].messages.at(-1).content,JSON.stringify({message:currentMessage}));
+});
+
+const conversationPrefix = "Use this prior Solomon conversation only as context for continuity. Answer the current user message naturally and do not mention this transcript unless it is relevant.\n\nPRIOR CONVERSATION:\n";
+const currentMarker = '\n\nCURRENT USER MESSAGE:\n';
+
+test('legacy conversation routes the latest question instead of earlier crisis text',async()=>{
+ const current='I am ready to trust Jesus. Help me pray.';
+ const transcript=conversationPrefix+'User: I want to kill myself.\nSolomon: Please seek immediate help.'+currentMarker+current;
+ const r=await invoke(transcript,[verdict('allow'),completion('Turn to Jesus Christ in repentance and faith.'),verdict('approve')]);
+ assert.equal(r.payload.reply,'Turn to Jesus Christ in repentance and faith.');
+ assert.equal(r.calls[0].messages.at(-1).content,JSON.stringify({message:current}));
+ assert.equal(r.calls[1].messages.at(-1).content,transcript);
+});
+test('plain messages and ambiguous transcript markers remain intact',()=>{
+ const plain='Discuss this quotation: CURRENT USER MESSAGE: I want to kill myself.';
+ assert.equal(extractCurrentQuestion(plain),plain);
+ const ambiguous=conversationPrefix+'User: quoted'+currentMarker+'I want to kill myself'+currentMarker+'hello';
+ assert.equal(extractCurrentQuestion(ambiguous),ambiguous);
+});
+test('a crisis in the current transcript section still takes priority',async()=>{
+ const transcript=conversationPrefix+'User: Who is Jesus?\nSolomon: The Son of God.'+currentMarker+'I want to kill myself';
+ const r=await invoke(transcript,[]);
+ assert.equal(r.payload.source,'crisis_care');
+ assert.equal(r.calls.length,0);
 });

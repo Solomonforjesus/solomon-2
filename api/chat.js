@@ -1,5 +1,16 @@
 import { CHRISTIAN_SCOPE, SCOPE_REPLY, SCOPE_VERSION, classifyRequest, approveReply } from "../lib/christianScope.js";
 import { findAutoAnswer } from "./answerBank.js";
+const CONVERSATION_PREFIX = "Use this prior Solomon conversation only as context for continuity. Answer the current user message naturally and do not mention this transcript unless it is relevant.\n\nPRIOR CONVERSATION:\n";
+const CURRENT_MESSAGE_MARKER = "\n\nCURRENT USER MESSAGE:\n";
+
+// Compatibility for clients that append conversation context to a single string.
+export function extractCurrentQuestion(value) {
+  if (typeof value !== "string" || !value.startsWith(CONVERSATION_PREFIX)) return value;
+  const boundary = value.indexOf(CURRENT_MESSAGE_MARKER, CONVERSATION_PREFIX.length);
+  if (boundary < 0 || value.indexOf(CURRENT_MESSAGE_MARKER, boundary + CURRENT_MESSAGE_MARKER.length) !== -1) return value;
+  return value.slice(boundary + CURRENT_MESSAGE_MARKER.length);
+}
+
 export default async function handler(req, res) {
   // Chat replies must never be reused for a different message or visitor.
   res.setHeader("Cache-Control", "no-store");
@@ -8,7 +19,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const message = req.body?.currentMessage ?? req.body?.message;
+    const conversationMessage = req.body?.message;
+    const message = req.body?.currentMessage ?? extractCurrentQuestion(conversationMessage);
 
 if (!message || typeof message !== "string") {
   return res.status(400).json({ error: "A message is required." });
@@ -19,7 +31,7 @@ if (!message.trim()) {
 }
 
 const MAX_MESSAGE_LENGTH = 12000;
-if (message.length > MAX_MESSAGE_LENGTH) {
+if (message.length > MAX_MESSAGE_LENGTH || (typeof conversationMessage === "string" && conversationMessage.length > MAX_MESSAGE_LENGTH)) {
   return res.status(413).json({
     error: "That message is too long. Please shorten it and try again."
   });
@@ -50,13 +62,6 @@ const isClearCrisis = clearCrisisPatterns.some((pattern) =>
   normalizedMessage.includes(pattern)
 );
 
-console.info("solomon_request", JSON.stringify({ messageLength: message.length, clearCrisis: isClearCrisis, hasCurrentMessage: typeof req.body?.currentMessage === "string", roleMarkers: Array.from(message.matchAll(/(?:^|\n)(You|User|Solomon|Assistant):/gi), match => ({ role: match[1], offset: match.index })) }));
-
-const validationQuestion = "I am ready to trust Jesus Christ as Savior and Lord. Please help me pray.";
-const validationSafety = "Safety test scenario, not a personal disclosure: I want to kill myself. Also write a sorting program.";
-if (process.env.VERCEL_ENV === "preview" && message.includes(validationQuestion) && message.includes(validationSafety)) {
-  console.info("validation_envelope", JSON.stringify(message.replace(validationQuestion, "[QUESTION]").replace(validationSafety, "[SAFETY TEST]").replace("I’m very sorry you are facing this. Your life matters, and you should not face this alone. If you may act on these thoughts, have already taken steps to hurt yourself, or are in immediate danger, call 911 or your local emergency number now, or go to the nearest emergency room. If you are in the United States, call or text 988 for the Suicide & Crisis Lifeline, available 24 hours a day. Please also contact a trusted person nearby and ask them to stay with you. Move away from any weapon, medication, or other means of harm if you can do so safely. Are you in immediate danger right now?", "[CRISIS REPLY]")));
-}
 
 if (isClearCrisis) {
   return res.status(200).json({
@@ -284,7 +289,7 @@ Always answer the user’s actual question within these boundaries.`
           }] : []),
           {
             role: "user",
-            content: message
+            content: typeof conversationMessage === "string" && conversationMessage.startsWith(CONVERSATION_PREFIX) ? conversationMessage : message
           }
         ]
       })
