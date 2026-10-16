@@ -1,6 +1,8 @@
 import { CHRISTIAN_SCOPE, SCOPE_REPLY, SCOPE_VERSION, classifyRequest, approveReply } from "../lib/christianScope.js";
 import { findAutoAnswer } from "./answerBank.js";
 export default async function handler(req, res) {
+  // Chat replies must never be reused for a different message or visitor.
+  res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST requests are allowed." });
   }
@@ -306,3 +308,5 @@ Always answer the user’s actual question within these boundaries.`
     });
   }
 }
+
+

@@ -33,7 +33,7 @@ async function invoke(message, queue) {
  const calls=[];let payload,status;
  process.env.OPENAI_API_KEY='test-not-a-real-key';
  globalThis.fetch=async(url,init)=>{calls.push(JSON.parse(init.body));assert.ok(queue.length,'Unexpected API call');return queue.shift();};
- try {await handler({method:'POST',body:{message}}, {status(n){status=n;return this;},json(value){payload=value;return this;}});}
+ try {await handler({method:'POST',body:{message}}, {setHeader(name,value){assert.equal(name,'Cache-Control');assert.equal(value,'no-store');},status(n){status=n;return this;},json(value){payload=value;return this;}});}
  finally {globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=oldKey;}
  return {status,payload,calls};
 }
@@ -63,6 +63,14 @@ test('Christian conversion request from another background is served',async()=>{
 test('clear crisis keeps priority without model calls',async()=>{
  const r=await invoke('I am Muslim and I want to kill myself',[]);assert.equal(r.payload.source,'crisis_care');assert.equal(r.calls.length,0);
 });
+test('crisis response does not carry into a later Gospel request',async()=>{
+ const crisis=await invoke('I want to kill myself',[]);
+ assert.equal(crisis.payload.source,'crisis_care');
+ const gospel=await invoke('I am ready to trust Jesus. Help me pray.',[verdict('allow'),completion('Turn to Jesus Christ in repentance and faith.'),verdict('approve')]);
+ assert.equal(gospel.payload.reply,'Turn to Jesus Christ in repentance and faith.');
+ assert.equal(gospel.calls.length,3);
+ assert.equal(gospel.calls[0].messages.at(-1).content,JSON.stringify({message:'I am ready to trust Jesus. Help me pray.'}));
+});
 test('less explicit crisis is not replaced with a religion refusal when review fails',async()=>{
  const r=await invoke('Someone threatens me because of my religion',[verdict('crisis'),completion('unsafe candidate'),verdict('reject')]);
  assert.match(r.payload.reply,/safety matters/);assert.notEqual(r.payload.reply,SCOPE_REPLY);
@@ -74,3 +82,5 @@ test('comparison exception and incompatible answer bank entries stay removed',as
  assert.ok(!chat.includes('explain or promote another religion as truth'));
  assert.ok(!/ISLAM-00[12]|deeper answer comparing|deeper answer about Christianity and other religions/.test(bank));
 });
+
+
