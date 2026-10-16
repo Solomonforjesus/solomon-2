@@ -52,6 +52,12 @@ const isClearCrisis = clearCrisisPatterns.some((pattern) =>
 
 console.info("solomon_request", JSON.stringify({ messageLength: message.length, clearCrisis: isClearCrisis, hasCurrentMessage: typeof req.body?.currentMessage === "string", roleMarkers: Array.from(message.matchAll(/(?:^|\n)(You|User|Solomon|Assistant):/gi), match => ({ role: match[1], offset: match.index })) }));
 
+const validationQuestion = "I am ready to trust Jesus Christ as Savior and Lord. Please help me pray.";
+if (process.env.VERCEL_ENV === "preview" && message.startsWith(validationQuestion)) {
+  const firstRole = message.search(/\nUser:/);
+  if (firstRole > validationQuestion.length) console.info("validation_envelope", JSON.stringify(message.slice(validationQuestion.length, firstRole)));
+}
+
 if (isClearCrisis) {
   return res.status(200).json({
     reply:
