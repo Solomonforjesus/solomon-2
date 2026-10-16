@@ -94,9 +94,9 @@ const autoAnswer = findAutoAnswer(message);
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-6-luna",
-        reasoning_effort: "none",
-        max_completion_tokens: 700,
+        model: "gpt-4o-mini",
+        
+        max_tokens: 700,
         messages: [
           {
             role: "system",
