@@ -81,6 +81,20 @@
   display: block;
   margin: 0 auto;
 }
+    .ministry-explore { margin: 0 0 26px; }
+    .ministry-explore h2 { margin: 0 0 8px; font: 700 25px Georgia, serif; color: #2f2418; }
+    .ministry-explore > p { margin: 0 0 14px; color: var(--ink-soft); line-height: 1.5; }
+    .ministry-explore-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .ministry-explore-link { display: block; padding: 16px; border: 1px solid var(--border-soft); border-radius: 14px; background: #fffdf8; color: var(--ink-dark); text-decoration: none; }
+    .ministry-explore-link strong { display: block; margin-bottom: 6px; color: var(--solomon-brown); font-size: 17px; }
+    .ministry-explore-link span { display: block; font-size: 14px; line-height: 1.45; }
+    .ministry-explore-link:hover { border-color: var(--solomon-brown); background: #fff; }
+    .ministry-explore-link:focus-visible { outline: 3px solid var(--solomon-brown); outline-offset: 3px; }
+    .ministry-explore-link.primary { background: var(--solomon-brown); color: #fff; border-color: var(--solomon-brown); }
+    .ministry-explore-link.primary strong { color: #fff; }
+    @media (max-width: 760px) { .ministry-explore-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 360px) { .ministry-explore-links { grid-template-columns: 1fr; } }
+    #ask-solomon { scroll-margin-top: 20px; }
     .main-layout {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
@@ -1085,8 +1099,19 @@ button {
   />
 </header>
 
+    <nav class="ministry-explore" aria-labelledby="explore-solomon-title">
+      <h2 id="explore-solomon-title">Explore Solomon</h2>
+      <p>Free resources to help you explore faith, grow in Scripture, and share the hope of Jesus Christ.</p>
+      <div class="ministry-explore-links">
+        <a class="ministry-explore-link primary" href="#ask-solomon"><strong>Ask Solomon</strong><span>Bring your questions about God, the Bible, and faith.</span></a>
+        <a class="ministry-explore-link" href="https://solomonforjesus.net/"><strong>Christian Academy</strong><span>Begin free lessons on the foundations of Christian faith.</span></a>
+        <a class="ministry-explore-link" href="https://solomonforjesus.org/"><strong>Books &amp; Articles</strong><span>Read Fingerprint of Reality and explore Christian writing.</span></a>
+        <a class="ministry-explore-link" href="https://pastors.solomonforjesus.org/"><strong>For Pastors &amp; Churches</strong><span>Meet Gary and explore the ministry's purpose and resources.</span></a>
+      </div>
+    </nav>
+
     <main class="main-layout">
-      <section class="chat-box" aria-label="Solomon chat interface">
+      <section id="ask-solomon" class="chat-box" aria-label="Solomon chat interface">
         <h2 class="chat-heading">Ask Solomon</h2>
 
         <div class="language-invitation" aria-label="Languages supported by Solomon">
