@@ -5393,6 +5393,9 @@ function startPrayerRequest() {
         });
       }
       const content = tooltip.querySelector(".rtTooltipBody");
+      // RefTagger includes cross-reference and footnote labels as verse-ref spans.
+      // Remove those annotation nodes before excerpting; retain verse numbers and text.
+      content?.querySelectorAll(".resourcetext .verse-ref").forEach(marker => marker.remove());
       if (content && !content.dataset.shortened && content.querySelector(".resourcetext")) {
         content.dataset.shortened = "true";
         const words = content.textContent.trim().split(/\s+/);
