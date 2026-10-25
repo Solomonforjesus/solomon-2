@@ -2648,11 +2648,11 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L7-Q018",
     factKey: "risen-jesus-appeared-followers",
     level: 7,
-    type: "multiple-choice",
-    question: "After His resurrection, did Jesus appear to His followers?",
+    type: "true-false",
+    question: "True or False: After His resurrection, Jesus appeared to His followers.",
     answers: [
-      "Yes",
-      "No"
+      "True",
+      "False"
     ],
     correctIndex: 0,
     explanation:
@@ -2754,11 +2754,11 @@ const SOLOMON_TRIVIA_QUESTIONS = [
     id: "L8-Q004",
     factKey: "cannot-save-by-good-works",
     level: 8,
-    type: "multiple-choice",
-    question: "Can we save ourselves simply by doing enough good things?",
+    type: "true-false",
+    question: "True or False: We can save ourselves simply by doing enough good things.",
     answers: [
-      "Yes",
-      "No"
+      "True",
+      "False"
     ],
     correctIndex: 1,
     explanation:
