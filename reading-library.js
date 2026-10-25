@@ -104,7 +104,7 @@
 
   const container = document.getElementById("readingLibraryCards");
 
-  if (container) {
+  if (container && !container.querySelector("[data-static-article]")) {
     fetch("/articles/manifest.json")
       .then((response) => {
         if (!response.ok) throw new Error("Unable to load Reading Library.");
