@@ -170,6 +170,15 @@ def main():
             if ORG_ID not in ids:
                 fail(errors, f"{file_path} does not reference canonical Solomon Organization @id")
 
+    home = Path("index.html").read_text(encoding="utf-8")
+    if 'href="/trivia/"' not in home:
+        fail(errors, "Homepage needs a direct Trivia link")
+    for article in Path("articles").glob("*/index.html"):
+        if f'href="/articles/{article.parent.name}/"' not in home:
+            fail(errors, f"Homepage library missing {article.parent.name}")
+    trivia = Path("trivia/index.html").read_text(encoding="utf-8")
+    if 'href="/#contact"' in trivia:
+        fail(errors, "Trivia feedback points to missing contact anchor")
     robots = robots_path.read_text(encoding="utf-8")
     if "User-agent: OAI-SearchBot" not in robots:
         fail(errors, "robots.txt no longer explicitly allows OAI-SearchBot")
