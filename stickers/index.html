@@ -34,14 +34,5 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </section>
 <footer>Wisdom. Truth. Hope in Jesus Christ.<br>“There Is Still Time.”</footer>
 </main>
-<script>
-// Private analytics only; the ZIP download works even if analytics is blocked.
-document.querySelector('.download').addEventListener('click', function () {
-  try {
-    window.va('event', { name: 'Sticker Download Click' });
-  } catch (_) {
-    // Analytics must never interrupt a download.
-  }
-});
-</script>
+
 </body></html>
