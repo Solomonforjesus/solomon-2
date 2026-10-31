@@ -1,5 +1,11 @@
 import { track } from '@vercel/analytics/server';
 
+// Production's generated deployment hostname is SSO-protected. Send events
+// through the site's public analytics endpoint, without changing protection.
+if (process.env.VERCEL_ENV === 'production') {
+  process.env.VERCEL_WEB_ANALYTICS_ENDPOINT = 'https://www.solomonforjesus.com/_vercel/insights/event';
+}
+
 // Count requests on the server, including visitors without browser analytics.
 // This is a download request, not proof the recipient saved or opened the ZIP.
 export default async function handler(req, res) {
