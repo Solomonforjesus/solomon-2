@@ -160,6 +160,7 @@ def build_page(slug, article, shared_style):
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
   {shared_style}
+<link rel="stylesheet" href="/scripture-previews.css">
 </head>
 <body>
   <header class="reader-header">
@@ -214,6 +215,7 @@ def build_page(slug, article, shared_style):
       }});
     }})();
   </script>
+<script defer src="/scripture-previews.js"></script>
 </body>
 </html>
 '''
@@ -248,7 +250,7 @@ def main():
     if missing:
         raise SystemExit("Could not materialize: " + ", ".join(missing))
 
-    Path("vercel.json").unlink(missing_ok=True)
+    # Preserve routing and download configuration when rebuilding articles.
     print(f"Materialized {len(generated)} articles: " + ", ".join(generated))
 
 
