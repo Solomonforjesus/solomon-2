@@ -81,7 +81,7 @@
   display: block;
   margin: 0 auto;
 }
-    .ministry-explore { margin: 0 0 26px; }
+    .ministry-explore { margin: 30px 0 0; }
     .ministry-explore h2 { margin: 0 0 8px; font: 700 25px Georgia, serif; color: #2f2418; }
     .ministry-explore > p { margin: 0 0 14px; color: var(--ink-soft); line-height: 1.5; }
     .ministry-explore-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
@@ -246,18 +246,24 @@ button {
 }
 
    .image-panel {
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   background: transparent;
   padding: 0;
 }
+    /* Match the chat height without cropping the artwork or stretching its text. */
     .solomon-image {
+      position: absolute;
+      inset: 0;
+      margin: 0 auto;
       width: 100%;
       max-width: 560px;
-      height: auto;
-      max-height: 680px;
+      height: 100%;
+      max-height: none;
       object-fit: contain;
+      background: #efd3a5;
       display: block;
       border-radius: 14px;
     }
@@ -405,6 +411,7 @@ button {
       }
 
       .solomon-image {
+        position: static;
         width: 100%;
         max-width: 520px;
         height: auto;
@@ -1100,20 +1107,6 @@ button {
   />
 </header>
 
-    <nav class="ministry-explore" aria-labelledby="explore-solomon-title">
-      <h2 id="explore-solomon-title">Explore Solomon</h2>
-      <p>Free resources to help you explore faith, grow in Scripture, and share the hope of Jesus Christ.</p>
-      <div class="ministry-explore-links">
-        <a class="ministry-explore-link primary" href="#ask-solomon"><strong>Ask Solomon</strong><span>Bring your questions about God, the Bible, and faith.</span></a>
-        <a class="ministry-explore-link" href="https://solomonforjesus.net/"><strong>Christian Academy</strong><span>Begin free lessons on the foundations of Christian faith.</span></a>
-        <a class="ministry-explore-link" href="https://solomonforjesus.org/"><strong>Books &amp; Articles</strong><span>Read Fingerprint of Reality and explore Christian writing.</span></a>
-        <a class="ministry-explore-link" href="/trivia/"><strong>Bible Trivia</strong><span>Play ten levels of Scripture questions with family and friends.</span></a>
-        <a class="ministry-explore-link" href="/stickers/"><strong>Free Solomon Stickers</strong><span>Download all 15 stickers, plus Solomon’s happy dance GIF.</span></a>
-        <a class="ministry-explore-link" href="#reading-library"><strong>Christian Reading Library</strong><span>Explore all ten articles about Jesus, forgiveness, hope, and faith.</span></a>
-        <a class="ministry-explore-link" href="https://pastors.solomonforjesus.org/"><strong>For Pastors &amp; Churches</strong><span>Meet Gary and explore the ministry's purpose and resources.</span></a>
-      </div>
-    </nav>
-
     <main class="main-layout">
       <section id="ask-solomon" class="chat-box" aria-label="Solomon chat interface">
         <h2 class="chat-heading">Ask Solomon</h2>
@@ -1150,6 +1143,20 @@ button {
         />
       </aside>
        </main>
+
+    <nav class="ministry-explore" aria-labelledby="explore-solomon-title">
+      <h2 id="explore-solomon-title">Explore Solomon</h2>
+      <p>Free resources to help you explore faith, grow in Scripture, and share the hope of Jesus Christ.</p>
+      <div class="ministry-explore-links">
+        <a class="ministry-explore-link primary" href="#ask-solomon"><strong>Ask Solomon</strong><span>Bring your questions about God, the Bible, and faith.</span></a>
+        <a class="ministry-explore-link" href="https://solomonforjesus.net/"><strong>Christian Academy</strong><span>Begin free lessons on the foundations of Christian faith.</span></a>
+        <a class="ministry-explore-link" href="https://solomonforjesus.org/"><strong>Books &amp; Articles</strong><span>Read Fingerprint of Reality and explore Christian writing.</span></a>
+        <a class="ministry-explore-link" href="/trivia/"><strong>Bible Trivia</strong><span>Play ten levels of Scripture questions with family and friends.</span></a>
+        <a class="ministry-explore-link" href="/stickers/"><strong>Free Solomon Stickers</strong><span>Download all 15 stickers, plus Solomon’s happy dance GIF.</span></a>
+        <a class="ministry-explore-link" href="#reading-library"><strong>Christian Reading Library</strong><span>Explore all ten articles about Jesus, forgiveness, hope, and faith.</span></a>
+        <a class="ministry-explore-link" href="https://pastors.solomonforjesus.org/"><strong>For Pastors &amp; Churches</strong><span>Meet Gary and explore the ministry's purpose and resources.</span></a>
+      </div>
+    </nav>
 
     <section class="content-section">
   <div class="content-card">
