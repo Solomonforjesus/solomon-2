@@ -1,4 +1,126 @@
 {
+  "redirects": [
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^can-god-forgive-me$"
+        }
+      ],
+      "destination": "/articles/can-god-forgive-me/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^is-the-bible-trustworthy$"
+        }
+      ],
+      "destination": "/articles/is-the-bible-trustworthy/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^joy-the-gladness-no-circumstance-can-take-away$"
+        }
+      ],
+      "destination": "/articles/joy-the-gladness-no-circumstance-can-take-away/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^what-happens-when-i-die$"
+        }
+      ],
+      "destination": "/articles/what-happens-when-i-die/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^what-is-the-gospel$"
+        }
+      ],
+      "destination": "/articles/what-is-the-gospel/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^when-someone-has-hurt-you-deeply$"
+        }
+      ],
+      "destination": "/articles/when-someone-has-hurt-you-deeply/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^when-the-answer-becomes-ordinary$"
+        }
+      ],
+      "destination": "/articles/when-the-answer-becomes-ordinary/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^who-is-jesus-christ$"
+        }
+      ],
+      "destination": "/articles/who-is-jesus-christ/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^why-does-god-allow-suffering$"
+        }
+      ],
+      "destination": "/articles/why-does-god-allow-suffering/",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "^why-jesus-christ-matters$"
+        }
+      ],
+      "destination": "/articles/why-jesus-christ-matters/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/stickers/solomon-stickers.zip", "destination": "/api/sticker-download" }
   ],
