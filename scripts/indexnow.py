@@ -51,6 +51,11 @@ for status, path in changes:
             slug = slug[:-5]
         if slug and slug != "manifest.json":
             candidate = f"{BASE}/articles/{slug}/"
+    elif parts[0] == "devotionals":
+        if len(parts) == 3 and parts[-1] == "index.html":
+            candidate = f"{BASE}/devotionals/{parts[1]}/"
+        else:
+            urls.update(url for url in sitemap_urls if "/devotionals/" in url)
     elif parts[0] == "lessons" and len(parts) > 1:
         candidate = f"{BASE}/lessons/{parts[1]}/"
     elif parts[0] in {"orientation", "trivia"}:
