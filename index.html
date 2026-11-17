@@ -1083,6 +1083,7 @@ button {
 </style>
   <script id="solomon-homepage-schema" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.solomonforjesus.com/#website","url":"https://www.solomonforjesus.com/","name":"Solomon For Jesus","alternateName":"Solomon 2.0","description":"Ask Solomon, a free Christian AI Bible chat, about God, Scripture, faith, and forgiveness. Explore Bible study, prayer, and Gospel-centered articles.","publisher":{"@id":"https://www.solomonforjesus.com/#organization"}},{"@type":"Organization","@id":"https://www.solomonforjesus.com/#organization","name":"Solomon For Jesus","alternateName":"Solomon 2.0","url":"https://www.solomonforjesus.com/","description":"A free Christian evangelism ministry offering Gospel-centered biblical answers, prayer access, Bible learning, Christian reading resources, and connected educational and publishing ministries.","subOrganization":[{"@id":"https://solomonforjesus.net/#organization"},{"@id":"https://solomonforjesus.org/#organization"}]}]}</script>
 <style>.trivia-direct-link{display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:12px 14px;border:0;border-radius:14px;background:var(--solomon-brown);color:#fff;text-align:center;text-decoration:none;font-family:inherit;font-size:clamp(15px,1.7vw,17px);font-weight:700;transition:background 160ms ease,transform 160ms ease}.trivia-direct-link:hover{background:var(--solomon-brown-dark);transform:translateY(-1px)}.trivia-direct-link:active{transform:translateY(0)}.trivia-direct-link:focus-visible{outline:3px solid #c99c45;outline-offset:3px}.reading-library-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;list-style:none;padding:0}.reading-library-grid li{border-top:1px solid #c8ad79;padding-top:16px}.reading-library-grid a{font-weight:bold}.reading-library-grid p{font-size:.94rem;line-height:1.6}#reading-library{scroll-margin-top:20px}</style><link rel="stylesheet" href="/scripture-previews.css">
+<link rel="stylesheet" href="/devotionals/home-card.css">
 </head>
 
 <body>
@@ -1129,12 +1130,20 @@ button {
 </div>
       </section>
 
-      <aside class="image-panel" aria-label="Solomon For Jesus artwork">
+      <aside class="image-panel" aria-label="Solomon For Jesus artwork and devotionals">
         <img
          src="/solomon-color-hero.webp"
           alt="Solomon For Jesus artwork with John 14:6"
           class="solomon-image"
         />
+
+        <section id="devotionals" class="devotionals-card" aria-labelledby="devotionals-title">
+          <h2 id="devotionals-title">Devotionals</h2>
+          <p class="devotionals-tagline">Quick, encouraging help to begin your day!</p>
+          <h3>Before You Step Into the Day</h3>
+          <a class="devotional-read" href="/devotionals/before-you-step-into-the-day/">Read the devotional</a>
+          <a class="devotionals-all" href="/devotionals/">All devotionals</a>
+        </section>
       </aside>
        </main>
 
